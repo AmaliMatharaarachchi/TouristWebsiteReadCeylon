@@ -1,122 +1,173 @@
 @extends('layouts.public')
-
+@section('title')
+    Contact Suranga
+@endsection
 @section('body')
 
 
-<section id="headline">
-    <div class="container">
-        <div class="section-title clearfix">
-            <h2 class="fl-l">Contact</h2>
+    <section id="header-container">
 
-            <ul id="breadcrumbs" class="fl-r">
-                <li><a href="index-2.html">Home</a></li>
-                <li>Get in Touch</li>
-            </ul>
-        </div>
-    </div>
-</section>
+        <header id="header">
+            <div class="container">
+                <nav id="navigation" class="navigation-login fl-r" role="navigation">
+                    <ul>
+                        <li ><a href="#"><i
+                                        class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
+                                <span>Login</span></a></li>
 
-<section class="map" data-longitude="44.958309" data-latitude="34.109925" data-marker="images/marker.png"></section>
+                        <li id="signup"><a href="#">Sign Up</a></li>
+                    </ul>
+                </nav>
+                <a href="#" id="logo"></a>
 
-<section id="contact" class="base-bg-color_light">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-7 col-md-8">
-                <h3>Get in touch with us</h3>
+                <nav id="navigation" class="fl-r" role="navigation">
+                    <ul>
+                        <li>
 
-                <p>
-                    Introducing crystals splash. Very bigger brings most velvety treat burst unique choosy it's spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking waxy magically made exotic aroma odor newest.
-                </p>
+                            <a href="{{route('welcome')}}">Home</a>
 
-                <form action="http://idealui.com/">
-                    <input type="text" placeholder="Please Enter Your Name" />
 
-                    <input type="text" placeholder="Your Email *" />
+                        </li>
 
-                    <textarea placeholder="Your Message"></textarea>
 
-                    <input class="base-text-color" type="submit" value="Send" />
-                </form>
+                        <li>
+                            <a href="{{route('packages')}}">Packages</a>
+
+
+                            <div class="submenu " style="width: 400px;">
+                                <ul class="base-bg-color">
+                                    <li><a href="about_us.html">About Us</a></li>
+                                    <li><a href="our_team.html">Our Team</a></li>
+                                    <li><a href="project_details_1.html">Project Details 1</a></li>
+                                    <li><a href="project_details_2.html">Project Details 2</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                </ul>
+                                <ul class="base-bg-color ">
+                                    <li><a href="about_us.html">About Us</a></li>
+                                    <li><a href="our_team.html">Our Team</a></li>
+                                    <li><a href="project_details_1.html">Project Details 1</a></li>
+                                    <li><a href="project_details_2.html">Project Details 2</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                </ul>
+
+                            </div>
+
+                        </li>
+                        <li><a href="#">Sri Lanka</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li class="current"><a href="{{route('contact')}}">Contact Us</a></li>
+                    </ul>
+
+                </nav>
+
             </div>
-
-            <div class="col-xs-12 col-sm-5 col-md-4">
-                <div class="contact-address">
-                    <div class="title-with-ico">
-                        <i class="ico icon-location rounded_50 base-text-color base-border-color"></i>
-
-                        <h3>Address<br />NYC Head Office</h3>
-                    </div>
+        </header>
+    </section>
+    <section id="contact" class="base-bg-color_light">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-md-8">
+                    <h3>Get in touch with us</h3>
 
                     <p>
-                        Rockefeller Center, 45 Rockefeller Plaza, New York, NY, USA
+                        Introducing crystals splash. Very bigger brings most velvety treat burst unique choosy it's
+                        spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking waxy
+                        magically made exotic aroma odor newest.
                     </p>
 
-                    <p>
-                        P: +1 123 444 5678<br/>
-                        f: +1 123 555 6789<br/>
-                        E: <a href="mailto:info@yoursite.com">info@yoursite.com</a>
-                    </p>
+                    <form action="http://idealui.com/">
+                        <input type="text" placeholder="Please Enter Your Name"/>
 
-                    <p>
-                        Traditional mountain finest ocean take. Survey affordable healthy seasoned outstanding spend chocolatey why more.
-                    </p>
+                        <input type="text" placeholder="Your Email *"/>
 
-                    <p>
-                        Feedback also customer agree yet racy. Fights gentle chocolatey what luxury goodbye latest seeing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                        <textarea placeholder="Your Message"></textarea>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="footer-item">
-                    <h4>About Us</h4>
-
-                    <p>Accomodations trust works tighter just. Chance  however dry pennies effective. Deeply soaking below genuine bold care burst. Reduced unique win.</p>
-
-                    <img id="footer-logo" src="images/logo2.png" alt="single" />
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="footer-item">
-                    <h4>Our Tweets</h4>
-
-                    <div class="tweet">
-                        <article>
-                            <p>Check out this great #themeforest item 'FR – Elegant One Page Fashion PSD Template' http://themeforest.net/item/fr-elegant-one-page-fashion-psd-template/5339674</p>
-
-                            <span><i class="icon-twitter-bird"></i> about 2 week ago</span>
-                        </article>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="footer-item">
-                    <h4>Newsletter Signup</h4>
-
-                    <p>Please subscribe to our University newsletters</p>
-
-                    <form class="style1" action="http://idealui.com/">
-                        <input type="text" value="" />
-
-                        <input type="submit" value="Subscribe" />
+                        <input class="base-text-color" type="submit" value="Send"/>
                     </form>
+                </div>
 
-                    <p>We promise NO SPAM</p>
+                <div class="col-xs-12 col-sm-5 col-md-4">
+                    <div class="contact-address">
+                        <div class="title-with-ico">
+                            <i class="ico icon-location rounded_50 base-text-color base-border-color"></i>
+
+                            <h3>Address<br/>NYC Head Office</h3>
+                        </div>
+
+                        <p>
+                            Rockefeller Center, 45 Rockefeller Plaza, New York, NY, USA
+                        </p>
+
+                        <p>
+                            P: +1 123 444 5678<br/>
+                            f: +1 123 555 6789<br/>
+                            E: <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                        </p>
+
+                        <p>
+                            Traditional mountain finest ocean take. Survey affordable healthy seasoned outstanding spend
+                            chocolatey why more.
+                        </p>
+
+                        <p>
+                            Feedback also customer agree yet racy. Fights gentle chocolatey what luxury goodbye latest
+                            seeing.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="footer-item">
+                        <h4>About Us</h4>
+
+                        <p>Accomodations trust works tighter just. Chance however dry pennies effective. Deeply soaking
+                            below genuine bold care burst. Reduced unique win.</p>
+
+                        <img id="footer-logo" src="images/logo2.png" alt="single"/>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="footer-item">
+                        <h4>Our Tweets</h4>
+
+                        <div class="tweet">
+                            <article>
+                                <p>Check out this great #themeforest item 'FR – Elegant One Page Fashion PSD Template'
+                                    http://themeforest.net/item/fr-elegant-one-page-fashion-psd-template/5339674</p>
+
+                                <span><i class="icon-twitter-bird"></i> about 2 week ago</span>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="footer-item">
+                        <h4>Newsletter Signup</h4>
+
+                        <p>Please subscribe to our University newsletters</p>
+
+                        <form class="style1" action="http://idealui.com/">
+                            <input type="text" value=""/>
+
+                            <input type="submit" value="Subscribe"/>
+                        </form>
+
+                        <p>We promise NO SPAM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
-    @endsection
+@endsection
 

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
 
     <!-- / color -->
-    <link class="colors_style" rel="stylesheet" href="css/color_style/color_1.css" type="text/css"/>
+    <link class="colors_style" rel="stylesheet" href="css/color_style/color_5.css" type="text/css"/>
     <!-- / google font -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,600,300' rel='stylesheet' type='text/css'>
     <!-- / settings_box -->
@@ -37,44 +37,6 @@
 <body>
 
 
-<section id="header-container">
-    <header id="header">
-        <div class="container">
-            <a href="#" id="logo"></a>
-
-            <nav id="navigation" class="fl-r" role="navigation">
-                <ul>
-                    <li class="current">
-                        <a href="#">Home</a>
-
-
-                    </li>
-
-
-                    <li>
-                        <a href="#">Packages</a>
-
-
-                        <div class="submenu col-md-2">
-                            <ul class="base-bg-color">
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="our_team.html">Our Team</a></li>
-                                <li><a href="project_details_1.html">Project Details 1</a></li>
-                                <li><a href="project_details_2.html">Project Details 2</a></li>
-                                <li><a href="login.html">Login</a></li>
-                            </ul>
-
-                        </div>
-
-                    </li>
-                    <li><a href="#">Sri Lanka</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="{{route('contact')}}">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-</section>
 
 @yield('body')
 <section id="copy">
