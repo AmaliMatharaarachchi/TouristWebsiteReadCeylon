@@ -17,12 +17,12 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->string('package_name');
             $table->text('description');
-            $table->string('price');
+            $table->string('price')->nullable();
             $table->string('days');
             $table->string('route');
             $table->string('picture1');
             $table->string('picture2');
-            $table->string('picture3');
+            $table->string('picture3')->nullable();
             $table->timestamps();
         });
     }

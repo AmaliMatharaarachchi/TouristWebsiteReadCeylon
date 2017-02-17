@@ -11,22 +11,22 @@
 
     <!-- Favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.html">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.html">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.html">
+    <link rel="shortcut icon" href="{{ URL::asset('images/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{URL::asset('images/apple-touch-icon.html')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('images/apple-touch-icon-72x72.html')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('images/apple-touch-icon-114x114.html')}}">
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/responsive.css" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('css/responsive.css')}}" type="text/css">
 
     <!-- / color -->
-    <link class="colors_style" rel="stylesheet" href="css/color_style/color_5.css" type="text/css"/>
+    <link class="colors_style" rel="stylesheet" href="{{URL::asset('css/color_style/color_5.css')}}" type="text/css"/>
     <!-- / google font -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,600,300' rel='stylesheet' type='text/css'>
+    <link href='{{URL::asset('http://fonts.googleapis.com/css?family=Titillium+Web:400,200,600,300')}}' rel='stylesheet' type='text/css'>
     <!-- / settings_box -->
-    <link rel="stylesheet" href="settings_box/settings_box.css" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('settings_box/settings_box.css')}}" type="text/css">
 
     <!-- Load jQuery
     ================================================== -->

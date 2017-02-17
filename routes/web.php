@@ -28,12 +28,16 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PageController@getPackagesPage',
         'as' => 'packages'
     ]);
+    Route::get('/packages/create',[
+        'uses' => 'PageController@createPackage',
+        'as' => 'create_packages'
+    ]);
+    Route::post('/packages/create', [
+        'uses' => 'PackageController@AddPackage',
+        'as' => 'add_package'
+    ]);
 
-    Route::get('/packages/{package}',function($id){
-//        dd($id);
-        $package=Package::find($id);
-        return view('packages.show',compact('package'));
-    } );
+    Route::get('/packages/{package}','PackageController@show' );
 
 
 

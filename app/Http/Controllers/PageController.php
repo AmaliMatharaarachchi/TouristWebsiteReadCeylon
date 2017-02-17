@@ -16,5 +16,8 @@ class PageController extends Controller
         return view('packages',['packages'=>((new PackageController())->getPackages())]);
 //    or use ->compact('packages')
     }
+    public function createPackage(){
+        return view('add_package');
+    }
 
 }
