@@ -481,7 +481,7 @@
             <p>you will get this and this by registering.  </p>
             <p>you will get this and this by registering.  </p>
 
-            <a class="flat-btn base-bg-color" href="#">Register Now</a>
+            <a class="flat-btn base-bg-color" href="/register">Register Now</a>
         </div>
     </section>
 

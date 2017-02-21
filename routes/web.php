@@ -37,6 +37,15 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'add_package'
     ]);
 
+    Route::get('/city/create',[
+        'uses' => 'PageController@createCity',
+        'as' => 'create_city'
+    ]);
+    Route::post('/city/create', [
+        'uses' => 'CityController@AddCity',
+        'as' => 'add_city'
+    ]);
+
     Route::get('/packages/{package}','PackageController@show' );
 
 

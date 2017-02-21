@@ -6,18 +6,31 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getContactPage(){
+    public function getContactPage()
+    {
         return view('contact_us');
     }
-    public function getWelcomePage(){
+
+    public function getWelcomePage()
+    {
         return view('welcome');
 
-    } public function getPackagesPage(){
-        return view('packages',['packages'=>((new PackageController())->getPackages())]);
+    }
+
+    public function getPackagesPage()
+    {
+        return view('packages', ['packages' => ((new PackageController())->getPackages())]);
 //    or use ->compact('packages')
     }
-    public function createPackage(){
+
+    public function createPackage()
+    {
         return view('add_package');
+    }
+
+    public function createCity()
+    {
+        return view('add_city');
     }
 
 }
