@@ -27,20 +27,33 @@
 
                     <p>
                         Add your package details using below form. If its route having a other city other than existing
-                        cities, create that city using the "create city" form before creating a new package.<br><br> *required
+                        cities, create that city using the "create city" form before creating a new package.<br><br>
+                        <span style="color: #990000">*required</span>
                     </p>
+
+                    @if(count($errors))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li><span >! {{$error}}</span></li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endif
+
                     <div class="col-md-6">
 
                         <h3>Add Package</h3>
                         <div class="col-md-12">
                             <form method="post" action="{{route('add_package')}}">
                                 {{ csrf_field() }}
-                                <label for="package_name" class="col-md-4 control-label">Package Name*</label>
+                                <label for="package_name" class="col-md-4 control-label">Package Name</label>
                                 <input type="text" placeholder="Package Name" id="package_name" name="package_name"
                                        required/>
                                 <label for="description" class="col-md-4 control-label">Description*</label>
-                                <input type="text" placeholder="Description" id="description" name="description"
-                                       required/>
+                                <textarea type="text" placeholder="Description" id="description" name="description"
+                                          required></textarea>
                                 <label for="price" class="col-md-4 control-label">Price</label>
                                 <input type="text" placeholder="Price" id="price" name="price"/>
                                 <label for="days" class="col-md-4 control-label">Days*</label>
@@ -60,16 +73,19 @@
 
                         </div>
                     </div>
+
                     <div class="col-md-6">
-                        <h3>Add City</h3>
+                        <div class="col-md-6">
+                            <h3>Add City</h3>
 
 
-                    </div>
+                        </div> @include('layouts.add_city')</div>
 
 
                 </div>
             </div>
         </section>
+
     </div>
 
 @endsection

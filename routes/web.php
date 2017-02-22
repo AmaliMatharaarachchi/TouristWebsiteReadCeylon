@@ -11,8 +11,7 @@
 |
 */
 
-use App\Package;
-use Illuminate\Support\Facades\DB;
+
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -20,29 +19,32 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PageController@getContactPage',
         'as' => 'contact'
     ]);
+
     Route::get('/', [
         'uses' => 'PageController@getWelcomePage',
         'as' => 'welcome'
     ]);
+
+
     Route::get('/packages', [
-        'uses' => 'PageController@getPackagesPage',
+        'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
     Route::get('/packages/create',[
-        'uses' => 'PageController@createPackage',
+        'uses' => 'PackageController@create',
         'as' => 'create_packages'
     ]);
     Route::post('/packages/create', [
-        'uses' => 'PackageController@AddPackage',
+        'uses' => 'PackageController@store',
         'as' => 'add_package'
     ]);
 
-    Route::get('/city/create',[
-        'uses' => 'PageController@createCity',
+    Route::get('/cities/create',[
+        'uses' => 'CityController@create',
         'as' => 'create_city'
     ]);
-    Route::post('/city/create', [
-        'uses' => 'CityController@AddCity',
+    Route::post('/cities/create', [
+        'uses' => 'CityController@store',
         'as' => 'add_city'
     ]);
 

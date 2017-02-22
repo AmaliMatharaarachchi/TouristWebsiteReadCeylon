@@ -107,13 +107,14 @@
 
                                     <div class="col-sm-12 col-md-10">
                                         <p class="post-title base-text-color"><a href="/packages/{{$package->id}}">{{$package->package_name}}</a></p>
-
+                                        {{--</echo updated at {{$package->updated_at->toFormattedDateString()}}--}}
                                         <ul class="tags-list">
                                             <li><a href="#">Interactive</a></li>
                                             <li><a href="#">PSD</a></li>
                                             <li><a href="#">Creative Direction</a></li>
-                                        </ul>
 
+                                        </ul>
+                        {{--<p class="blog-item"> {{(new \Carbon($package->updated_at))->toFormattedDateString()}}</p>--}}
                                         <p>
                                             All-over perfomance formula burst pleasure choose never. Fat-free sweet
                                             delicious. Smile listen crunchy lather for deeply waxy gentle refreshing

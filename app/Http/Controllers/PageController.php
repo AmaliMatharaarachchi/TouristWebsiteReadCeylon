@@ -17,20 +17,7 @@ class PageController extends Controller
 
     }
 
-    public function getPackagesPage()
-    {
-        return view('packages', ['packages' => ((new PackageController())->getPackages())]);
-//    or use ->compact('packages')
-    }
 
-    public function createPackage()
-    {
-        return view('add_package');
-    }
 
-    public function createCity()
-    {
-        return view('add_city');
-    }
 
 }
