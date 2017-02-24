@@ -51,7 +51,7 @@ class CityController extends Controller
             'star5price'=>'required',
             'image1'=>'required',
             'image2'=>'required',
-            'image3'=>'required',
+//            'image3'=>'required',
 
 
         ]);
