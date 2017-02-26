@@ -48,6 +48,13 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'add_city'
     ]);
 
+    Route::post('/comment/create', [
+        'uses' => 'CommentController@store',
+        'as' => 'add_comment'
+    ]);
+
+
+
     Route::get('/packages/{package}','PackageController@show' );
 
 
@@ -57,3 +64,8 @@ Route::group(['middleware' => ['web']], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/logout', [
+    'uses'=>'Auth\LoginController@logout',
+    'as'=>'logout'
+]);

@@ -35,18 +35,18 @@
 
                             <div class="submenu " style="width: 400px;">
                                 <ul class="base-bg-color">
-                                    <li><a href="about_us.html">About Us</a></li>
-                                    <li><a href="our_team.html">Our Team</a></li>
-                                    <li><a href="project_details_1.html">Project Details 1</a></li>
-                                    <li><a href="project_details_2.html">Project Details 2</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                    <li><a href="#">Project Details 1</a></li>
+                                    <li><a href="#">Project Details 2</a></li>
+                                    <li><a href="#">Login</a></li>
                                 </ul>
                                 <ul class="base-bg-color ">
-                                    <li><a href="about_us.html">About Us</a></li>
-                                    <li><a href="our_team.html">Our Team</a></li>
-                                    <li><a href="project_details_1.html">Project Details 1</a></li>
-                                    <li><a href="project_details_2.html">Project Details 2</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                    <li><a href="#">Project Details 1</a></li>
+                                    <li><a href="#">Project Details 2</a></li>
+                                    <li><a href="#">Login</a></li>
                                 </ul>
 
                             </div>

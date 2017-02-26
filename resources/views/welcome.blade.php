@@ -94,17 +94,31 @@
 
 
 
+
     <section id="header-container">
         <header id="header">
             <div class="container">
                 <nav id="navigation" class="navigation-login fl-r" role="navigation">
                     <ul>
+
+                        @if(Auth::check())
+                            <li ><a><i
+                                        class="ico icon-user-male rounded_50 base-text-color base-border-color"></i><span>{{Auth::user()->name}}</span></a>
+
+                                <div class="submenu " style="width: 400px;">
+                                    <ul class="base-bg-color">
+                                        <li id="logout"><a href="{{route('logout')}}">Logout</a></li>
+                                        </ul>
+                                    </div>
+                            </li>
+
+                        @else
                         <li ><a href="{{route('login')}}"><i
                                         class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
                                 <span>Login</span></a></li>
 
                         <li id="signup"><a href="{{route('register')}}">Sign Up</a></li>
-                        <li id="logout"><a href="{{route('logout')}}">Sign Up</a></li>
+                        @endif
                     </ul>
                 </nav>
                 <a href="#" id="logo"></a>
@@ -122,26 +136,11 @@
                             <a href="{{route('packages')}}">Packages</a>
 
 
-                            <div class="submenu " style="width: 400px;">
-                                <ul class="base-bg-color">
-                                    <li><a href="about_us.html">About Us</a></li>
-                                    <li><a href="our_team.html">Our Team</a></li>
-                                    <li><a href="project_details_1.html">Project Details 1</a></li>
-                                    <li><a href="project_details_2.html">Project Details 2</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                </ul><ul class="base-bg-color " >
-                                    <li><a href="about_us.html">About Us</a></li>
-                                    <li><a href="our_team.html">Our Team</a></li>
-                                    <li><a href="project_details_1.html">Project Details 1</a></li>
-                                    <li><a href="project_details_2.html">Project Details 2</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                </ul>
 
-                            </div>
 
                         </li>
                         <li><a href="#">Sri Lanka</a></li>
-                        <li><a href="#">Services</a></li>
+
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                     </ul>
 
