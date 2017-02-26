@@ -42,8 +42,8 @@
 
     <!-- Load jQuery
     ================================================== -->
-    <script type="text/javascript" src="js/modernizr.custom.js"></script>
-    <script type="text/javascript" src="js/device.min.js"></script>
+    <script type="text/javascript" src="{{URL::asset("js/modernizr.custom.js")}}"></script>
+    <script type="text/javascript" src="{{URL::asset("js/device.min.js")}}"></script>
 </head>
 
 <body>
@@ -65,13 +65,13 @@
     </div>
 </section>
 
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-<script type="text/javascript" src="js/jquery.fs.boxer.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/vegas.min.js"></script>
-<script type="text/javascript" src="js/jquery.main.js"></script>
+<script type="text/javascript" src="{{URL::asset("js/jquery-1.11.0.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/jquery.nicescroll.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/isotope.pkgd.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/jquery.fs.boxer.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/owl.carousel.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/vegas.min.js")}}"></script>
+<script type="text/javascript" src="{{URL::asset("js/jquery.main.js")}}"></script>
 
 </body>
 </html>

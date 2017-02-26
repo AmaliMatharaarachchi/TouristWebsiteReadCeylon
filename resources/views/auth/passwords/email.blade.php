@@ -1,6 +1,8 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
+@extends('layouts.public')
 
-@section('content')
+
+@section('body')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

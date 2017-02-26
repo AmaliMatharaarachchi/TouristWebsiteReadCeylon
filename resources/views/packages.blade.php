@@ -90,10 +90,10 @@
                                      data-auto="false" data-autospeed="3000" data-mousedrag="false" data-nav="true"
                                      data-animin="fadeIn" data-animout="fadeOut">
 
-                                    <div><img class="img-responsive" src="{{$package->picture1}}" alt="single"/></div>
-                                    <div><img class="img-responsive" src="{{$package->picture2}}" alt="single"/></div>
+                                    <div><img class="img-responsive" src="{{$package->picture1}}" alt="display is not available"/></div>
+                                    <div><img class="img-responsive" src="{{$package->picture2}}" alt="display is not available"/></div>
                                     @if(($package->picture3)!=null)
-                                        <div><img class="img-responsive" src="{{$package->picture3}}" alt="single"/>
+                                        <div><img class="img-responsive" src="{{$package->picture3}}" alt="display is not available"/>
                                         </div>
                                     @endif
                                 </div>
@@ -121,8 +121,8 @@
                                             exclusive aromatic deeply. Genuine snappy exclusive flat UI design.
                                         </p>
 
-                                        <a class="more-btn" href="#"><i
-                                                    class="icon-angle-right rounded_50 base-border-color"></i> Read More</a>
+                                        <a class="more-btn" href="/packages/{{$package->id}}"><i
+                                                    class="icon-angle-right rounded_50 base-border-color"></i> View more</a>
                                     </div>
                                 </div>
                             </article>

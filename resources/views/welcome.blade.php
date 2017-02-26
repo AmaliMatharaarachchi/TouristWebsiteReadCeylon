@@ -104,6 +104,7 @@
                                 <span>Login</span></a></li>
 
                         <li id="signup"><a href="{{route('register')}}">Sign Up</a></li>
+                        <li id="logout"><a href="{{route('logout')}}">Sign Up</a></li>
                     </ul>
                 </nav>
                 <a href="#" id="logo"></a>
