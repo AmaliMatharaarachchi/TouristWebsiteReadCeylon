@@ -84,19 +84,31 @@
                                                 @endforeach
 
                                             </div>
-                                            <div class="col-xs-12 col-md-12">
-                                                <form method="post" action="{{route('add_comment')}}">
-                                                    {{csrf_field()}}
-                                                    <span class="comment icon-comment">Add your comment</span>
-                                                    <textarea type="text" placeholder="Type your comment here"
-                                                    id="comment" name="comment"
-                                                    required></textarea>
-                                                    <input type="hidden" value="{{Auth::user()->id}}" id="user_id" name="user_id"/>
-                                                    <input type="hidden" value="{{$package->id}}" id="package_id" name="package_id"/>
-                                                    <input class="base-text-color" type="submit" value="Send"/>
+                                            @if(Auth::check())
+                                                <div class="col-xs-12 col-md-12">
+                                                    @if ($errors->has('comment'))
+                                                        <div class="alert alert-danger">
+                                                            <span class="help-block">
+                                        <strong>You have to type a non empty comment here</strong>
+                                    </span></div>
 
-                                                </form>
-                                            </div>
+                                                    @endif
+                                                    <form method="post" action="{{route('add_comment')}}">
+                                                        {{csrf_field()}}
+
+                                                        <span class="comment icon-comment">Add your comment</span>
+                                                    <textarea type="text" id="review" name="review"
+                                                              required></textarea>
+
+                                                        {{--<input type="hidden" value="{{Auth::user()->id}}" id="user_id"--}}
+                                                               {{--name="user_id"/>--}}
+                                                        <input type="hidden" value="{{$package->id}}" id="package_id"
+                                                               name="package_id"/>
+                                                        <input class="base-text-color" type="submit" value="Send"/>
+
+                                                    </form>
+                                                </div>
+                                            @endif
 
 
                                         </div>
@@ -113,18 +125,7 @@
             </div>
         </div>
     </section>
-    <section id="contact" class="base-bg-color_light">
-        <div class="col-xs-12 col-md-12">
-            <form method="post" action="{{route('add_comment')}}">
-                <label for="comment" class="col-md-4 control-label">Add your comment</label>
-                                                    {{--<textarea type="text" placeholder="Type your comment here"--}}
-                                                              {{--id="comment" name="comment"--}}
-                                                              {{--required/>--}}
-                <input class="base-text-color" type="submit" value="Send"/>
 
-            </form>
-        </div>
-    </section>
 
 
 @endsection

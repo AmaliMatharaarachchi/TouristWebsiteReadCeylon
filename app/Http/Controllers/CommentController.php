@@ -12,6 +12,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 
@@ -35,10 +40,16 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'review'=>'required',]);
+
+//        auth()->user()->comment(
+//            new Comment($request(['review','package_id']))
+//        )
         $Comment=new Comment();
-        $Comment->review=$request['comment'];
+        $Comment->review=$request['review'];
         $Comment->package_id=$request['package_id'];
-        $Comment->user_id=$request['user_id'];
+        $Comment->user_id=auth()->user()->id;
         $Comment->save();
         return redirect()->back();
     }

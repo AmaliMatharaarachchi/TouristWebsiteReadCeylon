@@ -22,3 +22,32 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Package::class, function (Faker\Generator $faker) {
+
+    return [
+        'package_name' => $faker->name,
+        'description' => $faker->paragraph,
+        'price' => $faker->randomNumber(),
+        'days' => $faker->randomNumber(),
+        'route' => $faker->sentence,
+        'picture1' => $faker->imageUrl(),
+        'picture2' => $faker->imageUrl(),
+        'picture3' => $faker->imageUrl(),
+//        'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+
+
+    return [
+        'user_id'=>function(){
+            return factory(App\User::class)->create()->id;
+        }, 'package_id' => function () {
+            return factory(App\Package::class)->create()->id;
+        },
+        'review' => $faker->paragraph
+
+    ];
+});

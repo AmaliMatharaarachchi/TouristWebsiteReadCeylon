@@ -14,10 +14,13 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
+//    public function testBasicTest()
+//    {
+//   $this->get('/')->assertSee('script');
+//    }
 
-        $response->assertStatus(200);
+    public function testTest()
+    {
+        $this->get('/')->assertSee('script');
     }
 }
