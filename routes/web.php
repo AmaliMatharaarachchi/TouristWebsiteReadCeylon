@@ -12,6 +12,12 @@
 */
 
 
+//App::bind('App\Billing\Stripe',function(){
+//    return new \App\Billing\Stripe(config('services.stripe.secret'));
+//});
+//
+//$stripe=resolve('App\Billing\Stripe');
+//dd($stripe);
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -30,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
-    Route::get('/packages/create',[
+    Route::get('/packages/create', [
         'uses' => 'PackageController@create',
         'as' => 'create_packages'
     ]);
@@ -39,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'add_package'
     ]);
 
-    Route::get('/cities/create',[
+    Route::get('/cities/create', [
         'uses' => 'CityController@create',
         'as' => 'create_city'
     ]);
@@ -54,9 +60,7 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
 
-
-    Route::get('/packages/{package}','PackageController@show' );
-
+    Route::get('/packages/{package}', 'PackageController@show');
 
 
 });
@@ -66,6 +70,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/logout', [
-    'uses'=>'Auth\LoginController@logout',
-    'as'=>'logout'
+    'uses' => 'Auth\LoginController@logout',
+    'as' => 'logout'
 ]);

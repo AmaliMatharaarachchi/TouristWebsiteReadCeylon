@@ -6,6 +6,7 @@ use App\Package;
 use Illuminate\Http\Request;
 use DB;
 
+
 class PackageController extends Controller
 {
 
@@ -16,14 +17,17 @@ class PackageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index', 'show']);
+
     }
 
 
-    public function index()
+    public function index(Package $package)
     {
         //
-        $packages=DB::table('packages')->get();
+
+        $packages = $package->all()->sortByDesc('created_at');
+//        $packages=DB::table('packages')->get();
         return view('packages', ['packages' => $packages]);
     }
 
@@ -40,32 +44,32 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'package_name'=>'required',
-            'description'=>'required',
+        $this->validate($request, [
+            'package_name' => 'required',
+            'description' => 'required',
 //            'price'=>'required',
-            'days'=>'required',
-            'route'=>'required',
-            'picture1'=>'required',
-            'picture2'=>'required',
+            'days' => 'required',
+            'route' => 'required',
+            'picture1' => 'required',
+            'picture2' => 'required',
 //            'picture3'=>'required'
 
         ]);
-        $package=new Package();
-        $package->package_name=$request['package_name'];
-        $package->description=$request['description'];
-        $package->price=$request['price'];
-        $package->days=$request['days'];
-        $package->route=$request['route'];
-        $package->picture1=$request['picture1'];
-        $package->picture2=$request['picture2'];
-        $package->picture3=$request['picture3'];
+        $package = new Package();
+        $package->package_name = $request['package_name'];
+        $package->description = $request['description'];
+        $package->price = $request['price'];
+        $package->days = $request['days'];
+        $package->route = $request['route'];
+        $package->picture1 = $request['picture1'];
+        $package->picture2 = $request['picture2'];
+        $package->picture3 = $request['picture3'];
         $package->save();
 
         return redirect()->back();
@@ -74,18 +78,18 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Package $package)
     {
-        return view('packages.show',compact('package'));
+        return view('packages.show', compact('package'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -96,8 +100,8 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,7 +112,7 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

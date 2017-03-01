@@ -65,9 +65,11 @@
                                     <hr>
                                     <div class="col-xs-12 col-md-12">
                                         <div class="widget widget-comment">
-                                            <h4 class="widget-title"><b>Recent Comments</b></h4>
-
-
+                                            @if(sizeof($package->comments)>0)
+                                                <h4 class="widget-title"><b>Recent Comments</b></h4>
+                                            @else
+                                                <h4 class="widget-title"><b>No Comments have been posted yet</b></h4>
+                                            @endif
                                             <div class="col-xs-12 col-md-12">
                                                 @foreach($package->comments as $comment)
                                                     <article>
@@ -101,7 +103,7 @@
                                                               required></textarea>
 
                                                         {{--<input type="hidden" value="{{Auth::user()->id}}" id="user_id"--}}
-                                                               {{--name="user_id"/>--}}
+                                                        {{--name="user_id"/>--}}
                                                         <input type="hidden" value="{{$package->id}}" id="package_id"
                                                                name="package_id"/>
                                                         <input class="base-text-color" type="submit" value="Send"/>
