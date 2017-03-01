@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\UserMessage;
 use Illuminate\Http\Request;
 
-class TempController extends Controller
+class UserMessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,15 @@ class TempController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'message' => 'required']);
+
+        $userMessage=new UserMessage();
+        $userMessage->user_id=auth()->user()->id;
+        $userMessage->message=$request['message'];
+        $userMessage->save();
+        session()->flash('message','We will contact you soon');
+        return redirect()->back();
     }
 
     /**

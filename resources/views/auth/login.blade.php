@@ -40,7 +40,7 @@
                                     <label for="email" class="col-md-4 control-label">E-Mail Address*</label>
 
 
-                                    <input id="email" type="email" name="email" placeholder="Email Address"
+                                    <input id="email" type="email" name="email"
                                            value="{{ old('email') }}" required/>
 
                                     @if ($errors->has('email'))
@@ -55,7 +55,7 @@
 
 
                                     <input id="password" type="password" class="form-control" name="password"
-                                           placeholder="Password" required>
+                                            required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">

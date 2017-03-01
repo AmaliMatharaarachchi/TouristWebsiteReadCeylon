@@ -106,7 +106,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-10">
-                                        <p class="post-title base-text-color"><a href="/packages/{{$package->id}}">{{$package->package_name}}</a></p>
+                                        <p class="post-title base-text-color"><a href="/packages/{{$package->package_name}}">{{$package->package_name}}</a></p>
                                         {{--</echo updated at {{$package->updated_at->toFormattedDateString()}}--}}
                                         <ul class="tags-list">
                                             <li><a href="#">Interactive</a></li>
@@ -121,7 +121,7 @@
                                             exclusive aromatic deeply. Genuine snappy exclusive flat UI design.
                                         </p>
 
-                                        <a class="more-btn" href="/packages/{{$package->id}}"><i
+                                        <a class="more-btn" href="/packages/{{$package->package_name}}"><i
                                                     class="icon-angle-right rounded_50 base-border-color"></i> View more</a>
                                     </div>
                                 </div>

@@ -102,22 +102,22 @@
                     <ul>
 
                         @if(Auth::check())
-                            <li ><a><i
-                                        class="ico icon-user-male rounded_50 base-text-color base-border-color"></i><span>{{Auth::user()->name}}</span></a>
+                            <li><a><i
+                                            class="ico icon-user-male rounded_50 base-text-color base-border-color"></i><span>{{Auth::user()->name}}</span></a>
 
                                 <div class="submenu " style="width: 400px;">
                                     <ul class="base-bg-color">
                                         <li id="logout"><a href="{{route('logout')}}">Logout</a></li>
-                                        </ul>
-                                    </div>
+                                    </ul>
+                                </div>
                             </li>
 
                         @else
-                        <li ><a href="{{route('login')}}"><i
-                                        class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
-                                <span>Login</span></a></li>
+                            <li><a href="{{route('login')}}"><i
+                                            class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
+                                    <span>Login</span></a></li>
 
-                        <li id="signup"><a href="{{route('register')}}">Sign Up</a></li>
+                            <li id="signup"><a href="{{route('register')}}">Sign Up</a></li>
                         @endif
                     </ul>
                 </nav>
@@ -134,8 +134,6 @@
 
                         <li>
                             <a href="{{route('packages')}}">Packages</a>
-
-
 
 
                         </li>
@@ -477,9 +475,9 @@
         <div class="container">
             <h2>GET SPECIAL DISCOUNTS BY REGISTERING YOURSELF</h2>
 
-            <p>you will get this and this by registering.  </p>
-            <p>you will get this and this by registering.  </p>
-            <p>you will get this and this by registering.  </p>
+            <p>you will get this and this by registering. </p>
+            <p>you will get this and this by registering. </p>
+            <p>you will get this and this by registering. </p>
 
             <a class="flat-btn base-bg-color" href="/register">Register Now</a>
         </div>
@@ -599,12 +597,13 @@
                         magically made exotic aroma odor newest.
                     </p>
 
-                    <form action="http://idealui.com/">
-                        <input type="text" placeholder="Please Enter Your Name"/>
-
-                        <input type="text" placeholder="Your Email *"/>
-
-                        <textarea placeholder="Your Message"></textarea>
+                    <form action="#">
+                        <label>Please Enter Your Name</label>
+                        <input type="text"/>
+                        <label>Your Email *</label>
+                        <input type="text"/>
+                        <label>Your Message</label>
+                        <textarea></textarea>
 
                         <input class="base-text-color" type="submit" value="Send"/>
                     </form>

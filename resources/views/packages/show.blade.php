@@ -88,11 +88,14 @@
                                             </div>
                                             @if(Auth::check())
                                                 <div class="col-xs-12 col-md-12">
-                                                    @if ($errors->has('comment'))
+                                                    @if ($errors->has('review'))
                                                         <div class="alert alert-danger">
                                                             <span class="help-block">
-                                        <strong>You have to type a non empty comment here</strong>
-                                    </span></div>
+                                                                <strong>
+                                                                    'You have to type a non empty comment here'
+                                                                </strong>
+                                                             </span>
+                                                        </div>
 
                                                     @endif
                                                     <form method="post" action="{{route('add_comment')}}">
@@ -100,7 +103,7 @@
 
                                                         <span class="comment icon-comment">Add your comment</span>
                                                     <textarea type="text" id="review" name="review"
-                                                              required></textarea>
+                                                    ></textarea>
 
                                                         {{--<input type="hidden" value="{{Auth::user()->id}}" id="user_id"--}}
                                                         {{--name="user_id"/>--}}

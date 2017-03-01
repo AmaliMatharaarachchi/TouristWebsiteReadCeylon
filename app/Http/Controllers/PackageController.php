@@ -72,6 +72,7 @@ class PackageController extends Controller
         $package->picture3 = $request['picture3'];
         $package->save();
 
+        session()->flash('message','You have successfully created a package');
         return redirect()->back();
     }
 
@@ -85,6 +86,8 @@ class PackageController extends Controller
     {
         return view('packages.show', compact('package'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

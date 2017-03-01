@@ -49,23 +49,23 @@
                             <form method="post" action="{{route('add_package')}}">
                                 {{ csrf_field() }}
                                 <label for="package_name" class="col-md-4 control-label">Package Name</label>
-                                <input type="text" placeholder="Package Name" id="package_name" name="package_name"
+                                <input type="text" id="package_name" name="package_name"
                                        required/>
                                 <label for="description" class="col-md-4 control-label">Description*</label>
-                                <textarea type="text" placeholder="Description" id="description" name="description"
+                                <textarea type="text" id="description" name="description"
                                           required></textarea>
                                 <label for="price" class="col-md-4 control-label">Price</label>
-                                <input type="text" placeholder="Price" id="price" name="price"/>
+                                <input type="text"  id="price" name="price"/>
                                 <label for="days" class="col-md-4 control-label">Days*</label>
-                                <input type="text" placeholder="Days" id="days" name="days" required/>
+                                <input type="text"  id="days" name="days" required/>
                                 <label for="route" class="col-md-4 control-label">Route*</label>
-                                <input type="text" placeholder="Route" id="route" name="route" required/>
+                                <input type="text"  id="route" name="route" required/>
                                 <label for="picture1" class="col-md-4 control-label">Add Picture*</label>
-                                <input type="text" placeholder="Picture" id="picture1" name="picture1" required/>
+                                <input type="text" id="picture1" name="picture1" required/>
                                 <label for="picture2" class="col-md-4 control-label">Add Picture*</label>
-                                <input type="text" placeholder="Picture" id="picture2" name="picture2" required/>
+                                <input type="text" id="picture2" name="picture2" required/>
                                 <label for="picture3" class="col-md-4 control-label">Add Picture</label>
-                                <input type="text" placeholder="Picture" id="picture3" name="picture3"/>
+                                <input type="text" id="picture3" name="picture3"/>
 
 
                                 <input class="base-text-color" type="submit" value="Send"/>

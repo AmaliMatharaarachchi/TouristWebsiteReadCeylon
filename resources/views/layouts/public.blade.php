@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
     <title>@yield('title')</title>
@@ -22,22 +26,26 @@
     <link rel="stylesheet" href="{{URL::asset('css/responsive.css')}}" type="text/css">
 
 
-
     <!-- / color -->
     <link class="colors_style" rel="stylesheet" href="{{URL::asset('css/color_style/color_5.css')}}" type="text/css"/>
     <!-- / google font -->
-    <link href='{{URL::asset('http://fonts.googleapis.com/css?family=Titillium+Web:400,200,600,300')}}' rel='stylesheet' type='text/css'>
+    <link href='{{URL::asset('http://fonts.googleapis.com/css?family=Titillium+Web:400,200,600,300')}}' rel='stylesheet'
+          type='text/css'>
     <!-- / settings_box -->
     <link rel="stylesheet" href="{{URL::asset('settings_box/settings_box.css')}}" type="text/css">
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
 
     <!-- Load jQuery
@@ -48,8 +56,11 @@
 
 <body>
 
-
-
+@if($flash = session('message'))
+    <div class="alert alert-success" role="alert">
+        {{$flash}}
+    </div>
+@endif
 @yield('body')
 <section id="copy">
     <div class="container">

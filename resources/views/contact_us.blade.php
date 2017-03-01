@@ -11,7 +11,7 @@
             <div class="container">
                 <nav id="navigation" class="navigation-login fl-r" role="navigation">
                     <ul>
-                        <li ><a href="#"><i
+                        <li><a href="#"><i
                                         class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
                                 <span>Login</span></a></li>
 
@@ -74,16 +74,40 @@
                         spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking waxy
                         magically made exotic aroma odor newest.
                     </p>
+                    @if(count($errors))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li><span>! {{$error}}</span></li>
+                                @endforeach
+                            </ul>
 
-                    <form action="http://idealui.com/">
-                        <input type="text" placeholder="Please Enter Your Name"/>
+                        </div>
+                    @endif
 
-                        <input type="text" placeholder="Your Email *"/>
+                    @if(Auth::check())
+                        <form method="post" action="{{route('user_message')}}">
+                            {{ csrf_field() }}
 
-                        <textarea placeholder="Your Message"></textarea>
+                            <textarea id="message" name="message" required></textarea>
 
-                        <input class="base-text-color" type="submit" value="Send"/>
-                    </form>
+                            <input class="base-text-color" type="submit" value="Send"/>
+                        </form>
+
+                    @else
+
+                        <form method="post" action="{{route('public_message')}}">
+                            {{ csrf_field() }}
+                            <label>Please Enter Your Name *</label>
+                            <input type="text" id="name" name="name" required/>
+                            <label>Your Email *</label>
+                            <input type="email" id="email" name="email" required/>
+                            <label>Your Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+
+                            <input class="base-text-color" type="submit" value="Send"/>
+                        </form>
+                    @endif
                 </div>
 
                 <div class="col-xs-12 col-sm-5 col-md-4">

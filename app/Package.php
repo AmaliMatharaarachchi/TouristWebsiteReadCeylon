@@ -10,4 +10,9 @@ class Package extends Model
         return $this->hasMany(Comment::class)->orderby('created_at','desc');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'package_name';
+    }
+
 }

@@ -22,7 +22,7 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/contact', [
-        'uses' => 'PageController@getContactPage',
+        'uses' => 'PublicMessageController@index',
         'as' => 'contact'
     ]);
 
@@ -58,6 +58,16 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'CommentController@store',
         'as' => 'add_comment'
     ]);
+    Route::post('/contact', [
+        'uses' => 'PublicMessageController@store',
+        'as' => 'public_message'
+    ]);
+    Route::post('/contact', [
+        'uses' => 'UserMessageController@store',
+        'as' => 'user_message'
+    ]);
+
+
 
 
     Route::get('/packages/{package}', 'PackageController@show');

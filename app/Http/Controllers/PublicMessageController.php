@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\PublicMessage;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class PublicMessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-
+        return view('contact_us');
     }
 
     /**
@@ -40,17 +35,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'review'=>'required']);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required']);
 
-//        auth()->user()->comment(
-//            new Comment($request(['review','package_id']))
-//        )
-        $Comment=new Comment();
-        $Comment->review=$request['review'];
-        $Comment->package_id=$request['package_id'];
-        $Comment->user_id=auth()->user()->id;
-        $Comment->save();
+        $publicMessage=new PublicMessage();
+        $publicMessage->name=$request['name'];
+        $publicMessage->email=$request['email'];
+        $publicMessage->message=$request['message'];
+        $publicMessage->save();
+        session()->flash('message','We will contact you soon');
         return redirect()->back();
     }
 
