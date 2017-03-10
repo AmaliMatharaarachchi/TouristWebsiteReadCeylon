@@ -58,7 +58,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'CommentController@store',
         'as' => 'add_comment'
     ]);
-    Route::post('/contact', [
+    Route::post('/contact_us', [
         'uses' => 'PublicMessageController@store',
         'as' => 'public_message'
     ]);
@@ -66,11 +66,21 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'UserMessageController@store',
         'as' => 'user_message'
     ]);
+    Route::get('/test',function(){
+        return view('test');
+    });
+
 
 
 
 
     Route::get('/packages/{package}', 'PackageController@show');
+
+//   ============================================================
+    Route::get('/welcome', function(){
+        return view('public.welcome');
+    });
+//    ==========================================================
 
 
 });
