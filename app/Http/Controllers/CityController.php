@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\city;
 use Illuminate\Http\Request;
+use Alert;
 
 class CityController extends Controller
 {
@@ -46,32 +47,32 @@ class CityController extends Controller
         //post city/create
 
         $this->validate($request, [
-            'city_name' => 'required',
+            'name' => 'required',
             'description' => 'required',
-            'star1price' => 'required',
-            'star2price' => 'required',
             'star3price' => 'required',
             'star4price' => 'required',
             'star5price' => 'required',
-            'image1' => 'required',
-            'image2' => 'required',
+//            'images' => 'required',
+
 //            'image3'=>'required',
 
 
         ]);
         $city = new city();
-        $city->city_name = $request['city_name'];
+        $city->name = $request['name'];
         $city->description = $request['description'];
-        $city->star1price = $request['star1price'];
-        $city->star2price = $request['star2price'];
         $city->star3price = $request['star3price'];
         $city->star4price = $request['star4price'];
         $city->star5price = $request['star5price'];
-        $city->image1 = $request['image1'];
-        $city->image2 = $request['image2'];
-        $city->image3 = $request['image3'];
+//        $city->image1 = $request['image1'];
+
         $city->save();
-        session('message', 'you have successfully created a city');
+
+        (new HasImageController())->store($request->images,$city->id);
+
+        Alert::success('Successfully saved the city', 'SUCCESS')->persistent("OK");
+
+
         return redirect()->back();
     }
 

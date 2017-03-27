@@ -1,67 +1,49 @@
-@extends('layouts.public')
-@section('title')
-    LOGIN
-@endsection
-@section('body')
-
-    <div id="login-container" class="base-bg-color_light">
+{{--@extends('layouts.master')--}}
+{{--@section('title')--}}
+    {{--LOGIN--}}
+{{--@endsection--}}
+{{--@section('body')--}}
 
 
-        <section id="headline">
-            <div class="container">
-                <div class="section-title clearfix">
-                    <h2 class="fl-l">Login</h2>
 
-                    <ul id="breadcrumbs" class="fl-r">
-                        <li><a href="{{route('welcome')}}">Home</a></li>
-                        <li>Login</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <section id="contact" class="base-bg-color_light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>User Login Screen</h3>
+
 
                         <p>
-                            Introducing crystals splash. Very bigger brings most velvety treat burst unique choosy it's
-                            spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking
-                            waxy magically made exotic aroma odor newest.
+                            * required
+
                         </p>
 
                         <div class="col-md-12">
                             <form METHOD="post" action="{{ route('login') }}">
                                 {{ csrf_field() }}
 
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">E-Mail Address*</label>
+                                {{--<div class="form-group ">--}}
+                                {{--<label for="name" class="sr-only">Name</label>--}}
+                                {{--<input id="name" class="form-control" placeholder="Name" type="text">--}}
+                                {{--</div>--}}
+
+                                <div class="form-group">
+                                    <label for="email" class="control-label" >E-Mail Address*</label>
 
 
-                                    <input id="email" type="email" name="email"
+                                    <input id="email" type="email" name="email"  class="form-control"
                                            value="{{ old('email') }}" required/>
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
+
 
                                 </div>
-                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password" class="col-md-4 control-label">Password*</label>
+                                <div class="form-group">
+                                    <label for="password" >Password*</label>
 
 
                                     <input id="password" type="password" class="form-control" name="password"
                                             required>
 
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
+
                                     <br>
                                     <br>
 
@@ -86,7 +68,7 @@
                                 {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
                                     {{--Forgot Your Password?--}}
                                 {{--</a>--}}
-                                <input class="base-text-color" type="submit" value="Login"/>
+                                <input  type="submit" value="Login"/>
                             </form>
                         </div>
                     </div>
@@ -94,7 +76,6 @@
 
                 </div>
             </div>
-        </section>
-    </div>
 
-@endsection
+
+{{--@endsection--}}

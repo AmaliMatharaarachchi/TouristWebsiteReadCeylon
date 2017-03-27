@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
+use App\City;
 use App\Package;
 use Illuminate\Http\Request;
 use DB;
+use Alert;
 
 
 class PackageController extends Controller
@@ -27,8 +30,10 @@ class PackageController extends Controller
         //
 
         $packages = $package->all()->sortByDesc('created_at');
+        $images=Image::all();
+        $cities=City::all();
 //        $packages=DB::table('packages')->get();
-        return view('packages', ['packages' => $packages]);
+        return view('packages', ['packages' => $packages,'images'=>$images,'cities'=>$cities]);
     }
 
     /**
@@ -51,28 +56,22 @@ class PackageController extends Controller
     {
 
         $this->validate($request, [
-            'package_name' => 'required',
-            'description' => 'required',
-//            'price'=>'required',
-            'days' => 'required',
-            'route' => 'required',
-            'picture1' => 'required',
-            'picture2' => 'required',
+            'name' => 'required',
+            'description' => 'required'
+
+
 //            'picture3'=>'required'
 
         ]);
         $package = new Package();
-        $package->package_name = $request['package_name'];
+        $package->name = $request['name'];
         $package->description = $request['description'];
         $package->price = $request['price'];
         $package->days = $request['days'];
-        $package->route = $request['route'];
-        $package->picture1 = $request['picture1'];
-        $package->picture2 = $request['picture2'];
-        $package->picture3 = $request['picture3'];
         $package->save();
 
-        session()->flash('message','You have successfully created a package');
+        (new HasCityController())->store($request->cities,$package->id);
+        Alert::success('Successfully saved the tour package', 'SUCCESS')->persistent("OK");
         return redirect()->back();
     }
 

@@ -1,75 +1,36 @@
-@extends('layouts.public')
-@section('title')
-    Add a new package
-@endsection
-@section('body')
+<form method="post" action="{{route('create_city')}}">
+    {{ csrf_field() }}
+    <label for="name" class="control-label">City Name*</label>
+    <input type="text" id="name" name="name"  class="form-control"
+           required/>
+    <label for="description" class="control-label">Description*</label>
+    <input type="text" id="description" name="description"  class="form-control"
+           required/>
+    <label for="star3price" class="control-label">Price of 3 star hotels</label>
+    <input type="star3price" id="star3price" name="star3price"  class="form-control"/>
+    <label for="star4price" class="control-label">Price of 4 star hotels</label>
+    <input type="text" id="star4price" name="star4price"  class="form-control"/>
+    <label for="star5price" class="control-label">Price of 5 star hotels</label>
+    <input type="text" id="star5price" name="star5price"  class="form-control"/>
+    <label for="images" class=" control-label">Select Images*</label>
 
-    <div id="login-container" class="base-bg-color_light">
+    <div class="picker">
+        <select data-max-options="3" name="images[]" class="image-picker show-labels masonry show-html selectpicker" data-live-search="true" title="Select cities..." data-width="100%" data-limit="3" name="images[]" multiple="multiple">
 
+            @foreach($images as $image)
+                {{--@foreach($images as $key => $image)--}}
+                <option data-img-label='{{$image->name}}' data-img-src='img\{{$image->url}}' value='{{$image->id}}'>{{$image->name}}</option>
+                {{--<option data-img-label='{{$image->name}}' data-img-src='img\{{$image->url}}' value='{{$key+1}}'>{{$image->name}}</option>--}}
 
-        <section id="headline">
-            <div class="container">
-                <div class="section-title clearfix">
-                    <h2 class="fl-l">Add Package</h2>
-
-                    <ul id="breadcrumbs" class="fl-r">
-                        <li><a href="{{route('welcome')}}">Home</a></li>
-                        <li>Add Package</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="base-bg-color_light">
-            <div class="container">
-                <div class="row">
-
-
-                    <p>
-                        Add your package details using below form. If its route having a other city other than existing
-                        cities, create that city using the "create city" form before creating a new package.<br><br> *required
-                    </p>
-                    <div class="col-md-6">
-
-                        <h3>Add Package</h3>
-                        <div class="col-md-12">
-                            <form method="post" action="{{route('add_package')}}">
-                                {{ csrf_field() }}
-                                <label for="package_name" class="col-md-4 control-label">Package Name*</label>
-                                <input type="text" id="package_name" name="package_name"
-                                       required/>
-                                <label for="description" class="col-md-4 control-label">Description*</label>
-                                <input type="text" id="description" name="description"
-                                       required/>
-                                <label for="price" class="col-md-4 control-label">Price</label>
-                                <input type="text"  id="price" name="price"/>
-                                <label for="days" class="col-md-4 control-label">Days*</label>
-                                <input type="text" id="days" name="days" required/>
-                                <label for="route" class="col-md-4 control-label">Route*</label>
-                                <input type="text" id="route" name="route" required/>
-                                <label for="picture1" class="col-md-4 control-label">Add Picture*</label>
-                                <input type="text" id="picture1" name="picture1" required/>
-                                <label for="picture2" class="col-md-4 control-label">Add Picture*</label>
-                                <input type="text" id="picture2" name="picture2" required/>
-                                <label for="picture3" class="col-md-4 control-label">Add Picture</label>
-                                <input type="text" id="picture3" name="picture3"/>
-
-
-                                <input class="base-text-color" type="submit" value="Send"/>
-                            </form>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Add City</h3>
-
-
-                    </div>
-
-
-                </div>
-            </div>
-        </section>
+            @endforeach
+        </select>
     </div>
+    {{--<input type="hidden" class="control-label" name="images" value=("select").imagepicker() />--}}
 
-@endsection
+    <input class="base-text-color" type="submit" value="Send"/>
+</form>
+
+
+
+
+

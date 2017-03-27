@@ -1,45 +1,21 @@
-@extends('layouts.public')
-@section('title')
-    Register
-@endsection
-@section('body')
 
-    <div id="login-container" class="base-bg-color_light">
-
-
-        <section id="headline">
-            <div class="container">
-                <div class="section-title clearfix">
-                    <h2 class="fl-l">Register</h2>
-
-                    <ul id="breadcrumbs" class="fl-r">
-                        <li><a href="{{route('welcome')}}">Home</a></li>
-                        <li>Register</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="base-bg-color_light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>User Login Screen</h3>
+
 
                         <p>
-                            Introducing crystals splash. Very bigger brings most velvety treat burst unique choosy it's
-                            spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking
-                            waxy magically made exotic aroma odor newest.
+                     * required
                         </p>
 
                         <div class="col-md-12">
                             <form METHOD="post" action="{{ route('register') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Your name*</label>
+                                    <label for="name" class="control-label">Your name*</label>
 
 
-                                    <input id="name" type="text" name="name"
+                                    <input id="name" type="text" name="name" class="form-control"
                                            value="{{ old('name') }}" required/>
 
                                     @if ($errors->has('name'))
@@ -50,10 +26,10 @@
 
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">E-Mail Address*</label>
+                                    <label for="email" class="control-label">E-Mail Address*</label>
 
 
-                                    <input id="email" type="email" name="email"
+                                    <input id="email" type="email" name="email" class="form-control"
                                            value="{{ old('email') }}" required/>
 
                                     @if ($errors->has('email'))
@@ -64,11 +40,11 @@
 
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password" class="col-md-4 control-label">Password*</label>
+                                    <label for="password" class="control-label">Password*</label>
 
 
                                     <input id="password" type="password" class="form-control" name="password"
-                                           required>
+                                           class="form-control" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -80,7 +56,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="password-confirm" class="col-md-4 control-label">Confirm
+                                    <label for="password-confirm" class="control-label">Confirm
                                         Password*</label>
 
 
@@ -98,7 +74,5 @@
 
                 </div>
             </div>
-        </section>
-    </div>
 
-@endsection
+

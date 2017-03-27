@@ -1,646 +1,384 @@
-@extends('layouts.public')
-
+@extends('layouts.master')
 @section('title')
-    Suranga
+    ReadCeylon
 @endsection
-
+@section('style')
+    {{--<style>--}}
+        {{--.your-div {--}}
+            {{--white-space: nowrap;--}}
+            {{--width: 150px;--}}
+            {{--overflow: hidden;--}}
+            {{--text-overflow: ellipsis;--}}
+        {{--}--}}
+    {{--</style>--}}
+    @endsection
 @section('body')
 
 
-    <section id="intro-fullscreen" class="intro-section text-center">
-        <div id="intro-media" class="intro-slider intro-slider-vegas" data-dots="true">
-            <div class="vegas-control">
-                <div id="vegas-prev">
-                    <i class="icon-angle-left"></i>
+    <div id="fh5co-container">
+        <div id="fh5co-home" class="js-fullheight" data-section="home">
 
-                    <div>
-                        <p><span></span></p>
+            <div class="flexslider">
 
-                            <span class="thumbnail">
-                                <img src="/" alt="Previous thumb">
-                            </span>
+                <div class="fh5co-overlay"></div>
+                <div class="fh5co-text">
+                    <div class="container">
+                        <div class="row">
+                            <h2 class="to-animate">Read Ceylon</h2>
+                            <br>
+                            <h2 class="to-animate"><span>Travel with us</span></h2>
+                        </div>
                     </div>
                 </div>
+                <ul class="slides">
+                    <li style="background-image: url(images/beach.jpg);" data-stellar-background-ratio="0.5"></li>
+                    <li style="background-image: url(images/gem.jpg);" data-stellar-background-ratio="0.5"></li>
+                    <li style="background-image: url(images/hotel.jpg);" data-stellar-background-ratio="0.5"></li>
+                    <li style="background-image: url(images/train.jpg);" data-stellar-background-ratio="0.5"></li>
+                    <li style="background-image: url(images/srilanka-1.jpg);" data-stellar-background-ratio="0.5"></li>
+                </ul>
 
-                <div id="vegas-next">
-                    <i class="icon-angle-right"></i>
-
-                    <div>
-                        <p><span></span></p>
-
-    <span class="thumbnail">
-    <img src="/" alt="Next thumb">
-    </span>
-                    </div>
-                </div>
             </div>
+
         </div>
 
-        <div id="intro-content">
-            <div class="container">
-                <div class="inner">
-                    <div id="slide-content_1" class="slide-content text-center" data-animate="fadeIn">
-                        <div class="animated">
+
+        <div class="js-sticky">
+            <div class="fh5co-main-nav">
+                <div class="container-fluid">
+                    <div class="fh5co-menu-1">
+                        <a href="#" data-nav-section="home">Home</a>
+                        <a href="#" data-nav-section="tours">Tours</a>
+                        <a href="#" data-nav-section="about">About Sri Lanka</a>
+                        {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
-                            <h2>Are You Ready For Your Best Vacation?</h2>
+                    </div>
+                    <div class="fh5co-logo">
+                        <a href="#">ReadCeylon</a>
+                    </div>
+                    <div class="fh5co-menu-2">
+                        <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
+                        <a href="#" data-nav-section="events">Contact us</a>
 
-                            <a class="base-bg-color base-border-color" href="#">Explore More</a>
-                        </div>
+                        <a href="#" data-nav-section="login">Login/Register</a>
+
                     </div>
 
-                    <div id="slide-content_2" class="slide-content text-center" data-animate="fadeIn">
-                        <div class="animated">
-                            <h2>LET US MAKE YOUR<br/>DREAMS COME TRUE</h2>
 
-                            <p>pring the real rated appearance delicious 100% deserve. Savor sparkling choice supreme
-                                love herbal quickly grown luxury. Improved distinct colossal mothers than generous ever
-                                more. Far lost miracle whenever devour sleek burst now powerful. Can't anything mountain
-                                appetizing polished deluxe secret proven choice and.</p>
-
-                            <a class="base-bg-color base-border-color" href="#">Explore MOre</a>
-
-                            <a class="base-bg-color base-border-color" href="#">Discover</a>
-                        </div>
-                    </div>
-
-                    <div id="slide-content_3" class="slide-content text-center" data-animate="fadeIn">
-                        <div class="animated">
-
-
-                            <h2>Visit Beautiful Sri Lanka</h2>
-
-                            <p>Soothing dazzling offer. Tummy crystals pure splash seasoned juicy original today
-                                appearance. Triple secure choose desire velvety. Excellent money zippy treat crunchy
-                                humongous chocolatey today humongous. Wave ultimate shopping are cause a whopping tough.
-                                Escape in juicy vast hurry tired.</p>
-
-                            <a class="small-video-btn base-bg-color rounded_50"
-                               href="https://www.youtube.com/embed/1zG1iq9LZ2U" data-gallery="introvideo"></a>
-                        </div>
-                    </div>
-
-                    <div id="slide-content_4" class="slide-content text-center" data-animate="fadeIn">
-                        <div class="animated">
-
-
-                            <h2>We Are UI/UX Experts</h2>
-                        </div>
-                    </div>
                 </div>
             </div>
+
+
         </div>
-    </section>
+
+
+    </div>
 
 
 
 
-    <section id="header-container">
-        <header id="header">
-            <div class="container">
-                <nav id="navigation" class="navigation-login fl-r" role="navigation">
-                    <ul>
+    <div id="fh5co-about" data-section="about">
+        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+        <div class="fh5co-2col fh5co-text">
+            <h2 class="heading to-animate">About Sri Lanka</h2>
+            <p class="to-animate"><span class="firstcharacter">S</span>ri Lanka is a beautiful country. far far
+                away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in
+                Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far far away, behind the
+                word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small
+                river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+                paradisematic country, in which roasted parts of sentences fly into your mouth. Even the
+                all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.</p>
+        </div>
+    </div>
 
-                        @if(Auth::check())
-                            <li><a><i
-                                            class="ico icon-user-male rounded_50 base-text-color base-border-color"></i><span>{{Auth::user()->name}}</span></a>
+    <div id="fh5co-sayings">
+        <div class="container">
+            <div class="row to-animate">
 
-                                <div class="submenu " style="width: 400px;">
-                                    <ul class="base-bg-color">
-                                        <li id="logout"><a href="{{route('logout')}}">Logout</a></li>
-                                    </ul>
-                                </div>
+                <div class="flexslider">
+                    <ul class="slides">
+                        @foreach($reviews as $review)
+                            <li>
+                                <blockquote>
+                                    <p>&ldquo;{{$review->review}}&rdquo;</p>
+                                    <p class="quote-author">&mdash; {{$review->user->name}}</p>
+                                </blockquote>
                             </li>
 
-                        @else
-                            <li><a href="{{route('login')}}"><i
-                                            class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
-                                    <span>Login</span></a></li>
+                        @endforeach
 
-                            <li id="signup"><a href="{{route('register')}}">Sign Up</a></li>
-                        @endif
                     </ul>
-                </nav>
-                <a href="#" id="logo"></a>
-
-                <nav id="navigation" class="fl-r" role="navigation">
-                    <ul>
-                        <li class="current">
-                            <a href="{{route('welcome')}}">Home</a>
-
-
-                        </li>
-
-
-                        <li>
-                            <a href="{{route('packages')}}">Packages</a>
-
-
-                        </li>
-                        <li><a href="#">Sri Lanka</a></li>
-
-                        <li><a href="{{route('contact')}}">Contact Us</a></li>
-                    </ul>
-
-                </nav>
-
-            </div>
-        </header>
-    </section>
-    <section class="infoline">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-8">
-                    <h2>plan your trip now!</h2>
-
-                    <p>We provide the best services just for you. Visit beautiful Sri Lanka. You won't regret it. </p>
                 </div>
 
-                <div class="col-xs-12 col-sm-4 text-right">
-                    <a class="flat-btn base-bg-color" href="#">Start Planning your trip now!</a>
-                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="portfolio-container">
+    <div id="fh5co-featured" data-section="tours">
         <div class="container">
-            <div class="section-title">
-                <a class="more-btn fl-r" href="#"><i class="icon-angle-right rounded_50 base-border-color"></i> See all
-                    Posts</a>
-
-                <h2>Packages</h2>
-            </div>
-            <ul id="option-set" class="option-set">
-                <li><a href="#" data-cat="*" class="selected">type 1</a></li>
-                <li><a href="#" data-cat="identity">type 2</a></li>
-                <li><a href="#" data-cat="UI">type 3</a></li>
-                <li><a href="#" data-cat="mobile">type 4</a></li>
-                <li><a href="#" data-cat="interactive">type 5</a></li>
-                <li><a href="#" data-cat="creative">type 6</a></li>
-            </ul>
-
-        </div>
-
-        <div id="isotope-masonry" class="isotope-container">
-            <div class="element identity" data-x="2" data-y="2">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/gem.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Amazing iPad<br/>Application Concept</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_1.html"></a>
-
-                                <a class="icon-plus" href="https://www.youtube.com/embed/1zG1iq9LZ2U"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/Ambalangoda-mask.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Amazing iPad<br/>Application Concept</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_1.html"></a>
-
-                                <a class="icon-plus" href="https://www.youtube.com/embed/1zG1iq9LZ2U"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Special tour packages</h2>
+                    <p class="sub-heading to-animate">These are our special tour packages. they are designed just
+                        for you!</p>
                 </div>
             </div>
 
-            <div class="element UI" data-x="1" data-y="1">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/2.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_2.html"></a>
-
-                                <a class="icon-plus" href="http://player.vimeo.com/video/95974049"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element mobile" data-x="1" data-y="2">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/4.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_2.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/4.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element interactive" data-x="1" data-y="1">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/3.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_2.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/3.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element creative UI" data-x="2" data-y="2">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/6.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_1.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/6.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element identity" data-x="2" data-y="1">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/5.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_2.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/5.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element interactive" data-x="1" data-y="1">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/7.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_1.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/7.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-
-            <div class="element creative" data-x="1" data-y="1">
-                <div class="project-item post-item">
-                    <figure class="img-container">
-                        <img class="img-responsive" src="images/project_img/masonry/8.jpg" alt="single"/>
-
-                        <div class="post-item__description">
-                            <p>Multipurpose Direct<br/>HTML Template</p>
-
-                            <div class="link-container">
-                                <a class="icon-link" href="project_details_2.html"></a>
-
-                                <a class="icon-plus" href="images/project_img/masonry/8.jpg"
-                                   data-gallery="portfolio"></a>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services services-with-border_b">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4">
-                    <div class="services-item">
-                        <div class="title-with-ico">
-                            <i class="ico icon-ok rounded_50 base-text-color base-border-color"></i>
-
-                            <h3>Exclusive and Flexible Theme</h3>
-                        </div>
-
-                        <p>
-                            Brilliant elegant club guests first-class. To ornamental gilded in crafted regal. Suite
-                            using crafted sport wealth topiary. Wealth gold career de-jour echelon le pedigree.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <div class="services-item">
-                        <div class="title-with-ico">
-                            <i class="ico icon-mobile rounded_50 base-text-color base-border-color"></i>
-
-                            <h3>Retina and Responsive Design</h3>
-                        </div>
-
-                        <p>
-                            Five-star penthouse cultered university polo designer. Yacht gilded genuine. Crafted paramic
-                            saphire career reserved is the best fine investments grande respectable.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <div class="services-item">
-                        <div class="title-with-ico">
-                            <i class="ico icon-paper-plane rounded_50 base-text-color base-border-color"></i>
-
-                            <h3>Friendly Customer Support</h3>
-                        </div>
-
-                        <p>
-                            Politically benefiting to member in presidential board. Architectural first-class in luxury.
-                            Status enthusiast housekeeping enthiast. Salon affluent board a pedigree theatre is the best
-                            impresario pearl pearl.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="posts-container">
-        <div class="container">
-            <div class="section-title">
-                <a class="more-btn fl-r" href="#"><i class="icon-angle-right rounded_50 base-border-color"></i> See all
-                    Posts</a>
-
-                <h2>Special Packages of this year</h2>
-            </div>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="project-item post-item">
-                        <figure class="img-container"><img class="img-responsive" src="images/project_img/3_col/1.jpg"
-                                                           alt="single"/></figure>
 
-                        <span class="post-item_published">Posted April 3, 2015</span>
+                <div class="fh5co-grid">
+                    @foreach($packages as $key => $package)
 
-                        <p class="post-title base-text-color">Designing For The Reading Experience</p>
-
-                        <p>Listen high take wherever deserve bold hearty artificial people survey. Less desire included
-                            while mouthwatering more made.</p>
-
-                        <a class="more-btn" href="#"><i class="icon-angle-right rounded_50 base-border-color"></i>
-                            Discover More</a>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm">
-                    <div class="project-item post-item">
-                        <figure class="img-container"><img class="img-responsive" src="images/project_img/3_col/2.jpg"
-                                                           alt="single"/></figure>
-
-                        <span class="post-item_published">Posted April 3, 2015</span>
-
-                        <p class="post-title base-text-color">25 Examples of Flat Web And Application Design</p>
-
-                        <p>Amazing lower open messy brand seeing anti feel commercial class as handling. Chunky flash
-                            quite industry also takes. Spend feedback if survey.</p>
-
-                        <a class="more-btn" href="#"><i class="icon-angle-right rounded_50 base-border-color"></i>
-                            Discover More</a>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="project-item post-item">
-                        <div class="owlSliderImg post-slider img-container" data-items="1" data-loop="true"
-                             data-auto="false" data-autospeed="3000" data-mousedrag="false" data-nav="true"
-                             data-animin="fadeIn" data-animout="fadeOut">
-                            <div><img class="img-responsive" src="images/project_img/3_col/3.jpg" alt="single"/></div>
-                            <div><img class="img-responsive" src="images/project_img/3_col/9.jpg" alt="single"/></div>
+                        <div class="fh5co-v-half to-animate-2">
+                            <div class="fh5co-v-col-2 fh5co-bg-img"
+                                 style="background-image: url(images/res_img_1.jpg)"></div>
+                            <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+                                <h2>{{$package->name}}</h2>
+                                <span class="pricing">${{$package->price}}</span>
+                                <p>
+                                    <div class="your-div"><span>{{$package->description}}</span></div>
+                                    </p>
+                                <p><a href="#">more...</a></p>
+                            </div>
                         </div>
 
-                        <span class="post-item_published">Posted April 3, 2015</span>
+                    @endforeach
 
-                        <p class="post-title base-text-color">We are award winning design agency</p>
 
-                        <p>Discover while bold sleek better take flash. Intense flash included today below and. World's
-                            people sale superior soaking fresh need. Crispy distinct anything.</p>
-
-                        <a class="more-btn" href="#"><i class="icon-angle-right rounded_50 base-border-color"></i>
-                            Discover More</a>
-                    </div>
                 </div>
             </div>
+
+            <br>
+
+            @if(Auth::check())
+                <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View/Create
+                        Tour</a></p>
+            @else
+                <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View
+                        All Tours</a></p>
+            @endif
         </div>
-    </section>
+    </div>
 
-    <section class="infoline infoline__dark infoline__dark__bg infoline__style2">
-        <div class="container">
-            <h2>GET SPECIAL DISCOUNTS BY REGISTERING YOURSELF</h2>
 
-            <p>you will get this and this by registering. </p>
-            <p>you will get this and this by registering. </p>
-            <p>you will get this and this by registering. </p>
-
-            <a class="flat-btn base-bg-color" href="/register">Register Now</a>
-        </div>
-    </section>
-
-    <section class="clients base-bg-color_light">
+    <div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">
+        <div class="fh5co-overlay"></div>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <div class="testimonial-slider">
-                        <div class="slide">
-                            <p>Very much impressed with the quality of this theme and the great support from idealUI</p>
-
-                            <ul class="author-info">
-                                <li>David Campbell</li>
-                                <li>CEO</li>
-                                <li>International company</li>
-                            </ul>
-                        </div>
-
-                        <div class="slide">
-                            <p>2 Very much impressed with the quality of this theme and the great support from
-                                idealUI</p>
-
-                            <ul class="author-info">
-                                <li>David Campbell</li>
-                                <li>CEO</li>
-                                <li>International company</li>
-                            </ul>
-                        </div>
-
-                        <div class="slide">
-                            <p>3 Very much impressed with the quality of this theme and the great support from
-                                idealUI</p>
-
-                            <ul class="author-info">
-                                <li>David Campbell</li>
-                                <li>CEO</li>
-                                <li>International company</li>
-                            </ul>
-                        </div>
+                <div class="col-md-3 to-animate">
+                    <div class="fh5co-type">
+                        <h3 class="with-icon icon-1">Fruits</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts.</p>
                     </div>
                 </div>
-
-                <div class="col-xs-12 col-md-6">
-                    <div class="logos-carousel logos-carousel_short">
-                        <div class="slide"><img src="images/clients_img/1.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/2.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/3.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/4.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/5.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/1.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/2.png" alt="single"/></div>
-                        <div class="slide"><img src="images/clients_img/1.png" alt="single"/></div>
+                <div class="col-md-3 to-animate">
+                    <div class="fh5co-type">
+                        <h3 class="with-icon icon-2">Sea food</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 to-animate">
+                    <div class="fh5co-type">
+                        <h3 class="with-icon icon-3">Vegetables</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 to-animate">
+                    <div class="fh5co-type">
+                        <h3 class="with-icon icon-4">Meat</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="social-section">
-        <header>
-            <div class="container">
-                <h2>Stay Connected</h2>
-
-                <p>Join us on our social networks for all the latest updates, product/service announcements and many
-                    more</p>
+    <div id="fh5co-menus" data-section="sri_lanka">
+        <div class="container">
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Sri Lanka</h2>
+                    <p class="sub-heading to-animate">Breath-taking places in sri lanka.
+                        You can visit as much as you like. We will assure you the best vacation.</p>
+                </div>
             </div>
-        </header>
-
-        <div class="social-container base-bg-color">
-            <div class="container">
+            <div class="row row-padded">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-4">
-                        <a class="social-item social-item_fb" href="#">
-                            <h3>Facebook</h3>
+                    <div class="fh5co-food-menu to-animate-2">
+                        <h2 class="fh5co-drinks">Cities</h2>
+                        <ul>
+                            @foreach($cities as $city)
+                                <div class="col-md-6"><li>
+                                        <div class="fh5co-food-desc">
+                                            <figure>
+                                                <img src="images/res_img_5.jpg" class="img-responsive"
+                                                     alt="not available">
+                                            </figure>
+                                            <div>
+                                                <h3>{{$city->name}}</h3>
+                                                <p>{{$city->description}}</p>
+                                            </div>
+                                        </div>
 
-                            <i class="ico icon-facebook"></i>
+                                    </li></div>
 
-                            <span class="more-btn more-btn__color2"><i class="icon-angle-right rounded_50"></i> Become a Friend</span>
-                        </a>
+                            @endforeach
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="col-xs-12 col-sm-4">
-                        <a class="social-item social-item_tw" href="#">
-                            <h3>Twitter</h3>
 
-                            <i class="ico icon-twitter-bird"></i>
-
-                            <span class="more-btn more-btn__color2"><i class="icon-angle-right rounded_50"></i> Follow Direct</span>
-                        </a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4">
-                        <a class="social-item social-item_gp" href="#">
-                            <h3>Google +</h3>
-
-                            <i class="ico icon-gplus"></i>
-
-                            <span class="more-btn more-btn__color2"><i class="icon-angle-right rounded_50"></i> Add us to your circle</span>
-                        </a>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                    <p><a href="#" class="btn btn-primary btn-outline">More about Sri lanka</a></p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="contact" class="base-bg-color_light">
+    <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
+         data-stellar-background-ratio="0.5">
         <div class="container">
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Contact us</h2>
+
+                </div>
+            </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-7 col-md-8">
-                    <h3>Get in touch with us</h3>
+                <div class="col-md-6 to-animate-2">
+                    <h3>Contact Info</h3>
+                    <ul class="fh5co-contact-info">
+                        <li class="fh5co-contact-address ">
+                            <i class="icon-home"></i>
+                            5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
+                        </li>
+                        <li><i class="icon-phone"></i> (123) 465-6789</li>
+                        <li><i class="icon-envelope"></i>info@freehtml5.co</li>
+                        <li><i class="icon-globe"></i> <a href="http://freehtml5.co/"
+                                                          target="_blank">freehtml5.co</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 to-animate-2">
+                    <h3>Reservation Form</h3>
+                    <form METHOD="post" action="#">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="name" class="control-label">Your name*</label>
 
-                    <p>
-                        Introducing crystals splash. Very bigger brings most velvety treat burst unique choosy it's
-                        spring. Satisfying sleek clinically made reputation agree hello full-bodied. New talking waxy
-                        magically made exotic aroma odor newest.
-                    </p>
 
-                    <form action="#">
-                        <label>Please Enter Your Name</label>
-                        <input type="text"/>
-                        <label>Your Email *</label>
-                        <input type="text"/>
-                        <label>Your Message</label>
-                        <textarea></textarea>
+                            <input id="name" type="text" name="name" class="form-control"
+                                   required/>
 
-                        <input class="base-text-color" type="submit" value="Send"/>
+
+                        </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="control-label">E-Mail Address*</label>
+
+
+                            <input id="email" type="email" name="email" class="form-control"
+                                   value="{{ old('email') }}" required/>
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="control-label">your message*</label>
+
+
+                                <textarea id="message" type="message" class="form-control" name="message"
+                                          required></textarea>
+
+
+                        </div>
+
+
+                        <input class="base-text-color" type="submit" value="send message"/>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="col-xs-12 col-sm-5 col-md-4">
-                    <div class="contact-address">
-                        <div class="title-with-ico">
-                            <i class="ico icon-location rounded_50 base-text-color base-border-color"></i>
 
-                            <h3>Address<br/>NYC Head Office</h3>
-                        </div>
+    <div id="fh5co-contact" data-section="login">
+        <div class="container">
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Join us today</h2>
+                    <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 to-animate-2">
+                    <h3>Log In</h3>
+                    @include('auth.login')
+                </div>
+                <div class="col-md-6 to-animate-2">
+                    <h3>Register Now</h3>
+                    @include('auth.register')
+                </div>
 
-                        <p>
-                            Rockefeller Center, 45 Rockefeller Plaza, New York, NY, USA
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="fh5co-footer">
+        <div class="row">
+            <div class="container">
+                <div class="row row-padded">
+                    <div class="col-md-12 text-center">
+                        <p class="to-animate">&copy; 2017 ReadCeylon travels . <br>
+                        <p>Website Design, Development & Hosting by Almas-Den<br>
+                            contact us: almas.den.sw@gmail.com
                         </p>
-
-                        <p>
-                            P: +1 123 444 5678<br/>
-                            f: +1 123 555 6789<br/>
-                            E: <a href="mailto:info@yoursite.com">info@yoursite.com</a>
-                        </p>
-
-                        <p>
-                            Traditional mountain finest ocean take. Survey affordable healthy seasoned outstanding spend
-                            chocolatey why more.
-                        </p>
-
-                        <p>
-                            Feedback also customer agree yet racy. Fights gentle chocolatey what luxury goodbye latest
-                            seeing.
-                        </p>
+                        <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="fh5co-social">
+                            <li class="to-animate-2"><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li class="to-animate-2"><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li class="to-animate-2"><a href="#"><i class="icon-instagram"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
+
+
+
+
+@endsection
+@section('body_js')
+
+        <script type="text/javascript">// <![CDATA[
+            $(function () {
+                $(".your-div").each(function (i) {
+                    len = $(this).text().length;
+                    if (len > 80) {
+                        $(this).text($(this).text().substr(0, 200) + '...');
+                    }
+                });
+            });
+            // ]]></script>
 
 @endsection

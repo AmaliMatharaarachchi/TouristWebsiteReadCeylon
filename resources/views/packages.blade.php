@@ -1,286 +1,193 @@
-@extends('layouts.public')
+@extends('layouts.master')
 
 @section('title')
-    Suranga Packages
+    Tours
 @endsection
 
+
+
 @section('body')
-    <section id="header-container">
-        <header id="header">
-            <div class="container">
-                <nav id="navigation" class="navigation-login fl-r" role="navigation">
-                    <ul>
-                        <li><a href="#"><i
-                                        class="ico icon-user-male rounded_50 base-text-color base-border-color"></i>
-                                <span>Login</span></a></li>
+    <style type="text/css">
+        .thumbnails li img {
+            width: 150px;
+        }
+    </style>
 
-                        <li id="signup"><a href="#">Sign Up</a></li>
-                    </ul>
-                </nav>
-                <a href="#" id="logo"></a>
-
-                <nav id="navigation" class="fl-r" role="navigation">
-                    <ul>
-                        <li>
-
-                            <a href="{{route('welcome')}}">Home</a>
-
-
-                        </li>
+    <nav class="collapse navbar-collapse" id=bs-navbar>
+        <ul class="nav navbar-nav">
+            <li class=active>
+                <a href="{{route('welcome')}}">Home</a></li>
+            {{--<li>--}}
+            {{--<a href=../css/ >CSS</a>--}}
+            {{--</li>--}}
+            {{--<li><a href=../components/ >Components</a></li>--}}
+            {{--<li>--}}
+            {{--<a href=../javascript/ >JavaScript</a></li>--}}
+            {{--<li><a href=../customize/ >Customize</a></li>--}}
+        </ul>
+    </nav>
 
 
-                        <li class="current">
-                            <a href="{{route('packages')}}">Packages</a>
+    <div id="fh5co-container">
 
 
-                            <div class="submenu " style="width: 400px;">
-                                <ul class="base-bg-color">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Our Team</a></li>
-                                    <li><a href="#">Project Details 1</a></li>
-                                    <li><a href="#">Project Details 2</a></li>
-                                    <li><a href="#">Login</a></li>
-                                </ul>
-                                <ul class="base-bg-color ">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Our Team</a></li>
-                                    <li><a href="#">Project Details 1</a></li>
-                                    <li><a href="#">Project Details 2</a></li>
-                                    <li><a href="#">Login</a></li>
-                                </ul>
+        <div class="js-sticky">
 
-                            </div>
+            <div class="fh5co-main-nav">
+                <div class="container-fluid">
+                    <div class="fh5co-menu-1">
 
-                        </li>
-                        <li><a href="#">Sri Lanka</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="{{route('contact')}}">Contact Us</a></li>
-                    </ul>
-
-                </nav>
-
-            </div>
-        </header>
-    </section>
-
-
-
-    <section id="headline">
-        <div class="container">
-            <div class="section-title clearfix">
-                <h2 class="fl-l">Our Blog</h2>
-
-                <ul id="breadcrumbs" class="fl-r">
-                    <li><a href="{{route('welcome')}}">Home</a></li>
-                    <li>Blog</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="content-container">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-7 col-md-8">
-                    <div>
-                        @foreach($packages as $package)
-                            <article class="blog-item post-item">
-                                <div class="owlSliderImg post-slider img-container" data-items="1" data-loop="true"
-                                     data-auto="false" data-autospeed="3000" data-mousedrag="false" data-nav="true"
-                                     data-animin="fadeIn" data-animout="fadeOut">
-
-                                    <div><img class="img-responsive" src="{{$package->picture1}}" alt="display is not available"/></div>
-                                    <div><img class="img-responsive" src="{{$package->picture2}}" alt="display is not available"/></div>
-                                    @if(($package->picture3)!=null)
-                                        <div><img class="img-responsive" src="{{$package->picture3}}" alt="display is not available"/>
-                                        </div>
-                                    @endif
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-2">
-										<span class="date-post">
-											08<span>08</span>
-										</span>
-                                    </div>
-
-                                    <div class="col-sm-12 col-md-10">
-                                        <p class="post-title base-text-color"><a href="/packages/{{$package->package_name}}">{{$package->package_name}}</a></p>
-                                        {{--</echo updated at {{$package->updated_at->toFormattedDateString()}}--}}
-                                        <ul class="tags-list">
-                                            <li><a href="#">Interactive</a></li>
-                                            <li><a href="#">PSD</a></li>
-                                            <li><a href="#">Creative Direction</a></li>
-
-                                        </ul>
-                        {{--<p class="blog-item"> {{(new \Carbon($package->updated_at))->toFormattedDateString()}}</p>--}}
-                                        <p>
-                                            All-over perfomance formula burst pleasure choose never. Fat-free sweet
-                                            delicious. Smile listen crunchy lather for deeply waxy gentle refreshing
-                                            exclusive aromatic deeply. Genuine snappy exclusive flat UI design.
-                                        </p>
-
-                                        <a class="more-btn" href="/packages/{{$package->package_name}}"><i
-                                                    class="icon-angle-right rounded_50 base-border-color"></i> View more</a>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
+                        <a href="#" data-nav-section="packages">Packages</a>
+                        {{--<a href="#" data-nav-section="about">About Sri Lanka</a>--}}
+                        {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
                     </div>
-                </div>
+                    <div class="fh5co-logo">
+                        <a href="#">Tours</a>
+                    </div>
+                    <div class="fh5co-menu-2">
+                        {{--<a href="#" data-nav-section="sri_lanka">Sri Lanka</a>--}}
+                        @if(Auth::check())
+                            <a href="#" data-nav-section="create">Create Tour</a>
+                        @endif
+                        {{--<a href="#" data-nav-section="login">Login/Register</a>--}}
 
-                <div class="col-xs-12 col-sm-5 col-md-4">
-                    <aside id="sidebar">
-                        <div class="widget widget-search">
-                            <form action="#">
-                                <input name="s" type="text" value=""/>
-
-                                <input type="submit" value="Search"/>
-                            </form>
-                        </div>
-
-                        <div class="widget widget-custom_posts">
-                            <div class="tab">
-                                <ul class="tabs clearfix">
-                                    <li class="fl-l"><a href="#"><span>Popular Packages</span></a></li>
-
-                                    <li class="fl-l"><a href="#"><span>Add something</span></a></li>
-                                </ul>
-
-                                <div class="tab_content base-bg-color_light">
-                                    <div class="tabs_tab tab-popular">
-                                        <ul>
-                                            @foreach($packages as $package)
-                                                <li>
-                                                    <a href="#"><img class="img-responsive" src="{{$package->picture1}}"
-                                                                     alt="single"/></a>
-
-                                                    <div>
-                                                        <a class="title" href="#">{{$package->package_name}}</a>
+                    </div>
 
 
-                                                        <span>137 Views</span>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-
-                                        </ul>
-                                    </div>
-
-                                    <div class="tabs_tab tab-updates">
-                                        <ul>
-                                            @foreach($packages as $package)
-                                                <li>
-                                                    <a href="#"><img class="img-responsive" src="{{$package->picture1}}"
-                                                                     alt="single"/></a>
-
-                                                    <div>
-                                                        <a class="title" href="#">{{$package->package_name}}</a>
-
-
-                                                        <span>137 Views</span>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="widget widget-project">
-                            <h4 class="widget-title">Recent Projects</h4>
-                            <div id="isotope-masonry" class="isotope-container">
-                                <div class="project-item post-item">
-
-                                    <ul class="clearfix">
-                                        @foreach($packages as $package)
-
-                                            <li class="fl-l">
-                                                <a href="#"><img class="img-responsive" src="{{$package->picture1}}"
-                                                                 alt="single"/></a>
-
-                                                <div>
-                                                    <a class="title" href="#">{{$package->package_name}}</a>
-
-
-                                                    <span>137 Views</span>
-                                                </div>
-                                            </li>
-
-                                            <li class="fl-l">
-                                                <a href="#"><img class="img-responsive" src="{{$package->picture2}}"
-                                                                 alt="single"/></a>
-
-                                                <div>
-                                                    <a class="title" href="#">{{$package->package_name}}</a>
-
-
-                                                    <span>137 Views</span>
-                                                </div>
-                                            </li>
-                                        @endforeach
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/1.jpg"
-                                                                          alt="single"/></a></li>
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/2.jpg"
-                                                                          alt="single"/></a></li>
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/3.jpg"
-                                                                          alt="single"/></a></li>
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/4.jpg"
-                                                                          alt="single"/></a></li>
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/5.jpg"
-                                                                          alt="single"/></a></li>
-
-                                        <li class="fl-l"><a href="#"><img class="img-responsive"
-                                                                          src="images/recent_post/6.jpg"
-                                                                          alt="single"/></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-
-                            <div class="widget widget-comment">
-                                <h4 class="widget-title">Recent Comments</h4>
-                                @foreach($packages as $package)
-                                    <article>
-                                        <span class="comment icon-comment"><a href="#">06/07</a></span>
-
-                                        <p>
-                                            {{$package->description}}
-                                            fghhfhjdjhdjdgdjgdfdj dhgytrytyu fhfjh dghgdhg
-                                        </p>
-                                    </article>
-                                @endforeach
-
-                            </div>
-                        </div>
-                    </aside>
                 </div>
             </div>
 
 
         </div>
-    </section>
 
+
+    </div>
+
+
+    <div id="fh5co-about" data-section="packages">
+        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+        <div class="fh5co-2col fh5co-text">
+            <a href="ht.html" class="btn "><h2 class="heading to-animate">About Sri Lanka</h2></a>
+
+            <p class="to-animate"><span class="firstcharacter">S</span>ri Lanka is a beautiful country. far far
+                away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in
+                Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far far away, behind the
+                word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small
+                river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+                paradisematic country, in which roasted parts of sentences fly into your mouth. Even the
+                all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.</p>
+        </div>
+        <div class="fh5co-2col fh5co-text">
+            <h2 class="heading to-animate">About Sri Lanka</h2>
+            <p class="to-animate"><span class="firstcharacter">S</span>ri Lanka is a beautiful country. far far
+                away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in
+                Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far far away, behind the
+                word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small
+                river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+                paradisematic country, in which roasted parts of sentences fly into your mouth. Even the
+                all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.</p>
+        </div>
+        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+
+
+    </div>
+    @if(Auth::check())
+        <div id="fh5co-contact" data-section="create">
+            <div class="container">
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="heading to-animate">Create package</h2>
+                        <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 to-animate-2">
+                        <h3 style="color: red"><b>Add City</b></h3>
+                        @include('add_city')
+                        <hr>
+                    </div>
+
+                    <div class="col-md-6 to-animate-2">
+                        <h3 style="color: blue"><b>Upload Image</b></h3>
+                        @include('add_image')
+                        <hr>
+                        <hr>
+                        <hr>
+
+                    </div>
+
+                    <div class="col-md-6 to-animate-2">
+                        <h3 style="color: green"><b>Add Tour</b></h3>
+                        @include('add_package')
+                        <hr>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    @endif
+
+
+    <div id="fh5co-footer">
+        <div class="row">
+            <div class="container">
+                <div class="row row-padded">
+                    <div class="col-md-12 text-center">
+                        <p class="to-animate">&copy; 2017 ReadCeylon travels . <br>
+                        <p>Website Design, Development & Hosting by Almas-Den<br>
+                            contact us: almas.den.sw@gmail.com
+                        </p>
+                        <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="fh5co-social">
+                            <li class="to-animate-2"><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li class="to-animate-2"><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li class="to-animate-2"><a href="#"><i class="icon-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('body_js')
+    <script> jQuery("select.image-picker").imagepicker({
+            hide_select: false,
+        });
+
+        jQuery("select.image-picker.show-labels").imagepicker({
+            hide_select: false,
+            show_label: true,
+        });
+
+        jQuery("select.image-picker.limit_callback").imagepicker({
+            limit_reached: function () {
+                alert('We are full!')
+            },
+            hide_select: false
+        });
+
+        var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
+        container.imagesLoaded(function () {
+            container.masonry({
+                itemSelector: "li",
+            });
+        });
+    </script>
 
 @endsection
 
 
+@section('body_js')
 
+@endsection
 
 
 

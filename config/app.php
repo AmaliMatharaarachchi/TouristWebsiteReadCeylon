@@ -140,7 +140,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -193,7 +193,7 @@ return [
     */
 
     'aliases' => [
-
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

@@ -70,6 +70,10 @@ Route::group(['middleware' => ['web']], function () {
         return view('test');
     });
 
+    Route::post('/image', [
+        'uses' => 'ImageController@store',
+        'as' => 'upload'
+    ]);
 
 
 
