@@ -32,6 +32,7 @@ class HasCityController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * store cities relted to packages in table has_city
      */
     public function store($cities, $package)
     {

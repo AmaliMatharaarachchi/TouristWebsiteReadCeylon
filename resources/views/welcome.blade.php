@@ -1,17 +1,10 @@
+{{--this is the home page customized for every user--}}
 @extends('layouts.master')
+
 @section('title')
     ReadCeylon
 @endsection
-@section('style')
-    {{--<style>--}}
-        {{--.your-div {--}}
-            {{--white-space: nowrap;--}}
-            {{--width: 150px;--}}
-            {{--overflow: hidden;--}}
-            {{--text-overflow: ellipsis;--}}
-        {{--}--}}
-    {{--</style>--}}
-    @endsection
+
 @section('body')
 
 
@@ -50,7 +43,6 @@
                         <a href="#" data-nav-section="home">Home</a>
                         <a href="#" data-nav-section="tours">Tours</a>
                         <a href="#" data-nav-section="about">About Sri Lanka</a>
-                        {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
                     </div>
@@ -59,10 +51,13 @@
                     </div>
                     <div class="fh5co-menu-2">
                         <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
-                        <a href="#" data-nav-section="events">Contact us</a>
 
-                        <a href="#" data-nav-section="login">Login/Register</a>
-
+                        @if((Auth::check()))
+                            <a href="#" data-nav-section="login">Logout/Register-Admin</a>
+                        @else
+                            <a href="#" data-nav-section="events">Contact us</a>
+                            <a href="#" data-nav-section="login">Login/Register</a>
+                        @endif
                     </div>
 
 
@@ -74,9 +69,6 @@
 
 
     </div>
-
-
-
 
     <div id="fh5co-about" data-section="about">
         <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
@@ -139,8 +131,8 @@
                                 <h2>{{$package->name}}</h2>
                                 <span class="pricing">${{$package->price}}</span>
                                 <p>
-                                    <div class="your-div"><span>{{$package->description}}</span></div>
-                                    </p>
+                                <div class="your-div"><span>{{$package->description}}</span></div>
+                                </p>
                                 <p><a href="#">more...</a></p>
                             </div>
                         </div>
@@ -162,7 +154,6 @@
             @endif
         </div>
     </div>
-
 
     <div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">
         <div class="fh5co-overlay"></div>
@@ -215,7 +206,8 @@
                         <h2 class="fh5co-drinks">Cities</h2>
                         <ul>
                             @foreach($cities as $city)
-                                <div class="col-md-6"><li>
+                                <div class="col-md-6">
+                                    <li>
                                         <div class="fh5co-food-desc">
                                             <figure>
                                                 <img src="images/res_img_5.jpg" class="img-responsive"
@@ -227,7 +219,8 @@
                                             </div>
                                         </div>
 
-                                    </li></div>
+                                    </li>
+                                </div>
 
                             @endforeach
                         </ul>
@@ -244,99 +237,110 @@
         </div>
     </div>
 
-    <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
-         data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row text-center fh5co-heading row-padded">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="heading to-animate">Contact us</h2>
+    @if(Auth::check())
 
+    @else
+        <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
+             data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="heading to-animate">Contact us</h2>
+
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 to-animate-2">
-                    <h3>Contact Info</h3>
-                    <ul class="fh5co-contact-info">
-                        <li class="fh5co-contact-address ">
-                            <i class="icon-home"></i>
-                            5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
-                        </li>
-                        <li><i class="icon-phone"></i> (123) 465-6789</li>
-                        <li><i class="icon-envelope"></i>info@freehtml5.co</li>
-                        <li><i class="icon-globe"></i> <a href="http://freehtml5.co/"
-                                                          target="_blank">freehtml5.co</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 to-animate-2">
-                    <h3>Reservation Form</h3>
-                    <form METHOD="post" action="#">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="name" class="control-label">Your name*</label>
+                <div class="row">
+                    <div class="col-md-6 to-animate-2">
+                        <h3>Contact Info</h3>
+                        <ul class="fh5co-contact-info">
+                            <li class="fh5co-contact-address ">
+                                <i class="icon-home"></i>
+                                5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
+                            </li>
+                            <li><i class="icon-phone"></i> (123) 465-6789</li>
+                            <li><i class="icon-envelope"></i>info@freehtml5.co</li>
+                            <li><i class="icon-globe"></i> <a href="http://freehtml5.co/"
+                                                              target="_blank">freehtml5.co</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 to-animate-2">
+                        <h3>Reservation Form</h3>
+                        <form METHOD="post" action="#">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="name" class="control-label">Your name*</label>
 
 
-                            <input id="name" type="text" name="name" class="form-control"
-                                   required/>
+                                <input id="name" type="text" name="name" class="form-control"
+                                       required/>
 
 
-                        </div>
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="control-label">E-Mail Address*</label>
+                            </div>
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="control-label">E-Mail Address*</label>
 
 
-                            <input id="email" type="email" name="email" class="form-control"
-                                   value="{{ old('email') }}" required/>
+                                <input id="email" type="email" name="email" class="form-control"
+                                       value="{{ old('email') }}" required/>
 
-                            @if ($errors->has('email'))
-                                <span class="help-block">
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                            @endif
+                                @endif
 
-                        </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="message" class="control-label">your message*</label>
+                            <div class="form-group">
+                                <label for="message" class="control-label">your message*</label>
 
 
                                 <textarea id="message" type="message" class="form-control" name="message"
                                           required></textarea>
 
 
-                        </div>
+                            </div>
 
 
-                        <input class="base-text-color" type="submit" value="send message"/>
-                    </form>
+                            <input class="base-text-color" type="submit" value="send message"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    @endif
 
     <div id="fh5co-contact" data-section="login">
         <div class="container">
-            <div class="row text-center fh5co-heading row-padded">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="heading to-animate">Join us today</h2>
-                    <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 to-animate-2">
-                    <h3>Log In</h3>
-                    @include('auth.login')
-                </div>
-                <div class="col-md-6 to-animate-2">
-                    <h3>Register Now</h3>
-                    @include('auth.register')
-                </div>
+            @if((Auth::check()))
+                <label>Register new admin</label>
+                <p class="text-center to-animate"><a href="/admin_register" class="btn btn-primary btn-outline">
+                        REGISTER</a></p>
 
-            </div>
+                <label>Are you sure to logout?</label>
+                <p class="text-center to-animate"><a href="{{route('logout')}}" class="btn btn-primary btn-outline">
+                        LOGOUT</a></p>
+            @else
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="heading to-animate">Join us today</h2>
+                        <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 to-animate-2">
+                        <h3>Log In</h3>
+                        @include('layouts.login')
+                    </div>
+                    <div class="col-md-6 to-animate-2">
+                        <h3>Register Now</h3>
+                        @include('layouts.register')
+                    </div>
+
+                </div>
+            @endif
         </div>
     </div>
-
-
 
     <div id="fh5co-footer">
         <div class="row">
@@ -363,22 +367,19 @@
         </div>
     </div>
 
-
-
-
-
 @endsection
+
 @section('body_js')
 
-        <script type="text/javascript">// <![CDATA[
-            $(function () {
-                $(".your-div").each(function (i) {
-                    len = $(this).text().length;
-                    if (len > 80) {
-                        $(this).text($(this).text().substr(0, 200) + '...');
-                    }
-                });
+    <script type="text/javascript">// <![CDATA[
+        $(function () {
+            $(".your-div").each(function (i) {
+                len = $(this).text().length;
+                if (len > 80) {
+                    $(this).text($(this).text().substr(0, 200) + '...');
+                }
             });
-            // ]]></script>
+        });
+        // ]]></script>
 
 @endsection

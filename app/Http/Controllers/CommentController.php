@@ -43,14 +43,12 @@ class CommentController extends Controller
         $this->validate($request,[
             'review'=>'required']);
 
-//        auth()->user()->comment(
-//            new Comment($request(['review','package_id']))
-//        )
+
         $Comment=new Comment();
         $Comment->review=$request['review'];
         $Comment->package_id=$request['package_id'];
         $Comment->user_id=auth()->user()->id;
-        $Comment->save();
+        $Comment->save();  //create comment
         return redirect()->back();
     }
 

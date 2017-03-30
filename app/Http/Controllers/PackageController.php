@@ -27,7 +27,7 @@ class PackageController extends Controller
 
     public function index(Package $package)
     {
-        //
+        //returns the tour page with packages images and cities
 
         $packages = $package->all()->sortByDesc('created_at');
         $images=Image::all();
@@ -43,7 +43,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('add_package');
+//        return view('add_package');
     }
 
     /**
@@ -51,16 +51,17 @@ class PackageController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * this will create package and
      */
     public function store(Request $request)
     {
 
         $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required'
+            'name' => 'required|max:255|unique:packages',
+            'description' => 'required',
+            'price' => 'integer',
+            'days' => 'integer'
 
-
-//            'picture3'=>'required'
 
         ]);
         $package = new Package();

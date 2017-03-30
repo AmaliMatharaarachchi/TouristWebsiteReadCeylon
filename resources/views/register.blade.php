@@ -1,3 +1,6 @@
+
+{{--this is the register form for admin registration--}}
+
 @extends('layouts.master')
 @section('title')
     ADMIN REGISTER
@@ -13,7 +16,7 @@
                 <div class="container-fluid">
 
                     <div class="fh5co-logo">
-                        <a href="#">Admin Register</a>
+                        <a href="#">new Admin</a>
                     </div>
 
 
@@ -35,7 +38,7 @@
                     </p>
 
                     <div class="col-md-12">
-                        <form METHOD="post" action="{{ route('register') }}">
+                        <form METHOD="post" action='#'>
                             {{ csrf_field() }}                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="control-label">Your name*</label>
 

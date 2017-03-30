@@ -12,7 +12,10 @@ class Package extends Model
 
     public function getRouteKeyName()
     {
-        return 'package_name';
+        return 'name';
+    }
+    public function has_city(){
+        return $this->hasMany(Has_city::class);
     }
 
 }

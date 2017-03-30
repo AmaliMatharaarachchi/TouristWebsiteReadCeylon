@@ -37,6 +37,8 @@ class ImageController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * save uploaded images in folder public/img
+     * create image in table images including its url
      */
     public function store(Request $request)
     {
@@ -44,8 +46,8 @@ class ImageController extends Controller
         $image = new Image();
         $this->validate($request, [
             'description' => 'required',
-            'image' => 'required',
-            'name' => 'required'
+            'image' => 'image|required|max:12288',
+            'name' => 'required|max:255|unique:images'
         ]);
         $image->name = $request->name;
         $image->description = $request->description;
@@ -53,6 +55,7 @@ class ImageController extends Controller
         $file = Input::file('image');
         $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
         $name = $timestamp . '-' . $file->getClientOriginalName();
+        //create file name for the image
 
         $image->url = $name;
 

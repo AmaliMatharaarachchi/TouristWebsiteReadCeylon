@@ -1,16 +1,17 @@
+{{--this is the form for create cities--}}
 <form method="post" action="{{route('create_city')}}">
     {{ csrf_field() }}
     <label for="name" class="control-label">City Name*</label>
     <input type="text" id="name" name="name"  class="form-control"
            required/>
     <label for="description" class="control-label">Description*</label>
-    <input type="text" id="description" name="description"  class="form-control"
-           required/>
-    <label for="star3price" class="control-label">Price of 3 star hotels</label>
+    <textarea type="text" id="description" name="description"  class="form-control"
+           required></textarea>
+    <label for="star3price" class="control-label">Price of 3 star hotels($)</label>
     <input type="star3price" id="star3price" name="star3price"  class="form-control"/>
-    <label for="star4price" class="control-label">Price of 4 star hotels</label>
+    <label for="star4price" class="control-label">Price of 4 star hotels($)</label>
     <input type="text" id="star4price" name="star4price"  class="form-control"/>
-    <label for="star5price" class="control-label">Price of 5 star hotels</label>
+    <label for="star5price" class="control-label">Price of 5 star hotels($)</label>
     <input type="text" id="star5price" name="star5price"  class="form-control"/>
     <label for="images" class=" control-label">Select Images*</label>
 

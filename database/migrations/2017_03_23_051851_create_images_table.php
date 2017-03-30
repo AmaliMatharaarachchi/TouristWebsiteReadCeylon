@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string('url');
             $table->text('description');
-            $table->text('name');
+            $table->text('name')->unique();
 
             $table->timestamps();
         });

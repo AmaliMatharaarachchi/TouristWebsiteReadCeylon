@@ -17,8 +17,8 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description');
-            $table->string('price')->nullable();
-            $table->string('days')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('days')->nullable();
 
             $table->timestamps();
         });

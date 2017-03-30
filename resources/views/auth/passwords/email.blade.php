@@ -1,5 +1,5 @@
-{{--@extends('layouts.app')--}}
-@extends('layouts.public')
+{{--related to forgot password --}}
+@extends('layouts.master')
 
 
 @section('body')

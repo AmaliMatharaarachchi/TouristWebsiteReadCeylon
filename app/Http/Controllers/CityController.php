@@ -20,9 +20,10 @@ class CityController extends Controller
         $this->middleware('auth');
     }
 
+    //city
     public function index()
     {
-        //city
+
     }
 
     /**
@@ -30,10 +31,10 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //get city/create
-        return view('add_city');
+
     }
 
     /**
@@ -44,17 +45,14 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //post city/create
 
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|max:255|unique:cities',
             'description' => 'required',
-            'star3price' => 'required',
-            'star4price' => 'required',
-            'star5price' => 'required',
-//            'images' => 'required',
-
-//            'image3'=>'required',
+            'star3price' => 'required|integer',
+            'star4price' => 'required|integer',
+            'star5price' => 'required|integer',
+            'images' => 'required',
 
 
         ]);
@@ -64,10 +62,10 @@ class CityController extends Controller
         $city->star3price = $request['star3price'];
         $city->star4price = $request['star4price'];
         $city->star5price = $request['star5price'];
-//        $city->image1 = $request['image1'];
 
-        $city->save();
+        $city->save(); //create city
 
+//        create images relations to the packages in has_image table
         (new HasImageController())->store($request->images,$city->id);
 
         Alert::success('Successfully saved the city', 'SUCCESS')->persistent("OK");

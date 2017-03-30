@@ -1,4 +1,5 @@
-@extends('layouts.public')
+{{--related to forgot password--}}
+@extends('layouts.master')
 
 @section('body')
 <div class="container">
@@ -73,4 +74,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

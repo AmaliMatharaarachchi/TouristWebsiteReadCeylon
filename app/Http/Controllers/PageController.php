@@ -10,9 +10,14 @@ use DB;
 use App\City;
 use App\Review;
 
+/**
+ * Class PageController
+ * @package App\Http\Controllers
+ */
 class PageController extends Controller
 {
 
+//    this returns welcome page with reviews packages and cities retrieved from database
     public function getWelcomePage()
     {
         $reviews = Review::all();

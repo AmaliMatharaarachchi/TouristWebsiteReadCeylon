@@ -80,12 +80,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/packages/{package}', 'PackageController@show');
 
-//   ============================================================
-    Route::get('/welcome', function(){
-        return view('public.welcome');
-    });
-//    ==========================================================
 
+    Route::get('/admin_register', function(){
+        return view('register');
+    });
 
 });
 

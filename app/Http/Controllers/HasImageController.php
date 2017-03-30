@@ -32,6 +32,7 @@ class HasImageController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * create relations images belongs to city in has_image table
      */
     public function store($images, $city)
     {
