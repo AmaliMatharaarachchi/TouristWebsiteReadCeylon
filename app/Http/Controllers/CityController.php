@@ -1,13 +1,10 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\city;
 use Illuminate\Http\Request;
 use Alert;
 
-class CityController extends Controller
-{
+class CityController extends Controller{
 
 
     /**

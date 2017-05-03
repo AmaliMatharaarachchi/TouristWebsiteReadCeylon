@@ -22,9 +22,11 @@
             <ul class="nav navbar-nav">
                 <li class=active>
                     <a href="{{route('welcome')}}">Home</a></li>
+                @if(Auth::check())
                 <li>
                     <a href="{{route('logout')}}">Logout</a>
                 </li>
+                @endif
                 {{--<li><a href=../components/ >Components</a></li>--}}
                 {{--<li>--}}
                 {{--<a href=../javascript/ >JavaScript</a></li>--}}

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\PublicMessage;
 use Illuminate\Http\Request;
 
-class PublicMessageController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class PublicMessageController extends Controller
      */
     public function index()
     {
-        return view('contact_us');
+        //
     }
 
     /**
@@ -35,18 +34,7 @@ class PublicMessageController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'message' => 'required']);
-
-        $publicMessage=new PublicMessage();
-        $publicMessage->name=$request['name'];
-        $publicMessage->email=$request['email'];
-        $publicMessage->message=$request['message'];
-        $publicMessage->save();
-        session()->flash('message','We will contact you soon');
-        return redirect()->back();
+        //
     }
 
     /**

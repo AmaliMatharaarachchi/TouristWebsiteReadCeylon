@@ -52,10 +52,11 @@
                     <div class="fh5co-menu-2">
                         <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
 
+                        <a href="#" data-nav-section="events">Contact us</a>
                         @if((Auth::check()))
                             <a href="#" data-nav-section="login">Logout/Register-Admin</a>
                         @else
-                            <a href="#" data-nav-section="events">Contact us</a>
+
                             <a href="#" data-nav-section="login">Login/Register</a>
                         @endif
                     </div>
@@ -237,9 +238,7 @@
         </div>
     </div>
 
-    @if(Auth::check())
 
-    @else
         <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
              data-stellar-background-ratio="0.5">
             <div class="container">
@@ -258,57 +257,80 @@
                                 5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
                             </li>
                             <li><i class="icon-phone"></i> (123) 465-6789</li>
-                            <li><i class="icon-envelope"></i>info@freehtml5.co</li>
-                            <li><i class="icon-globe"></i> <a href="http://freehtml5.co/"
-                                                              target="_blank">freehtml5.co</a></li>
+                            <li><i class="icon-envelope"></i>info@google.com</li>
+                            <li><i class="icon-globe"></i> <a href="http://www.google.com"
+                                                              target="_blank">google.com</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 to-animate-2">
-                        <h3>Reservation Form</h3>
-                        <form METHOD="post" action="#">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="name" class="control-label">Your name*</label>
 
+                        @if((Auth::check()))
 
-                                <input id="name" type="text" name="name" class="form-control"
-                                       required/>
+                                <form METHOD="post" action="{{route('user_message')}}">
+                                {{ csrf_field() }}
 
-
-                            </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="control-label">E-Mail Address*</label>
-
-
-                                <input id="email" type="email" name="email" class="form-control"
-                                       value="{{ old('email') }}" required/>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message" class="control-label">your message*</label>
+                                <div class="form-group">
+                                    <label for="message" class="control-label">your message*</label>
 
 
                                 <textarea id="message" type="message" class="form-control" name="message"
                                           required></textarea>
 
 
-                            </div>
+                                </div>
 
 
-                            <input class="base-text-color" type="submit" value="send message"/>
-                        </form>
+                                <input class="base-text-color" type="submit" value="send message"/>
+                            </form>
+                        @else
+                            <form METHOD="post" action="{{route('public_message')}}">
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+
+                                    <label for="name" class="control-label">Your name*</label>
+
+
+                                    <input id="name" type="text" name="name" class="form-control"
+                                           required/>
+
+
+                                </div>
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                    <label for="email" class="control-label">E-Mail Address*</label>
+
+
+                                    <input id="email" type="email" name="email" class="form-control"
+                                           value="{{ old('email') }}" required/>
+
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="message" class="control-label">your message*</label>
+
+
+                                <textarea id="message" type="message" class="form-control" name="message"
+                                          required></textarea>
+
+
+                                </div>
+
+
+                                <input class="base-text-color" type="submit" value="send message"/>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    @endif
+
 
     <div id="fh5co-contact" data-section="login">
         <div class="container">

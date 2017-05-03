@@ -1,12 +1,9 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Has_city;
 use Illuminate\Http\Request;
 
-class HasCityController extends Controller
-{
+class HasCityController extends Controller{
     /**
      * Display a listing of the resource.
      *

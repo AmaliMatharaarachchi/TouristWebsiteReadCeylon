@@ -12,22 +12,13 @@
 */
 
 
-//App::bind('App\Billing\Stripe',function(){
-//    return new \App\Billing\Stripe(config('services.stripe.secret'));
-//});
-//
-//$stripe=resolve('App\Billing\Stripe');
-//dd($stripe);
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/contact', [
-        'uses' => 'PublicMessageController@index',
-        'as' => 'contact'
-    ]);
+
 
     Route::get('/', [
-        'uses' => 'PageController@getWelcomePage',
+        'uses' => 'HomeController@index',
         'as' => 'welcome'
     ]);
 
@@ -59,16 +50,16 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'add_comment'
     ]);
     Route::post('/contact_us', [
-        'uses' => 'PublicMessageController@store',
+        'uses' => 'PublicUserController@store',
         'as' => 'public_message'
     ]);
-    Route::post('/contact', [
-        'uses' => 'UserMessageController@store',
+    Route::post('/message', [
+        'uses' => 'SendMessageController@store',
         'as' => 'user_message'
     ]);
-    Route::get('/test',function(){
-        return view('test');
-    });
+//    Route::get('/test',function(){
+//        return view('test');
+//    });
 
     Route::post('/image', [
         'uses' => 'ImageController@store',

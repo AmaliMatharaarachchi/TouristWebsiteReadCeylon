@@ -1,12 +1,9 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Has_image;
 use Illuminate\Http\Request;
 
-class HasImageController extends Controller
-{
+class HasImageController extends Controller{
     /**
      * Display a listing of the resource.
      *

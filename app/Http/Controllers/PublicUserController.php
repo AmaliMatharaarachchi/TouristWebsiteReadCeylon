@@ -1,22 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Message;
+use App\PublicUser;
 use Illuminate\Http\Request;
+use App\Mail\MessagePublic;
+use Alert;
 
-class CommentController extends Controller{
+class PublicUserController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-
+        //
     }
 
     /**
@@ -37,25 +35,34 @@ class CommentController extends Controller{
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'review'=>'required']);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required']);
 
+        $publicUser= new PublicUser();
+        $message= new Message();
+        $message->message=$request['message'];
+        $message->save();
 
-        $Comment=new Comment();
-        $Comment->review=$request['review'];
-        $Comment->package_id=$request['package_id'];
-        $Comment->user_id=auth()->user()->id;
-        $Comment->save();  //create comment
+        $publicUser->name=$request['name'];
+        $publicUser->email=$request['email'];
+        $publicUser->message_id=$message->id;
+        $publicUser->save();
+
+        \Mail::to('almas.den.sw@gmail.com')->send(new MessagePublic($request['message'],$publicUser));
+//        session()->flash('message','We will contact you soon');
+        Alert::success('We will contact you soon');
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PublicUser  $publicUser
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PublicUser $publicUser)
     {
         //
     }
@@ -63,10 +70,10 @@ class CommentController extends Controller{
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PublicUser  $publicUser
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PublicUser $publicUser)
     {
         //
     }
@@ -75,10 +82,10 @@ class CommentController extends Controller{
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\PublicUser  $publicUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PublicUser $publicUser)
     {
         //
     }
@@ -86,10 +93,10 @@ class CommentController extends Controller{
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\PublicUser  $publicUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PublicUser $publicUser)
     {
         //
     }

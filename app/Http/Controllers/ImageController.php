@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
@@ -10,8 +8,7 @@ use App\Http\Requests;
 use Alert;
 
 
-class ImageController extends Controller
-{
+class ImageController extends Controller{
     /**
      * Display a listing of the resource.
      *

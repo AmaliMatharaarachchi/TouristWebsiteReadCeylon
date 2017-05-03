@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Image;
 use App\City;
@@ -10,8 +8,7 @@ use DB;
 use Alert;
 
 
-class PackageController extends Controller
-{
+class PackageController extends Controller{
 
     /**
      * Display a listing of the resource.
@@ -30,10 +27,10 @@ class PackageController extends Controller
         //returns the tour page with packages images and cities
 
         $packages = $package->all()->sortByDesc('created_at');
-        $images=Image::all();
-        $cities=City::all();
+        $images = Image::all();
+        $cities = City::all();
 //        $packages=DB::table('packages')->get();
-        return view('packages', ['packages' => $packages,'images'=>$images,'cities'=>$cities]);
+        return view('packages', ['packages' => $packages, 'images' => $images, 'cities' => $cities]);
     }
 
     /**
@@ -71,7 +68,7 @@ class PackageController extends Controller
         $package->days = $request['days'];
         $package->save();
 
-        (new HasCityController())->store($request->cities,$package->id);
+        (new HasCityController())->store($request->cities, $package->id);
         Alert::success('Successfully saved the tour package', 'SUCCESS')->persistent("OK");
         return redirect()->back();
     }
@@ -86,7 +83,6 @@ class PackageController extends Controller
     {
         return view('packages.show', compact('package'));
     }
-
 
 
     /**

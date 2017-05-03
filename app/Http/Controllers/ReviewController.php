@@ -1,12 +1,9 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\review;
 use Illuminate\Http\Request;
 
-class ReviewController extends Controller
-{
+class ReviewController extends Controller{
     /**
      * Display a listing of the resource.
      *

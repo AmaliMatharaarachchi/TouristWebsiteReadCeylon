@@ -1,12 +1,9 @@
-<?php
+<?php namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
-
-use App\UserMessage;
+use App\SendMessage;
 use Illuminate\Http\Request;
 
-class UserMessageController extends Controller
-{
+class SendMessageController extends Controller{
     /**
      * Display a listing of the resource.
      *
@@ -38,21 +35,29 @@ class UserMessageController extends Controller
         $this->validate($request, [
             'message' => 'required']);
 
-        $userMessage=new UserMessage();
-        $userMessage->user_id=auth()->user()->id;
-        $userMessage->message=$request['message'];
-        $userMessage->save();
-        session()->flash('message','We will contact you soon');
+        $publicUser= new PublicUser();
+        $message= new Message();
+        $message->message=$request['message'];
+        $message->save();
+
+        $publicUser->name=$request['name'];
+        $publicUser->email=$request['email'];
+        $publicUser->message_id=$message->id;
+        $publicUser->save();
+
+        \Mail::to('almas.den.sw@gmail.com')->send(new MessagePublic($request['message'],$publicUser));
+//        session()->flash('message','We will contact you soon');
+        Alert::success('We will contact you soon');
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\SendMessage  $sendMessage
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SendMessage $sendMessage)
     {
         //
     }
@@ -60,10 +65,10 @@ class UserMessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\SendMessage  $sendMessage
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SendMessage $sendMessage)
     {
         //
     }
@@ -72,10 +77,10 @@ class UserMessageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\SendMessage  $sendMessage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SendMessage $sendMessage)
     {
         //
     }
@@ -83,10 +88,10 @@ class UserMessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\SendMessage  $sendMessage
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SendMessage $sendMessage)
     {
         //
     }

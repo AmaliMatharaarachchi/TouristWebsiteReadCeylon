@@ -1,11 +1,13 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
+use DB;
+use App\City;
+use App\Review;
+use App\Package;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller{
     /**
      * Create a new controller instance.
      *
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $reviews = Review::all();
+        $packages= Package::all();
+        $cities= City::all();
+
+        return view('welcome', ['reviews' => $reviews,'packages'=>$packages,'cities'=>$cities]);
+
     }
 }
