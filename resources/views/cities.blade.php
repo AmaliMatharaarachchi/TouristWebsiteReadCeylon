@@ -24,7 +24,7 @@
 
         li {
             float: left;
-            border-right:1px solid #bbb;
+            border-right: 1px solid #bbb;
         }
 
         li:last-child {
@@ -54,7 +54,7 @@
 
 
     <ul>
-        <li >
+        <li>
             <a href="{{route('welcome')}}">Back to Home</a></li>
         @if(Auth::check())
             <li style="float:right">
@@ -95,19 +95,22 @@
                 <div class="container-fluid">
                     <div class="fh5co-menu-1">
 
-                        <a href="#" data-nav-section="packages">Packages</a>
+                        <a href="#" data-nav-section="cities">Sri Lanka Cities</a>
                         {{--<a href="#" data-nav-section="about">About Sri Lanka</a>--}}
                         {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
                     </div>
                     <div class="fh5co-logo">
-                        <a href="#">Tours</a>
+                        <a href="#">Cities</a>
                     </div>
                     <div class="fh5co-menu-2">
                         {{--<a href="#" data-nav-section="sri_lanka">Sri Lanka</a>--}}
                         @if(Auth::check())
-                            <a href="#" data-nav-section="create">Create Tour</a>
+                            @if(Auth::user()->type=='U')
+                            @else
+                                <a href="#" data-nav-section="create">Create City</a>
+                            @endif
                         @endif
                         {{--<a href="#" data-nav-section="login">Login/Register</a>--}}
 
@@ -123,78 +126,75 @@
 
     </div>
 
-<br>
-<br>
-<br>
-    <div id="fh5co-about" data-section="packages">
-        @foreach($packages as $key=>$package)
-            @if($key%2==1)
+    <br>
+    <br>
+    <br>
+    <div id="fh5co-about" data-section="cities">
+        @foreach($cities as $key=>$city)
+
+             @if($key%2==1)
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
                 <div class="fh5co-2col fh5co-text">
-                    <a href="#" class="btn "><h2 class="heading to-animate">{{$package->name}}</h2></a>
+                    <a href="#" class="btn "><h2 class="heading to-animate">{{$city->name}}</h2></a>
 
-                    <p class="to-animate">{{$package->description}}<br>
+                    <p class="to-animate">{{$city->description}}<br>
 
-                        @if(($package->price)!=null or ($package->price)!='')
-                            <span>Price = ${{$package->price}}</span>
-                        @endif
+
                     </p>
-                    <a href="/packages/{{$package->name}}">more</a>
+                    <a href="/packages/{{$city->name}}">more</a>
+                    <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my tour</a></p>
                 </div>
             @else
 
                 <div class="fh5co-2col fh5co-text">
-                    <a href="#" class="btn "><h2 class="heading to-animate">{{$package->name}}</h2></a>
+                    <a href="#" class="btn "><h2 class="heading to-animate">{{$city->name}}</h2></a>
 
-                    <p class="to-animate">{{$package->description}}<br>
+                    <p class="to-animate">{{$city->description}}<br>
 
-                        @if(($package->price)!=null or ($package->price)!='')
-                            <span>${{$package->price}}</span>
-                        @endif
                     </p>
-                    <a href="/packages/{{$package->name}}">more</a>
+                    <a href="/packages/{{$city->name}}">more</a>
+                    <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">View/Create
+                            Tour</a></p>
                 </div>
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
             @endif
+
         @endforeach
 
     </div>
     @if(Auth::check())
-        <div id="fh5co-contact" data-section="create">
-            <div class="container">
-                <div class="row text-center fh5co-heading row-padded">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="heading to-animate">Create package</h2>
-                        <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+        @if(Auth::user()->type!='U')
+            <div id="fh5co-contact" data-section="create">
+                <div class="container">
+                    <div class="row text-center fh5co-heading row-padded">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading to-animate">Create package</h2>
+                            <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: red"><b>Add City</b></h3>
-                        @include('add_city')
-                        <hr>
+                    <div class="row">
+                        <div class="col-md-6 to-animate-2">
+                            <h3 style="color: red"><b>Add City</b></h3>
+                            @include('add_city')
+                            <hr>
+                        </div>
+
+                        <div class="col-md-6 to-animate-2">
+                            <h3 style="color: blue"><b>Upload Image</b></h3>
+                            @include('add_image')
+                            <hr>
+                            <hr>
+                            <hr>
+
+                        </div>
+
+
                     </div>
-
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: blue"><b>Upload Image</b></h3>
-                        @include('add_image')
-                        <hr>
-                        <hr>
-                        <hr>
-
-                    </div>
-
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: green"><b>Add Tour</b></h3>
-                        @include('add_package')
-                        <hr>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        @endif
     @endif
 
 

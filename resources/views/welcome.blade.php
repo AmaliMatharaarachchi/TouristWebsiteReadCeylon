@@ -52,7 +52,7 @@
                     <div class="fh5co-menu-2">
                         <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
 
-                        <a href="#" data-nav-section="events">Contact us</a>
+                        <a href="#" data-nav-section="events">Messages</a>
                         @if((Auth::check()))
                             <a href="#" data-nav-section="login">Logout/Register-Admin</a>
                         @else
@@ -102,13 +102,36 @@
 
                         @endforeach
 
+
                     </ul>
                 </div>
+
 
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="col-md-6 right">
+            <form METHOD="post" action="{{route('user_review')}}">
+                {{ csrf_field() }}
 
+                <div class="form-group">
+                    <label for="review" class="control-label">Tell us about your experience</label>
+
+
+                                <textarea id="review" type="review" class="form-control" name="review"
+                                          required></textarea>
+
+
+                </div>
+
+
+                <input class="btn-primary base-text-color " type="submit" value="Add review"/>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
     <div id="fh5co-featured" data-section="tours">
         <div class="container">
             <div class="row text-center fh5co-heading row-padded">
@@ -156,41 +179,41 @@
         </div>
     </div>
 
-    <div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">
-        <div class="fh5co-overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 to-animate">
-                    <div class="fh5co-type">
-                        <h3 class="with-icon icon-1">Fruits</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 to-animate">
-                    <div class="fh5co-type">
-                        <h3 class="with-icon icon-2">Sea food</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 to-animate">
-                    <div class="fh5co-type">
-                        <h3 class="with-icon icon-3">Vegetables</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 to-animate">
-                    <div class="fh5co-type">
-                        <h3 class="with-icon icon-4">Meat</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">--}}
+    {{--<div class="fh5co-overlay"></div>--}}
+    {{--<div class="container">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-md-3 to-animate">--}}
+    {{--<div class="fh5co-type">--}}
+    {{--<h3 class="with-icon icon-1">Fruits</h3>--}}
+    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+    {{--there live the blind texts.</p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-md-3 to-animate">--}}
+    {{--<div class="fh5co-type">--}}
+    {{--<h3 class="with-icon icon-2">Sea food</h3>--}}
+    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+    {{--there live the blind texts.</p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-md-3 to-animate">--}}
+    {{--<div class="fh5co-type">--}}
+    {{--<h3 class="with-icon icon-3">Vegetables</h3>--}}
+    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+    {{--there live the blind texts.</p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-md-3 to-animate">--}}
+    {{--<div class="fh5co-type">--}}
+    {{--<h3 class="with-icon icon-4">Meat</h3>--}}
+    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+    {{--there live the blind texts.</p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
     <div id="fh5co-menus" data-section="sri_lanka">
         <div class="container">
@@ -232,104 +255,109 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                    <p><a href="#" class="btn btn-primary btn-outline">More about Sri lanka</a></p>
+                    <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">More about Sri lanka</a></p>
                 </div>
             </div>
         </div>
     </div>
 
 
-        <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
-             data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row text-center fh5co-heading row-padded">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="heading to-animate">Contact us</h2>
+    <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
+         data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Contact us</h2>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 to-animate-2">
-                        <h3>Contact Info</h3>
-                        <ul class="fh5co-contact-info">
-                            <li class="fh5co-contact-address ">
-                                <i class="icon-home"></i>
-                                5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
-                            </li>
-                            <li><i class="icon-phone"></i> (123) 465-6789</li>
-                            <li><i class="icon-envelope"></i>info@google.com</li>
-                            <li><i class="icon-globe"></i> <a href="http://www.google.com"
-                                                              target="_blank">google.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 to-animate-2">
-
-                        @if((Auth::check()))
-
-                                <form METHOD="post" action="{{route('user_message')}}">
-                                {{ csrf_field() }}
-
-                                <div class="form-group">
-                                    <label for="message" class="control-label">your message*</label>
-
-
-                                <textarea id="message" type="message" class="form-control" name="message"
-                                          required></textarea>
-
-
-                                </div>
-
-
-                                <input class="base-text-color" type="submit" value="send message"/>
-                            </form>
-                        @else
-                            <form METHOD="post" action="{{route('public_message')}}">
-                                {{ csrf_field() }}
-
-                                <div class="form-group">
-
-                                    <label for="name" class="control-label">Your name*</label>
-
-
-                                    <input id="name" type="text" name="name" class="form-control"
-                                           required/>
-
-
-                                </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="control-label">E-Mail Address*</label>
-
-
-                                    <input id="email" type="email" name="email" class="form-control"
-                                           value="{{ old('email') }}" required/>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="message" class="control-label">your message*</label>
-
-
-                                <textarea id="message" type="message" class="form-control" name="message"
-                                          required></textarea>
-
-
-                                </div>
-
-
-                                <input class="base-text-color" type="submit" value="send message"/>
-                            </form>
-                        @endif
-                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 to-animate-2">
+                    <h3>Contact Info</h3>
+                    <ul class="fh5co-contact-info">
+                        <li class="fh5co-contact-address ">
+                            <i class="icon-home"></i>
+                            5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
+                        </li>
+                        <li><i class="icon-phone"></i> (123) 465-6789</li>
+                        <li><i class="icon-envelope"></i>info@google.com</li>
+                        <li><i class="icon-globe"></i> <a href="http://www.google.com"
+                                                          target="_blank">google.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 to-animate-2">
+
+                    @if((Auth::check()))
+
+                        <form METHOD="post" action="{{route('user_message')}}">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="message" class="control-label">your message*</label>
+
+
+                                <textarea id="message" type="message" class="form-control" name="message"
+                                          required></textarea>
+
+
+                            </div>
+
+
+                            <input class="base-text-color" type="submit" value="send message"/>
+                        </form>
+                    @else
+                        <form METHOD="post" action="{{route('public_message')}}">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+
+                                <label for="name" class="control-label">Your name*</label>
+
+
+                                <input id="name" type="text" name="name" class="form-control"
+                                       required/>
+
+
+                            </div>
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="control-label">E-Mail Address*</label>
+
+
+                                <input id="email" type="email" name="email" class="form-control"
+                                       value="{{ old('email') }}" required/>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="message" class="control-label">your message*</label>
+
+
+                                <textarea id="message" type="message" class="form-control" name="message"
+                                          required></textarea>
+
+
+                            </div>
+
+
+                            <input class="base-text-color" type="submit" value="send message"/>
+                        </form>
+                    @endif
+                </div>
+            </div>
+
+            @if(Auth::check())
+                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View
+                        Messages</a></p>
+            @endif
         </div>
+    </div>
 
 
     <div id="fh5co-contact" data-section="login">

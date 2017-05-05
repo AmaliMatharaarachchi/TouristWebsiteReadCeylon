@@ -27,6 +27,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
+    Route::get('/cities', [
+        'uses' => 'cityController@index',
+        'as' => 'cities'
+    ]);
     Route::get('/packages/create', [
         'uses' => 'PackageController@create',
         'as' => 'create_packages'
@@ -57,6 +61,12 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'SendMessageController@store',
         'as' => 'user_message'
     ]);
+
+    Route::get('/view_message', [
+        'uses' => 'SendMessageController@index',
+        'as' => 'messages'
+    ]);
+
 //    Route::get('/test',function(){
 //        return view('test');
 //    });
@@ -65,6 +75,11 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'ImageController@store',
         'as' => 'upload'
     ]);
+    Route::post('/review', [
+        'uses' => 'ReviewController@store',
+        'as' => 'user_review'
+    ]);
+
 
 
 

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\city;
+use App\image;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -20,6 +21,11 @@ class CityController extends Controller{
     //city
     public function index()
     {
+//        $packages = $city->all()->sortByDesc('created_at');
+        $images = Image::all();
+        $cities = City::all()->sortByDesc('created_at');
+//        $packages=DB::table('packages')->get();
+        return view('cities', ['images' => $images, 'cities' => $cities]);
 
     }
 

@@ -2,6 +2,8 @@
 
 use App\review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class ReviewController extends Controller{
     /**
@@ -32,7 +34,18 @@ class ReviewController extends Controller{
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'review' => 'required']);
+
+
+        $review= new Review();
+        $review->review=$request['review'];
+        $review->user_id=Auth::user()->id;
+        $review->save();
+
+
+        Alert::success('Thank you for your feedback!');
+        return redirect()->back();
     }
 
     /**

@@ -72,6 +72,8 @@
     @yield('header_js')
 </head>
 <body>
+
+
 @yield('style')
 
 @yield('body')

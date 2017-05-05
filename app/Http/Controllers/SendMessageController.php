@@ -1,7 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Mail\UserMessage;
 use App\SendMessage;
+use Alert;
+use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SendMessageController extends Controller{
     /**
@@ -9,9 +13,16 @@ class SendMessageController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
+
+        return view('messages');
     }
 
     /**
@@ -35,17 +46,16 @@ class SendMessageController extends Controller{
         $this->validate($request, [
             'message' => 'required']);
 
-        $publicUser= new PublicUser();
+        $sendMessage= new SendMessage();
         $message= new Message();
         $message->message=$request['message'];
         $message->save();
 
-        $publicUser->name=$request['name'];
-        $publicUser->email=$request['email'];
-        $publicUser->message_id=$message->id;
-        $publicUser->save();
+        $sendMessage->user_id=Auth::user()->id;
+        $sendMessage->message_id=$message->id;
+        $sendMessage->save();
 
-        \Mail::to('almas.den.sw@gmail.com')->send(new MessagePublic($request['message'],$publicUser));
+        \Mail::to('almas.den.sw@gmail.com')->send(new UserMessage($request['message'],Auth::user()));
 //        session()->flash('message','We will contact you soon');
         Alert::success('We will contact you soon');
         return redirect()->back();
