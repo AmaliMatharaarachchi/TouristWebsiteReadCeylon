@@ -38,7 +38,7 @@
                     </p>
 
                     <div class="col-md-12">
-                        <form METHOD="post" action='#'>
+                        <form METHOD="post" action='{{route('admin-register')}}'>
                             {{ csrf_field() }}                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="control-label">Your name*</label>
 

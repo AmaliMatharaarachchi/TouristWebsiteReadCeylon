@@ -28,45 +28,45 @@
     <meta name="twitter:card" content=""/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{URL::asset('favicon.ico')}}">
 
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic'
+    <link href="{{URL::asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic')}}"
           rel='stylesheet' type='text/css'>
     {{--added--}}
 
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-    <link rel="stylesheet" href="image-picker/image-picker.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('dist/sweetalert.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('image-picker/image-picker.css')}}">
 
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{URL::asset('css/animate.css')}}">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="{{URL::asset('css/icomoon.css')}}">
     <!-- Simple Line Icons -->
-    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <link rel="stylesheet" href="{{URL::asset('css/simple-line-icons.css')}}">
     <!-- Datetimepicker -->
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-datetimepicker.min.css')}}">
     <!-- Flexslider -->
-    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="{{URL::asset('css/flexslider.css')}}">
 
 
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
 
 
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="{{URL::asset('js/modernizr-2.6.2.min.js')}}"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
+    <script src="{{URL::asset('js/respond.min.js')}}"></script>
     <![endif]-->
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+          href="{{URL::asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css')}}">
 
 
     @yield('header_js')
@@ -79,7 +79,7 @@
 @yield('body')
 
 
-<script src="dist/sweetalert.min.js"></script>
+<script src="{{URL::asset('dist/sweetalert.min.js')}}"></script>
 
 @include('sweet::alert')
 
@@ -90,38 +90,38 @@
 
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+<script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
+<script src="{{URL::asset('js/jquery.easing.1.3.js')}}"></script>
 <!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
 <!-- Bootstrap DateTimePicker -->
-<script src="js/moment.js"></script>
-<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="{{URL::asset('js/moment.js')}}"></script>
+<script src="{{URL::asset('js/bootstrap-datetimepicker.min.js')}}"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="{{URL::asset('js/jquery.waypoints.min.js')}}"></script>
 <!-- Stellar Parallax -->
-<script src="js/jquery.stellar.min.js"></script>
+<script src="{{URL::asset('js/jquery.stellar.min.js')}}"></script>
 
 
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js"></script>
+<script src="{{URL::asset('js/jquery.flexslider-min.js')}}"></script>
 <script>
     $(function () {
         $('#date').datetimepicker();
     });
 </script>
 <!-- Main JS -->
-<script src="js/main.js"></script>
+<script src="{{URL::asset('js/main.js')}}"></script>
 
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+<script src="{{URL::asset('js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{URL::asset('https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js')}}"></script>
 
 
-<script src="image-picker/image-picker.js" type="text/javascript"></script>
+<script src="{{URL::asset('image-picker/image-picker.js')}}" type="text/javascript"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script><!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+<script src="{{URL::asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js')}}"></script><!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="{{URL::asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js')}}"></script>
 
 @yield('body_js')
 

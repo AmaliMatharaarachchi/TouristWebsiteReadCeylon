@@ -25,7 +25,8 @@ class CityController extends Controller{
         $images = Image::all();
         $cities = City::all()->sortByDesc('created_at');
 //        $packages=DB::table('packages')->get();
-        return view('cities', ['images' => $images, 'cities' => $cities]);
+        return view('test', ['images' => $images, 'cities' => $cities]);
+//        return view('cities', ['images' => $images, 'cities' => $cities]);
 
     }
 

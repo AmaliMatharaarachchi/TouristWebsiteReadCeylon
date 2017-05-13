@@ -79,6 +79,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'ReviewController@store',
         'as' => 'user_review'
     ]);
+    Route::post('/customize', [
+        'uses' => 'PackageController@customize',
+        'as' => 'customize'
+    ]);
 
 
 
@@ -90,6 +94,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin_register', function(){
         return view('register');
     });
+
+    Route::post('/admin-registering', [
+        'uses' => 'USerController@registerAdmin',
+        'as' => 'admin-register'
+    ]);
 
 });
 

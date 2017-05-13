@@ -18,6 +18,7 @@ class UnitTest extends TestCase
     {
         $first = factory(Package::class)->create();
         $second = factory(Package::class)->create();
+        $this->get();
 
     }
 

@@ -24,7 +24,7 @@
 
         li {
             float: left;
-            border-right:1px solid #bbb;
+            border-right: 1px solid #bbb;
         }
 
         li:last-child {
@@ -54,7 +54,7 @@
 
 
     <ul>
-        <li >
+        <li>
             <a href="{{route('welcome')}}">Back to Home</a></li>
         @if(Auth::check())
             <li style="float:right">
@@ -107,7 +107,10 @@
                     <div class="fh5co-menu-2">
                         {{--<a href="#" data-nav-section="sri_lanka">Sri Lanka</a>--}}
                         @if(Auth::check())
-                            <a href="#" data-nav-section="create">Create Tour</a>
+                            @if(Auth::user()->type=='U')
+                            @else
+                                <a href="#" data-nav-section="create">Create Tour</a>
+                            @endif
                         @endif
                         {{--<a href="#" data-nav-section="login">Login/Register</a>--}}
 
@@ -123,16 +126,25 @@
 
     </div>
 
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
     <div id="fh5co-about" data-section="packages">
         @foreach($packages as $key=>$package)
             @if($key%2==1)
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
                 <div class="fh5co-2col fh5co-text">
-                    <a href="#" class="btn "><h2 class="heading to-animate">{{$package->name}}</h2></a>
+                    <div class="col-md-6">
+                        <div class="col-md-6"><a href="#" class="btn "><h2
+                                        class="heading to-animate">{{$package->name}}</h2></a></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6"><p class="text-center to-animate"><a href="#"
+                                                                                   class="btn btn-primary btn-outline">Add
+                                    to my tour</a></p></div>
+                    </div>
+
 
                     <p class="to-animate">{{$package->description}}<br>
 
@@ -145,15 +157,20 @@
             @else
 
                 <div class="fh5co-2col fh5co-text">
-                    <a href="#" class="btn "><h2 class="heading to-animate">{{$package->name}}</h2></a>
+                    <a href="#" class="btn "><h2
+                                    class="heading to-animate">{{$package->name}}</h2></a>
 
-                    <p class="to-animate">{{$package->description}}<br>
+                    <div class="row"><p class="to-animate">{{$package->description}}<br>
 
-                        @if(($package->price)!=null or ($package->price)!='')
-                            <span>${{$package->price}}</span>
-                        @endif
-                    </p>
-                    <a href="/packages/{{$package->name}}">more</a>
+                            @if(($package->price)!=null or ($package->price)!='')
+                                <span>${{$package->price}}</span>
+                            @endif
+                        </p>
+                        <a href="/packages/{{$package->name}}">more</a></div>
+                    {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
+                    {{--<input id="add" type="submit" name="button" value="enter"/>--}}
+                    {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
+
                 </div>
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
@@ -162,39 +179,41 @@
 
     </div>
     @if(Auth::check())
-        <div id="fh5co-contact" data-section="create">
-            <div class="container">
-                <div class="row text-center fh5co-heading row-padded">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="heading to-animate">Create package</h2>
-                        <p class="sub-heading to-animate">You will be given special discounts and treatments</p>
+        @if(Auth::user()->type!='U')
+            <div id="fh5co-contact" data-section="create">
+                <div class="container">
+                    <div class="row text-center fh5co-heading row-padded">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading to-animate">Create package</h2>
+                            <p class="sub-heading to-animate">Enter details of special tour packages you provide</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: red"><b>Add City</b></h3>
-                        @include('add_city')
-                        <hr>
+                    <div class="row">
+                        <div class="col-md-6 to-animate-2">
+                            <h3 style="color: red"><b>Add City</b></h3>
+                            @include('add_city')
+                            <hr>
+                        </div>
+
+                        <div class="col-md-6 to-animate-2">
+                            <h3 style="color: blue"><b>Upload Image</b></h3>
+                            @include('add_image')
+                            <hr>
+                            <hr>
+                            <hr>
+
+                        </div>
+
+                        <div class="col-md-6 to-animate-2">
+                            <h3 style="color: green"><b>Add Tour</b></h3>
+                            @include('add_package')
+                            <hr>
+                        </div>
+
                     </div>
-
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: blue"><b>Upload Image</b></h3>
-                        @include('add_image')
-                        <hr>
-                        <hr>
-                        <hr>
-
-                    </div>
-
-                    <div class="col-md-6 to-animate-2">
-                        <h3 style="color: green"><b>Add Tour</b></h3>
-                        @include('add_package')
-                        <hr>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        @endif
     @endif
 
 
@@ -247,13 +266,15 @@
             });
         });
     </script>
-
+    <script>
+        document.getElementById('add').onclick = function() {
+            alert("button was clicked");
+        }​;​
+    </script>
 @endsection
 
 
-@section('body_js')
 
-@endsection
 
 
 

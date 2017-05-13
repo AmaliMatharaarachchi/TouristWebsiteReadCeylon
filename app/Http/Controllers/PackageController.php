@@ -91,6 +91,11 @@ class PackageController extends Controller{
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function customize(Request $request)
+    {
+        dd($_POST);
+    }
+
     public function edit($id)
     {
         //

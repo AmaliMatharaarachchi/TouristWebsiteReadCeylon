@@ -65,25 +65,7 @@
     </ul>
 
 
-    {{--<nav class="collapse navbar-collapse" id=bs-navbar>--}}
-    {{--<div class="col-md-6"></div>--}}
-    {{--<div class="col-md-6">--}}
-    {{--<ul class="nav navbar-nav">--}}
-    {{--<li class=active>--}}
-    {{--<a href="{{route('welcome')}}">Home</a></li>--}}
-    {{--@if(Auth::check())--}}
-    {{--<li>--}}
-    {{--<a href="{{route('logout')}}">Logout</a>--}}
-    {{--</li>--}}
-    {{--@endif--}}
-    {{--<li><a href=../components/ >Components</a></li>--}}
-    {{--<li>--}}
-    {{--<a href=../javascript/ >JavaScript</a></li>--}}
-    {{--<li><a href=../customize/ >Customize</a></li>--}}
-    {{--</ul>--}}
-    {{--</div>--}}
 
-    {{--</nav>--}}
 
 
     <div id="fh5co-container">
@@ -96,8 +78,6 @@
                     <div class="fh5co-menu-1">
 
                         <a href="#" data-nav-section="cities">Sri Lanka Cities</a>
-                        {{--<a href="#" data-nav-section="about">About Sri Lanka</a>--}}
-                        {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
                     </div>
@@ -132,7 +112,7 @@
     <div id="fh5co-about" data-section="cities">
         @foreach($cities as $key=>$city)
 
-             @if($key%2==1)
+            @if($key%2==1)
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
                 <div class="fh5co-2col fh5co-text">
@@ -143,7 +123,11 @@
 
                     </p>
                     <a href="/packages/{{$city->name}}">more</a>
-                    <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my tour</a></p>
+                    @if(Auth::user()->type=='U')
+                        <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my
+                                tour</a>
+                        </p>
+                    @endif
                 </div>
             @else
 
@@ -154,8 +138,9 @@
 
                     </p>
                     <a href="/packages/{{$city->name}}">more</a>
-                    <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">View/Create
-                            Tour</a></p>
+                    <p class="text-center to-animate"><input type="button" class="sal" value="0"> <a
+                                href="javascript:addNum({{$city->id}})"
+                                class="btn btn-primary btn-outline">Add to my city</a></p>
                 </div>
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
@@ -194,9 +179,28 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
         @endif
     @endif
+    <div class="container">
+        <div class="col-md-6 right">
+            <form action="{{route('customize')}}" method="post">
+                {{ csrf_field() }}
 
+                <div class="form-group">
+                    <input type="hidden" id='list' name="srray[]"/>
+
+                </div>
+
+
+                <input class="btn-primary base-text-color " type="submit" value="send"/>
+            </form>
+        </div>
+    </div>
 
     <div id="fh5co-footer">
         <div class="row">
@@ -247,11 +251,35 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        var numArray = ['123'];
+        function addNum(num) {
+            numArray.push(num);
+            document.querySelector(".txt").innerHTML = numArray.join('');
+        }
 
+        //        var fd = new FormData(document.getElementById("myform"));
+        //        for (var i = 0; i < numArray.length; i++) {
+        //            fd.append('numArray[]', numArray[i]);
+        //        }
+
+        document.getElementById('list').value = numArray;
+
+
+        $(document).ready(function () {
+            $('.sal').each(function () {
+                $(this).click(function (e) {
+                    numArray.push($(this).val());
+                    console.log(numArray);
+                });
+            });
+        });
+    </script>
 @endsection
 
 
 @section('body_js')
+    <
 
 @endsection
 
