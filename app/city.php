@@ -13,4 +13,9 @@ class city extends Model
         return $this->hasMany(Has_image::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
 }

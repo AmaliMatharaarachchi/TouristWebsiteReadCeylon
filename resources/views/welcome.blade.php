@@ -111,28 +111,28 @@
         </div>
     </div>
     @if(Auth::check())
-    <div class="container">
-        <div class="col-md-6 right">
-            <form METHOD="post" action="{{route('user_review')}}">
-                {{ csrf_field() }}
+        <div class="container">
+            <div class="col-md-6 right">
+                <form METHOD="post" action="{{route('user_review')}}">
+                    {{ csrf_field() }}
 
-                <div class="form-group">
-                    <label for="review" class="control-label">Tell us about your experience</label>
+                    <div class="form-group">
+                        <label for="review" class="control-label">Tell us about your experience</label>
 
 
                                 <textarea id="review" type="review" class="form-control" name="review"
                                           required></textarea>
 
 
-                </div>
+                    </div>
 
 
-                <input class="btn-primary base-text-color " type="submit" value="Add review"/>
-            </form>
+                    <input class="btn-primary base-text-color " type="submit" value="Add review"/>
+                </form>
+            </div>
         </div>
-    </div>
-    <br>
-    <br>
+        <br>
+        <br>
     @endif
     <div id="fh5co-featured" data-section="tours">
         <div class="container">
@@ -173,11 +173,13 @@
 
             @if(Auth::check())
                 @if(Auth::user()->type=='U')
-                    <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View/Customize Tour</a></p>
-                    @else
-                <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View/Create
-                        Tour</a></p>
-                 @endif
+                    <p class="text-center to-animate"><a href="{{route('packages')}}"
+                                                         class="btn btn-primary btn-outline">View/Customize Tour</a></p>
+                @else
+                    <p class="text-center to-animate"><a href="{{route('packages')}}"
+                                                         class="btn btn-primary btn-outline">View/Create
+                            Tour</a></p>
+                @endif
             @else
                 <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View
                         All Tours</a></p>
@@ -262,12 +264,20 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
 
-                    <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Create your own tour</a></p>
                     @if(Auth::check())
                         @if(Auth::user()->type=='A')
                             <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Update</a></p>
-@endif
+                        @else
+                            <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Create your own
+                                    tour</a></p>
+
                         @endif
+                    @else
+                        <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Create your own tour</a>
+                        </p>
+
+                    @endif
+
                 </div>
             </div>
         </div>

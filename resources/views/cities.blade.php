@@ -122,11 +122,17 @@
 
 
                     </p>
-                    <a href="/packages/{{$city->name}}">more</a>
-                    @if(Auth::user()->type=='U')
-                        <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my
-                                tour</a>
-                        </p>
+                    <a href="/cities/{{$city->name}}">more</a>
+                    @if(Auth::check())
+                        @if(Auth::user()->type=='U')
+                            <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my
+                                    tour</a>
+                            </p>
+                        @else
+                            <p class="text-center to-animate"><a href="/cities/update/{{$city->name}}"
+                                                                 class="btn btn-primary btn-outline">update</a>
+                            </p>
+                        @endif
                     @endif
                 </div>
             @else
@@ -277,11 +283,6 @@
     </script>
 @endsection
 
-
-@section('body_js')
-    <
-
-@endsection
 
 
 

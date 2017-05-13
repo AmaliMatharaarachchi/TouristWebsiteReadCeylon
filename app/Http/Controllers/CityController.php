@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\city;
-use App\image;
+use App\City;
+use App\Image;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -25,8 +25,8 @@ class CityController extends Controller{
         $images = Image::all();
         $cities = City::all()->sortByDesc('created_at');
 //        $packages=DB::table('packages')->get();
-        return view('test', ['images' => $images, 'cities' => $cities]);
-//        return view('cities', ['images' => $images, 'cities' => $cities]);
+
+        return view('cities', ['images' => $images, 'cities' => $cities]);
 
     }
 
@@ -60,7 +60,7 @@ class CityController extends Controller{
 
 
         ]);
-        $city = new city();
+        $city = new City();
         $city->name = $request['name'];
         $city->description = $request['description'];
         $city->star3price = $request['star3price'];
@@ -84,9 +84,16 @@ class CityController extends Controller{
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(City $city)
     {
-        //get city/id
+        return view('cities.show', compact('city'));
+    }
+
+    public function showUpdate(City $city)
+    {
+//        return view('cities.update');
+        $images = Image::all();
+        return view('cities.update', compact('city','images'));
     }
 
     /**

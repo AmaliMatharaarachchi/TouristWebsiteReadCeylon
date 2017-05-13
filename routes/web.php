@@ -27,10 +27,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
-    Route::get('/cities', [
-        'uses' => 'cityController@index',
-        'as' => 'cities'
-    ]);
+
     Route::get('/packages/create', [
         'uses' => 'PackageController@create',
         'as' => 'create_packages'
@@ -44,9 +41,18 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'CityController@create',
         'as' => 'create_city'
     ]);
+    Route::get('/cities', [
+        'uses' => 'cityController@index',
+        'as' => 'cities'
+    ]);
+
     Route::post('/cities/create', [
         'uses' => 'CityController@store',
         'as' => 'add_city'
+    ]);
+    Route::post('/cities/update', [
+        'uses' => 'CityController@update',
+        'as' => 'city-update'
     ]);
 
     Route::post('/comment/create', [
@@ -89,6 +95,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::get('/packages/{package}', 'PackageController@show');
+    Route::get('/cities/{city}', 'CityController@show');
+    Route::get('/cities/update/{city}', 'CityController@showUpdate');
 
 
     Route::get('/admin_register', function(){
