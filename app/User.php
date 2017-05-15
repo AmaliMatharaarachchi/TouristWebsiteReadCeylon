@@ -33,4 +33,7 @@ class User extends Authenticatable
     public function sendMessages(){
         return $this->hasMany(SendMessage::class);
     }
+    public function tour(){
+        return $this->hasMany(Tour::class);
+    }
 }

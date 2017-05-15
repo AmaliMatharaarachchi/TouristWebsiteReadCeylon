@@ -130,19 +130,74 @@
     <br>
     <br>
     <div id="fh5co-about" data-section="packages">
+
+        @if(Auth::check())
+            @if(Auth::user()->type=='U')
+
+                <h1>My Tours</h1>
+
+                <div class="col-md-6"><p class="text-center to-animate"><a href="{{route('cities')}}"
+                                                                           class="btn btn-primary btn-outline">Create
+                            a new Tour</a></p></div>
+                @foreach((Auth::user()->tour) as $key=>$package)
+                    @if($key%2==1)
+                        <div class="fh5co-2col fh5co-bg to-animate-2"
+                             style="background-image: url(images/res_img_1.jpg)"></div>
+
+                        <div class="fh5co-2col fh5co-text">
+                            <div class="col-md-6">
+                                <div class="col-md-6"><a href="#" class="btn "><h2
+                                                class="heading to-animate">{{$package->name}}</h2></a></div>
+                            </div>
+
+
+                            <p class="to-animate">{{$package->description}}<br>
+
+                                @if(($package->price)!=null or ($package->price)!='')
+                                    <span>Price = ${{$package->price}}</span>
+                                @endif
+                            </p>
+                            {{--<a href="/packages/{{$package->name}}">more</a>--}}
+                        </div>
+                    @else
+
+                        <div class="fh5co-2col fh5co-text">
+                            <a href="#" class="btn "><h2
+                                        class="heading to-animate">{{$package->name}}</h2></a>
+
+                            <p class="to-animate">{{$package->description}}<br>
+
+                                    @if(($package->price)!=null or ($package->price)!='')
+                                        <span>${{$package->price}}</span>
+                                    @endif
+                                </p>
+                                {{--<a href="/packages/{{$package->name}}">more</a>--}}
+                            {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
+                            {{--<input id="add" type="submit" name="button" value="enter"/>--}}
+                            {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
+
+                        </div>
+                        <div class="fh5co-2col fh5co-bg to-animate-2"
+                             style="background-image: url(images/res_img_1.jpg)"></div>
+
+                    @endif
+                @endforeach
+
+
+
+            @endif
+        @endif
+
+
         @foreach($packages as $key=>$package)
             @if($key%2==1)
-                <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+                <div class="fh5co-2col fh5co-bg to-animate-2"
+                     style="background-image: url(images/res_img_1.jpg)"></div>
 
                 <div class="fh5co-2col fh5co-text">
                     <div class="col-md-6">
                         <div class="col-md-6"><a href="#" class="btn "><h2
                                         class="heading to-animate">{{$package->name}}</h2></a></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="col-md-6"><p class="text-center to-animate"><a href="#"
-                                                                                   class="btn btn-primary btn-outline">Add
-                                    to my tour</a></p></div>
                     </div>
 
 
@@ -158,26 +213,28 @@
 
                 <div class="fh5co-2col fh5co-text">
                     <a href="#" class="btn "><h2
-                                    class="heading to-animate">{{$package->name}}</h2></a>
+                                class="heading to-animate">{{$package->name}}</h2></a>
 
-                    <div class="row"><p class="to-animate">{{$package->description}}<br>
+                    <p class="to-animate">{{$package->description}}<br>
 
-                            @if(($package->price)!=null or ($package->price)!='')
-                                <span>${{$package->price}}</span>
-                            @endif
-                        </p>
-                        <a href="/packages/{{$package->name}}">more</a></div>
+                        @if(($package->price)!=null or ($package->price)!='')
+                            <span>${{$package->price}}</span>
+                        @endif
+                    </p>
+                    <a href="/packages/{{$package->name}}">more</a>
                     {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
                     {{--<input id="add" type="submit" name="button" value="enter"/>--}}
                     {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
 
                 </div>
-                <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+                <div class="fh5co-2col fh5co-bg to-animate-2"
+                     style="background-image: url(images/res_img_1.jpg)"></div>
 
             @endif
         @endforeach
-
     </div>
+
+
     @if(Auth::check())
         @if(Auth::user()->type!='U')
             <div id="fh5co-contact" data-section="create">
@@ -267,9 +324,12 @@
         });
     </script>
     <script>
-        document.getElementById('add').onclick = function() {
+        document.getElementById('add').onclick = function () {
             alert("button was clicked");
-        }​;​
+        }
+        ​
+        ;
+        ​
     </script>
 @endsection
 

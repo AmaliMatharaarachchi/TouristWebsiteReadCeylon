@@ -13,9 +13,14 @@ class city extends Model
         return $this->hasMany(Has_image::class);
     }
 
+    public function customizeTour(){
+        return $this->hasMany(CustomizeTour::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'name';
     }
+
 
 }

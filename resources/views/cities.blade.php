@@ -105,8 +105,35 @@
 
 
     </div>
+@if(Auth::check() and Auth::user()->type=='U')
+    <div class="container">
+<h1>My Tour</h1>
+        <h2 style="color: #1b6d85">to create your own tour, just click on add to my tour button belongs to your desired cities</h2>
+        <h3>cities added : </h3>
+        <h4 style="color: #2b542c "><p id="city-values" ></p></h4>
+        <form action="{{route('customize')}}" method="post">
+            {{ csrf_field() }}
 
-    <br>
+            <div class="form-group">
+                <input type="hidden" id='list' name="cities" autocomplete='off'/>
+
+            </div>
+            <div class="form-group">
+                <label for="name" class="control-label">Add a name*</label>
+
+
+                <input id="name" type="text" name="name" class="form-control"
+                       required/>
+
+            </div>
+
+
+            <input class="btn-primary base-text-color " type="submit" value="create tour"/>
+        </form>
+
+
+    </div>
+    @endif
     <br>
     <br>
     <div id="fh5co-about" data-section="cities">
@@ -125,8 +152,10 @@
                     <a href="/cities/{{$city->name}}">more</a>
                     @if(Auth::check())
                         @if(Auth::user()->type=='U')
-                            <p class="text-center to-animate"><a href="#" class="btn btn-primary btn-outline">Add to my
+                            <p class="text-center to-animate" id="{{$city->id}}"><a href="#" onclick="addToArray('{{$city->id}}','{{$city->name}}','A')" class="btn btn-primary btn-outline">Add to my
                                     tour</a>
+                            </p>
+                            <p class="text-center to-animate" id="{{$city->name}}" style="display: none"><a href="#"  onclick="addToArray('{{$city->id}}','{{$city->name}}','R')" class="btn btn-primary btn-outline">Remove from my tour</a>
                             </p>
                         @else
                             <p class="text-center to-animate"><a href="/cities/update/{{$city->name}}"
@@ -144,9 +173,22 @@
 
                     </p>
                     <a href="/packages/{{$city->name}}">more</a>
-                    <p class="text-center to-animate"><input type="button" class="sal" value="0"> <a
-                                href="javascript:addNum({{$city->id}})"
-                                class="btn btn-primary btn-outline">Add to my city</a></p>
+                    {{--<p class="text-center to-animate"><input type="button" class="sal" value="0"> <a--}}
+                                {{--href="javascript:addNum({{$city->id}})"--}}
+                                {{--class="btn btn-primary btn-outline">Add to my city</a></p>--}}
+                    @if(Auth::check())
+                        @if(Auth::user()->type=='U')
+                            <p class="text-center to-animate" id="{{$city->id}}"><a href="#"  onclick="addToArray('{{$city->id}}','{{$city->name}}','A')" class="btn btn-primary btn-outline">Add to my
+                                    tour</a>
+                            </p>
+                            <p class="text-center to-animate" id="{{$city->name}}" style="display: none"><a href="#"  onclick="addToArray('{{$city->id}}','{{$city->name}}','R')" class="btn btn-primary btn-outline">Remove from my tour</a>
+                            </p>
+                        @else
+                            <p class="text-center to-animate"><a href="/cities/update/{{$city->name}}"
+                                                                 class="btn btn-primary btn-outline">update</a>
+                            </p>
+                        @endif
+                    @endif
                 </div>
                 <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
 
@@ -192,21 +234,7 @@
 
         @endif
     @endif
-    <div class="container">
-        <div class="col-md-6 right">
-            <form action="{{route('customize')}}" method="post">
-                {{ csrf_field() }}
 
-                <div class="form-group">
-                    <input type="hidden" id='list' name="srray[]"/>
-
-                </div>
-
-
-                <input class="btn-primary base-text-color " type="submit" value="send"/>
-            </form>
-        </div>
-    </div>
 
     <div id="fh5co-footer">
         <div class="row">
@@ -258,28 +286,47 @@
         });
     </script>
     <script type="text/javascript">
-        var numArray = ['123'];
-        function addNum(num) {
-            numArray.push(num);
-            document.querySelector(".txt").innerHTML = numArray.join('');
+        var numArray = [];
+        var names=[];
+        function addToArray(id,name,type){
+            if (type=='A'){
+            numArray.push(id);
+            names.push(name)
+            console.log(numArray);
+
+            document.getElementById(id).style.display = 'none';
+            document.getElementById(name).style.display = '';
+            }
+            else {
+                var index = numArray.indexOf(id);
+                if (index > -1) {
+                    numArray.splice(index, 1);
+                    names.splice(index,1);
+                }
+
+                document.getElementById(name).style.display = 'none';
+                document.getElementById(id).style.display = '';
+            }
+            document.getElementById('list').value = numArray;
+            document.getElementById('city-values').innerHTML = names;
+
         }
 
-        //        var fd = new FormData(document.getElementById("myform"));
-        //        for (var i = 0; i < numArray.length; i++) {
-        //            fd.append('numArray[]', numArray[i]);
-        //        }
 
-        document.getElementById('list').value = numArray;
+
 
 
         $(document).ready(function () {
             $('.sal').each(function () {
                 $(this).click(function (e) {
                     numArray.push($(this).val());
+
                     console.log(numArray);
                 });
             });
         });
+
+
     </script>
 @endsection
 

@@ -86,7 +86,7 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'user_review'
     ]);
     Route::post('/customize', [
-        'uses' => 'PackageController@customize',
+        'uses' => 'TourController@store',
         'as' => 'customize'
     ]);
 

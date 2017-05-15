@@ -52,11 +52,20 @@
                     <div class="fh5co-menu-2">
                         <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
 
-                        <a href="#" data-nav-section="events">Messages</a>
-                        @if((Auth::check()))
-                            <a href="#" data-nav-section="login">Logout/Register-Admin</a>
-                        @else
 
+                        @if((Auth::check()))
+                            @if(Auth::user()->type=='A')
+                                <a href="#" data-nav-section="events">notifications()</a>
+                                <a href="#" data-nav-section="login">Logout/Register-Admin</a>
+
+                            @else
+                                <a href="#" data-nav-section="events">messages</a>
+                                <a href="#" data-nav-section="login">Logout</a>
+
+                            @endif
+
+                        @else
+                            <a href="#" data-nav-section="events">contact Us</a>
                             <a href="#" data-nav-section="login">Login/Register</a>
                         @endif
                     </div>
@@ -111,6 +120,7 @@
         </div>
     </div>
     @if(Auth::check())
+        @if(Auth::user()->type=='U')
         <div class="container">
             <div class="col-md-6 right">
                 <form METHOD="post" action="{{route('user_review')}}">
@@ -133,6 +143,7 @@
         </div>
         <br>
         <br>
+            @endif
     @endif
     <div id="fh5co-featured" data-section="tours">
         <div class="container">
@@ -385,10 +396,11 @@
     <div id="fh5co-contact" data-section="login">
         <div class="container">
             @if((Auth::check()))
-                <label>Register new admin</label>
-                <p class="text-center to-animate"><a href="/admin_register" class="btn btn-primary btn-outline">
-                        REGISTER</a></p>
-
+                @if(Auth::user()->type=='A')
+                    <label>Register new admin</label>
+                    <p class="text-center to-animate"><a href="/admin_register" class="btn btn-primary btn-outline">
+                            REGISTER</a></p>
+                @endif
                 <label>Are you sure to logout?</label>
                 <p class="text-center to-animate"><a href="{{route('logout')}}" class="btn btn-primary btn-outline">
                         LOGOUT</a></p>
