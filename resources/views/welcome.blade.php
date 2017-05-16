@@ -343,6 +343,7 @@
 
                             <input class="base-text-color" type="submit" value="send message"/>
                         </form>
+                        @else
                         @endif
                     @else
                         <form METHOD="post" action="{{route('public_message')}}">
