@@ -9,117 +9,144 @@
 
 
 
-    <section id="content-container">
-        <div class="container">
-            <div class="row">
+    <br xmlns="http://www.w3.org/1999/html">
+    <br>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{route('welcome')}}">ReadCeylon</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{route('welcome')}}">Home</a></li>
+                <li><a href="{{route('packages')}}">Tour Packages</a></li>
+                <li class="active"><a href="/packages/{{$package->name}}">{{$package->name}}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if(Auth::check())
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                @else
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 
-                <div class="col-xs-12 col-sm-7 col-md-12">
-                    <div>
-                        <article class="blog-item post-item">
-                            {{--<div class="owlSliderImg post-slider img-container" data-items="1" data-loop="true"--}}
-                                 {{--data-auto="false" data-autospeed="3000" data-mousedrag="false" data-nav="true"--}}
-                                 {{--data-animin="fadeIn" data-animout="fadeOut">--}}
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @endif
+            </ul>
+        </div>
+    </nav>
 
-                                {{--<div><img class="img-responsive" src="{{$package->picture1}}" alt="single"/></div>--}}
-                                {{--<div><img class="img-responsive" src="{{URL::asset($package->picture1)}}"--}}
-                                          {{--alt="display is not available"/></div>--}}
-                                {{--<div><img class="img-responsive" src="{{URL::asset($package->picture2)}}"--}}
-                                          {{--alt="display is not available"/></div>--}}
-                                {{--<div><img class="img-responsive" src="images/elephant.jpg" alt="display not available"/></div>--}}
-                                {{--@if(($package->picture3)!=null)--}}
-                                    {{--<div><img class="img-responsive" src="{{URL::asset($package->picture3)}}"--}}
-                                              {{--alt="display is not available"/>--}}
-                                    {{--</div>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
+    <div class="container">
+        <h1 style="color: #1b6d85"><b>{{$package->name}}</b></h1>
+        <br>
+        <div class="row">
 
-                            <div class="row">
+            <!-- Indicators -->
 
+            @foreach($package->has_city as $p)
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <h2>{{$p->city->name}}</h2>
+                    @if(sizeof($p->city->has_image)>1)
+                        <ol class="carousel-indicators">
+                            @foreach($p->city->has_image as $key=>$i)
+                                @if($key==0)
+                                    <li data-target="#myCarousel" data-slide-to="{{$key}}" class="active"></li>
+                                @else
+                                    <li data-target="#myCarousel" data-slide-to="{{$key}}"></li>
+                                @endif
+                            @endforeach
+                        </ol>
 
-                                <div class="col-sm-12 col-md-12">
-                                    <p class="post-title base-text-color"><a
-                                                href="/packages/{{$package->id}}">{{$package->name}}</a></p>
-                                    {{--</echo updated at {{$package->updated_at->toFormattedDateString()}}--}}
-                                    {{--<ul class="tags-list">--}}
-                                        {{--<li><a href="#">place1</a></li>--}}
-                                        {{--<li><a href="#">place2</a></li>--}}
-                                        {{--<li><a href="#">place3</a></li>--}}
-
-                                    {{--</ul>--}}
-                                    {{--<p class="blog-item"> {{(new \Carbon($package->updated_at))->toFormattedDateString()}}</p>--}}
-                                    <p>
-                                        {{$package->description}}
-                                    </p>
-                                    <hr>
-                                    <hr>
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="widget widget-comment">
-                                            @if(sizeof($package->comments)>0)
-                                                <h4 class="widget-title"><b>Recent Comments</b></h4>
-                                            @else
-                                                <h4 class="widget-title"><b>No Comments have been posted yet</b></h4>
-                                            @endif
-                                            <div class="col-xs-12 col-md-12">
-                                                @foreach($package->comments as $comment)
-                                                    <article>
-                                                        <span class="comment icon-comment">{{$comment->user->name}}</span>
-
-                                                        <p>
-                                                            {{$comment->created_at->diffForHumans()}}
-
-                                                        </p>
-                                                        <p style='color: #2ab27b'>
-                                                            {{$comment->review}}
-                                                        </p>
-                                                    </article>
-                                                @endforeach
-
-                                            </div>
-                                            @if(Auth::check())
-                                                <div class="col-xs-12 col-md-12">
-                                                    @if ($errors->has('review'))
-                                                        <div class="alert alert-danger">
-                                                            <span class="help-block">
-                                                                <strong>
-                                                                    'You have to type a non empty comment here'
-                                                                </strong>
-                                                             </span>
-                                                        </div>
-
-                                                    @endif
-                                                    <form method="post" action="{{route('add_comment')}}">
-                                                        {{csrf_field()}}
-
-                                                        <span class="comment icon-comment">Add your comment</span>
-                                                    <textarea type="text" id="review" name="review"
-                                                    ></textarea>
-
-                                                        {{--<input type="hidden" value="{{Auth::user()->id}}" id="user_id"--}}
-                                                        {{--name="user_id"/>--}}
-                                                        <input type="hidden" value="{{$package->id}}" id="package_id"
-                                                               name="package_id"/>
-                                                        <input class="base-text-color" type="submit" value="Send"/>
-
-                                                    </form>
-                                                </div>
-                                            @endif
-
-
-                                        </div>
-
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            @foreach($p->city->has_image as $key=>$i)
+                                @if($key==0)
+                                    <div class="item active">
+                                        <img src="\img\{{$i->image->url}}" alt="{{$i->image->name}}"
+                                             style="width:100%;">
                                     </div>
-                                </div>
+                                @else
+                                    <div class="item ">
+                                        <img src="\img\{{$i->image->url}}" alt="{{$i->image->name}}"
+                                             style="width:100%;">
+                                    </div>
+                                @endif
+                            @endforeach
 
-                            </div>
-                        </article>
+                        </div>
 
-                    </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    @else
+                        @foreach($p->city->has_image as $i)
+                            <img src="\img\{{$i->image->url}}" alt="{{$i->image->name}}" style="width:100%;">
 
+                        @endforeach
+                    @endif
                 </div>
+            @endforeach
+
+        </div>
+        <br>
+        <br>
+        <div class="col-md-6">
+            <h2>Description :</h2>
+            <p align="justify">{{$package->description}}</p>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6 pull-right"><h2> Price : <span>{{$package->price}}$</span></h2>
+                <h2> For {{$package->days}} days only <span></span></h2></div>
+
+        </div>
+        <div class="col-md-12">
+            <br>
+
+            @if(sizeof($package->comments)>0)
+                <h2><b>Recent Comments</b></h2>
+            @else
+                <h2><b>No Comments have been posted yet</b></h2>
+            @endif
+
+
+            @foreach($package->comments as $comment)
+                <div class="col-md-4"><h3 style="color: #2e6da4">
+                        @if(Auth::check())
+                            @if(Auth::user()->type=='A')
+                                Admin
+                            @else
+                                {{$comment->user->name}}
+                            @endif
+                            @endif
+                    </h3></div>
+                <div class="col-md-8"><h3><span>{{$comment->created_at->diffForHumans()}}  </span></h3></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-11"><p><b>{{$comment->review}}</b>
+
+                    </p></div>
+
+
+            @endforeach
+            <div class="col-md-12">
+                <form method="post" action="{{route('add_comment')}}">
+                    {{csrf_field()}}
+
+                    <h3><i class="icon-comments"></i> Add your comment: </h3>
+                    <textarea type="text" id="review" name="review"
+                    ></textarea>
+
+                    <input type="hidden" value="{{Auth::user()->id}}" id="user_id"
+                           name="user_id"/>
+                    <input type="hidden" value="{{$package->id}}" id="package_id"
+                           name="package_id"/>
+                    <input class=" base-text-color" type="submit" value="Send"/>
+
+                </form>
+
             </div>
         </div>
-    </section>
-
-
-
+    </div>
 @endsection

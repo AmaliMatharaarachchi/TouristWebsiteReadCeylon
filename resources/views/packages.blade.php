@@ -195,10 +195,10 @@
                      style="background-image: url(images/res_img_1.jpg)"></div>
 
                 <div class="fh5co-2col fh5co-text">
-                    <div class="col-md-6">
-                        <div class="col-md-6"><a href="#" class="btn "><h2
-                                        class="heading to-animate">{{$package->name}}</h2></a></div>
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        <a href="#" class="btn "><h2
+                                        class="heading to-animate">{{$package->name}}</h2></a>
+                    {{--</div>--}}
 
 
                     <p class="to-animate">{{$package->description}}<br>
@@ -323,14 +323,7 @@
             });
         });
     </script>
-    <script>
-        document.getElementById('add').onclick = function () {
-            alert("button was clicked");
-        }
-        ​
-        ;
-        ​
-    </script>
+
 @endsection
 
 
