@@ -45,6 +45,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'cityController@index',
         'as' => 'cities'
     ]);
+    Route::get('/reviews', [
+        'uses' => 'ReviewController@index',
+        'as' => 'reviews'
+    ]);
 
     Route::post('/cities/create', [
         'uses' => 'CityController@store',
@@ -57,6 +61,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/packages/update', [
         'uses' => 'PackageController@update',
         'as' => 'package_update'
+    ]);
+    Route::post('/reviews/update', [
+        'uses' => 'ReviewController@update',
+        'as' => 'change_review'
     ]);
 
     Route::post('/comment/create', [

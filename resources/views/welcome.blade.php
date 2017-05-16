@@ -81,7 +81,7 @@
     </div>
 
     <div id="fh5co-about" data-section="about">
-        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
+        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/srilanka-1.jpg)"></div>
         <div class="fh5co-2col fh5co-text">
             <h2 class="heading to-animate">About Sri Lanka</h2>
             <p class="to-animate"><span class="firstcharacter">S</span>ri Lanka is a beautiful country. far far
@@ -103,13 +103,13 @@
                     <ul class="slides">
                         @foreach($reviews as $review)
                             @if($review->state=='A')
-                            <li>
-                                <blockquote>
-                                    <p>&ldquo;{{$review->review}}&rdquo;</p>
-                                    <p class="quote-author">&mdash; {{$review->user->name}}</p>
-                                </blockquote>
-                            </li>
-@endif
+                                <li>
+                                    <blockquote>
+                                        <p>&ldquo;{{$review->review}}&rdquo;</p>
+                                        <p class="quote-author">&mdash; {{$review->user->name}}</p>
+                                    </blockquote>
+                                </li>
+                            @endif
                         @endforeach
 
 
@@ -122,29 +122,29 @@
     </div>
     @if(Auth::check())
         @if(Auth::user()->type=='U')
-        <div class="container">
-            <div class="col-md-6 right">
-                <form METHOD="post" action="{{route('user_review')}}">
-                    {{ csrf_field() }}
+            <div class="container">
+                <div class="col-md-6 right">
+                    <form METHOD="post" action="{{route('user_review')}}">
+                        {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label for="review" class="control-label">Tell us about your experience</label>
+                        <div class="form-group">
+                            <label for="review" class="control-label">Tell us about your experience</label>
 
 
                                 <textarea id="review" type="review" class="form-control" name="review"
                                           required></textarea>
 
 
-                    </div>
+                        </div>
 
 
-                    <input class="btn-primary base-text-color " type="submit" value="Add review"/>
-                </form>
+                        <input class="btn-primary base-text-color " type="submit" value="Add review"/>
+                    </form>
+                </div>
             </div>
-        </div>
-        <br>
-        <br>
-            @endif
+            <br>
+            <br>
+        @endif
     @endif
     <div id="fh5co-featured" data-section="tours">
         <div class="container">
@@ -160,18 +160,26 @@
             <div class="row">
 
                 <div class="fh5co-grid">
-                    @foreach($packages as $key => $package)
+                    @foreach($packages as $package)
 
                         <div class="fh5co-v-half to-animate-2">
-                            <div class="fh5co-v-col-2 fh5co-bg-img"
-                                 style="background-image: url(images/res_img_1.jpg)"></div>
+                            @foreach($package->has_city as $k=> $c)
+                                @if($k==0)
+                                    @foreach($c->city->has_image as $key=>$i)
+                                        @if($key==0)
+                                            <div class="fh5co-v-col-2 fh5co-bg-img"
+                                                 style="background-image: url('img/{{$i->image->url}}')"></div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
                             <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
                                 <h1 style="color: #1b6d85"><b>{{$package->name}}</b></h1>
-                                <span class="pricing">Price : ${{$package->price}}  For {{$package->days}}days</span>
+                                <span class="pricing">Price : ${{$package->price}} For {{$package->days}}days</span>
                                 <p>
-                                @foreach($package->has_city as $c)
-                                    <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
-                                    @endforeach
+                                    @foreach($package->has_city as $c)
+                                        <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                                @endforeach
                                 <div class="your-div"><span>{{$package->description}}</span></div>
                                 </p>
                                 <p><a href="/packages/{{$package->name}}">more...</a></p>
@@ -257,12 +265,16 @@
                                     <li>
                                         <div class="fh5co-food-desc">
                                             <figure>
-                                                <img src="images/res_img_5.jpg" class="img-responsive"
-                                                     alt="not available">
+                                                @foreach($city->has_image as $key=> $i)
+                                                    @if($key==0)
+                                                        <img src="img\{{$i->image->url}}" class="img-responsive"
+                                                             alt="not available">
+                                                    @endif
+                                                @endforeach
                                             </figure>
                                             <div>
-                                                <h3>{{$city->name}}</h3>
-                                                <p>{{$city->description}}</p>
+                                                <h2><a href="/cities/{{$city->name}}">{{$city->name}}</a></h2>
+
                                             </div>
                                         </div>
 
@@ -281,7 +293,7 @@
 
                     @if(Auth::check())
                         @if(Auth::user()->type=='A')
-                            <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Update</a></p>
+                            <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">View/Update</a></p>
                         @else
                             <p><a href="{{route('cities')}}" class="btn btn-primary btn-outline">Create your own
                                     tour</a></p>
@@ -325,25 +337,27 @@
                 <div class="col-md-6 to-animate-2">
 
                     @if((Auth::check()))
-                    @if((Auth::user()->type=='U'))
+                        @if((Auth::user()->type=='U'))
 
-                        <form METHOD="post" action="{{route('user_message')}}">
-                            {{ csrf_field() }}
+                            <form METHOD="post" action="{{route('user_message')}}">
+                                {{ csrf_field() }}
 
-                            <div class="form-group">
-                                <label for="message" class="control-label">your message*</label>
+                                <div class="form-group">
+                                    <label for="message" class="control-label">your message*</label>
 
 
                                 <textarea id="message" type="message" class="form-control" name="message"
                                           required></textarea>
 
 
-                            </div>
+                                </div>
 
 
-                            <input class="base-text-color" type="submit" value="send message"/>
-                        </form>
+                                <input class="base-text-color" type="submit" value="send message"/>
+                            </form>
                         @else
+                            <h1><a href="{{route('reviews')}}" style="color: black"><b>Add / Remove reviews</b></a></h1>
+
                         @endif
                     @else
                         <form METHOD="post" action="{{route('public_message')}}">
@@ -393,7 +407,8 @@
             </div>
 
             @if(Auth::check())
-                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View all Messages</a></p>
+                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View
+                        all Messages</a></p>
             @endif
         </div>
     </div>

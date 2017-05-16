@@ -141,8 +141,17 @@
                             a new Tour</a></p></div>
                 @foreach((Auth::user()->tour) as $key=>$package)
                     @if($key%2==1)
-                        <div class="fh5co-2col fh5co-bg to-animate-2"
-                             style="background-image: url(images/res_img_1.jpg)"></div>
+
+                        @foreach($package->has_city as $key1=>$c)
+                            @if($key1==0)
+                                @foreach($c->city->has_image as $key2=>$i)
+                                    @if($key2==0)
+                                        <div class="fh5co-2col fh5co-bg to-animate-2"
+                                             style="background-image: url('img/{{$i->image->url}}')"></div>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
 
                         <div class="fh5co-2col fh5co-text">
                             <div class="col-md-6">
@@ -167,19 +176,26 @@
 
                             <p class="to-animate">{{$package->description}}<br>
 
-                                    @if(($package->price)!=null or ($package->price)!='')
-                                        <span>${{$package->price}}</span>
-                                    @endif
-                                </p>
-                                {{--<a href="/packages/{{$package->name}}">more</a>--}}
+                                @if(($package->price)!=null or ($package->price)!='')
+                                    <span>${{$package->price}}</span>
+                                @endif
+                            </p>
+                            {{--<a href="/packages/{{$package->name}}">more</a>--}}
                             {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
                             {{--<input id="add" type="submit" name="button" value="enter"/>--}}
                             {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
 
                         </div>
-                        <div class="fh5co-2col fh5co-bg to-animate-2"
-                             style="background-image: url(images/res_img_1.jpg)"></div>
-
+                        @foreach($package->has_city as $key1=>$c)
+                            @if($key1==0)
+                                @foreach($c->city->has_image as $key2=>$i)
+                                    @if($key2==0)
+                                        <div class="fh5co-2col fh5co-bg to-animate-2"
+                                             style="background-image: url('img/{{$i->image->url}}')"></div>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
                     @endif
                 @endforeach
 
@@ -191,13 +207,22 @@
 
         @foreach($packages as $key=>$package)
             @if($key%2==1)
-                <div class="fh5co-2col fh5co-bg to-animate-2"
-                     style="background-image: url(images/res_img_1.jpg)"></div>
+
+                    @foreach($package->has_city as $key1=>$c)
+                        @if($key1==0)
+                            @foreach($c->city->has_image as $key2=>$i)
+                                @if($key2==0)
+                                    <div class="fh5co-2col fh5co-bg to-animate-2"
+                                         style="background-image: url('img/{{$i->image->url}}')"></div>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
 
                 <div class="fh5co-2col fh5co-text">
                     {{--<div class="col-md-6">--}}
-                        <a href="#" class="btn "><h2
-                                        class="heading to-animate">{{$package->name}}</h2></a>
+                    <a href="#" class="btn "><h2
+                                class="heading to-animate">{{$package->name}}</h2></a>
                     {{--</div>--}}
 
 
@@ -207,7 +232,7 @@
                             <span>Price = ${{$package->price}}</span>
                         @endif
                     </p>
-                    <a href="/packages/{{$package->name}}">more</a>
+                    <a href="/packages/{{$package->name}}">more...</a>
                 </div>
             @else
 
@@ -221,23 +246,32 @@
                             <span>${{$package->price}}</span>
                         @endif
                     </p>
-                    <a href="/packages/{{$package->name}}">more</a>
+                    <a href="/packages/{{$package->name}}">more...</a>
 
                     @if(Auth::check())
-                    @if(Auth::user()->type=='A')
+                        @if(Auth::user()->type=='A')
                             <p class="text-center to-animate"><a href="/packages/update/{{$package->name}}"
                                                                  class="btn btn-primary btn-outline">update</a>
                             </p>
 
                         @endif
-                        @endif
+                    @endif
                     {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
                     {{--<input id="add" type="submit" name="button" value="enter"/>--}}
                     {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
 
                 </div>
-                <div class="fh5co-2col fh5co-bg to-animate-2"
-                     style="background-image: url(images/res_img_1.jpg)"></div>
+                @foreach($package->has_city as $key1=>$c)
+                    @if($key1==0)
+                        @foreach($c->city->has_image as $key2=>$i)
+                            @if($key2==0)
+                                <div class="fh5co-2col fh5co-bg to-animate-2"
+                                     style="background-image: url('img/{{$i->image->url}}')"></div>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+
 
             @endif
         @endforeach
