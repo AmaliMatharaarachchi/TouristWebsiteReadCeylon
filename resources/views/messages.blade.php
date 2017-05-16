@@ -8,35 +8,6 @@
 @section('style')
     <style>
 
-          {{--.na ul {--}}
-             {{--list-style-type: none;--}}
-             {{--margin: 0;--}}
-             {{--padding: 0;--}}
-             {{--overflow: hidden;--}}
-             {{--background-color: #333;--}}
-         {{--}--}}
-
-        {{--.na li {--}}
-            {{--float: left;--}}
-        {{--}--}}
-
-        {{--.na li a {--}}
-            {{--display: block;--}}
-            {{--color: white;--}}
-            {{--text-align: center;--}}
-            {{--padding: 14px 16px;--}}
-            {{--text-decoration: none;--}}
-        {{--}--}}
-
-        {{--.na li a:hover:not(.active) {--}}
-            {{--background-color: #111;--}}
-        {{--}--}}
-
-        {{--.active {--}}
-            {{--background-color: #4CAF50;--}}
-        {{--}--}}
-
-        {{--//////////////////////--}}
 
         .chat {
             list-style: none;

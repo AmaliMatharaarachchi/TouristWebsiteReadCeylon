@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Has_city;
 use App\Image;
 use App\City;
 use App\Package;
@@ -56,6 +57,7 @@ class PackageController extends Controller{
         $this->validate($request, [
             'name' => 'required|max:255|unique:packages',
             'description' => 'required',
+            'cities' => 'required',
             'price' => 'integer',
             'days' => 'integer'
 
@@ -106,9 +108,36 @@ class PackageController extends Controller{
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255|unique:packages,name'.$request->id,
+            'description' => 'required',
+            'price' => 'integer',
+            'days' => 'integer'
+        ]);
+
+        $package = Package::find($request->id);
+        $package->name = $request->name;
+        $package->description = $request->description;
+
+        $package->price = $request->price;
+        $package->days = $request->days;
+
+        $package->save();
+
+
+        Has_city::where('package_id', $request->id)->delete();
+        (new HasCityController())->store($request->cities,$package->id);
+        Alert::success('Successfully updated the tour package', 'SUCCESS')->persistent("OK");
+        return redirect()->back();
+    }
+
+    public function showUpdate(Package $package)
+    {
+//
+        $cities = City::all();
+        return view('packages.update', compact('package','cities'));
     }
 
     /**

@@ -115,38 +115,52 @@
             @foreach($package->comments as $comment)
                 <div class="col-md-4"><h3 style="color: #2e6da4">
                         @if(Auth::check())
-                            @if(Auth::user()->type=='A')
+                            @if($comment->user->type=='A')
                                 Admin
                             @else
                                 {{$comment->user->name}}
                             @endif
-                            @endif
+                        @endif
                     </h3></div>
                 <div class="col-md-8"><h3><span>{{$comment->created_at->diffForHumans()}}  </span></h3></div>
                 <div class="col-md-1"></div>
                 <div class="col-md-11"><p><b>{{$comment->review}}</b>
 
                     </p></div>
+                <div class="col-md-12"> @if($comment->user==Auth::user())
+                        <form method="post" action="{{route('delete_comment')}}">
+                            {{csrf_field()}}
 
+
+                            <input type="hidden" value="{{$comment->id}}" id="id"
+                                   name="id"/>
+
+                            <input class=" base-text-color" type="submit" value="Delete Comment"/>
+
+                        </form>
+
+                    @endif</div>
 
             @endforeach
-            <div class="col-md-12">
-                <form method="post" action="{{route('add_comment')}}">
-                    {{csrf_field()}}
+            @if(Auth::check())
+                <div class="col-md-12">
+                    <form method="post" action="{{route('add_comment')}}">
+                        {{csrf_field()}}
 
-                    <h3><i class="icon-comments"></i> Add your comment: </h3>
+                        <h3><i class="icon-comments"></i> Add your comment: </h3>
                     <textarea type="text" id="review" name="review"
                     ></textarea>
 
-                    <input type="hidden" value="{{Auth::user()->id}}" id="user_id"
-                           name="user_id"/>
-                    <input type="hidden" value="{{$package->id}}" id="package_id"
-                           name="package_id"/>
-                    <input class=" base-text-color" type="submit" value="Send"/>
+                        <input type="hidden" value="{{Auth::user()->id}}" id="user_id"
+                               name="user_id"/>
+                        <input type="hidden" value="{{$package->id}}" id="package_id"
+                               name="package_id"/>
+                        <input class=" base-text-color" type="submit" value="Send"/>
 
-                </form>
+                    </form>
 
-            </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

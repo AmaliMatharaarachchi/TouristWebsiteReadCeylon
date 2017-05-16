@@ -172,7 +172,7 @@
                     <p class="to-animate">{{$city->description}}<br>
 
                     </p>
-                    <a href="/packages/{{$city->name}}">more</a>
+                    <a href="/cities/{{$city->name}}">more</a>
                     {{--<p class="text-center to-animate"><input type="button" class="sal" value="0"> <a--}}
                                 {{--href="javascript:addNum({{$city->id}})"--}}
                                 {{--class="btn btn-primary btn-outline">Add to my city</a></p>--}}

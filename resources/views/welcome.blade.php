@@ -50,7 +50,7 @@
                         <a href="#">ReadCeylon</a>
                     </div>
                     <div class="fh5co-menu-2">
-                        <a href="#" data-nav-section="sri_lanka">Sri Lanka</a>
+                        <a href="#" data-nav-section="sri_lanka">Cities</a>
 
 
                         @if((Auth::check()))
@@ -102,13 +102,14 @@
                 <div class="flexslider">
                     <ul class="slides">
                         @foreach($reviews as $review)
+                            @if($review->state=='A')
                             <li>
                                 <blockquote>
                                     <p>&ldquo;{{$review->review}}&rdquo;</p>
                                     <p class="quote-author">&mdash; {{$review->user->name}}</p>
                                 </blockquote>
                             </li>
-
+@endif
                         @endforeach
 
 
@@ -165,12 +166,15 @@
                             <div class="fh5co-v-col-2 fh5co-bg-img"
                                  style="background-image: url(images/res_img_1.jpg)"></div>
                             <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
-                                <h2>{{$package->name}}</h2>
-                                <span class="pricing">${{$package->price}}</span>
+                                <h1 style="color: #1b6d85"><b>{{$package->name}}</b></h1>
+                                <span class="pricing">Price : ${{$package->price}}  For {{$package->days}}days</span>
                                 <p>
+                                @foreach($package->has_city as $c)
+                                    <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                                    @endforeach
                                 <div class="your-div"><span>{{$package->description}}</span></div>
                                 </p>
-                                <p><a href="#">more...</a></p>
+                                <p><a href="/packages/{{$package->name}}">more...</a></p>
                             </div>
                         </div>
 
@@ -321,6 +325,7 @@
                 <div class="col-md-6 to-animate-2">
 
                     @if((Auth::check()))
+                    @if((Auth::user()->type=='U'))
 
                         <form METHOD="post" action="{{route('user_message')}}">
                             {{ csrf_field() }}
@@ -338,6 +343,7 @@
 
                             <input class="base-text-color" type="submit" value="send message"/>
                         </form>
+                        @endif
                     @else
                         <form METHOD="post" action="{{route('public_message')}}">
                             {{ csrf_field() }}
@@ -386,8 +392,7 @@
             </div>
 
             @if(Auth::check())
-                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View
-                        Messages</a></p>
+                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View all Messages</a></p>
             @endif
         </div>
     </div>

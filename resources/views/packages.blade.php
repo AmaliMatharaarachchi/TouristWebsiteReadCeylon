@@ -222,6 +222,15 @@
                         @endif
                     </p>
                     <a href="/packages/{{$package->name}}">more</a>
+
+                    @if(Auth::check())
+                    @if(Auth::user()->type=='A')
+                            <p class="text-center to-animate"><a href="/packages/update/{{$package->name}}"
+                                                                 class="btn btn-primary btn-outline">update</a>
+                            </p>
+
+                        @endif
+                        @endif
                     {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
                     {{--<input id="add" type="submit" name="button" value="enter"/>--}}
                     {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}

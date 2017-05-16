@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         {{--this is the form for create cities--}}
-                        <form method="post" action="{{ route('city-update')}}">
+                        <form method="post" action="{{ route('city_update')}}">
                             {{ csrf_field() }}
                             <input type="hidden" id="id" name="id" value="{{$city->id}}"
                             />

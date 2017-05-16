@@ -80,7 +80,7 @@ class CommentController extends Controller{
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -89,8 +89,11 @@ class CommentController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $comment = Comment::find($request->id);
+
+        $comment->delete();
+        return redirect()->back();
     }
 }

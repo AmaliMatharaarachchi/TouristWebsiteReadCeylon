@@ -52,14 +52,18 @@ Route::group(['middleware' => ['web']], function () {
     ]);
     Route::post('/cities/update', [
         'uses' => 'CityController@update',
-        'as' => 'city-update'
+        'as' => 'city_update'
+    ]);
+    Route::post('/packages/update', [
+        'uses' => 'PackageController@update',
+        'as' => 'package_update'
     ]);
 
     Route::post('/comment/create', [
         'uses' => 'CommentController@store',
         'as' => 'add_comment'
     ]);
-    Route::post('/contact_us', [
+    Route::post('/contact-us', [
         'uses' => 'PublicUserController@store',
         'as' => 'public_message'
     ]);
@@ -68,7 +72,7 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'user_message'
     ]);
 
-    Route::get('/view_message', [
+    Route::get('/view-message', [
         'uses' => 'SendMessageController@index',
         'as' => 'messages'
     ]);
@@ -89,6 +93,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'TourController@store',
         'as' => 'customize'
     ]);
+ Route::post('/delete-comment', [
+        'uses' => 'CommentController@destroy',
+        'as' => 'delete_comment'
+    ]);
 
 
 
@@ -97,6 +105,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/packages/{package}', 'PackageController@show');
     Route::get('/cities/{city}', 'CityController@show');
     Route::get('/cities/update/{city}', 'CityController@showUpdate');
+    Route::get('/packages/update/{package}', 'PackageController@showUpdate');
 
 
     Route::get('/admin_register', function(){
