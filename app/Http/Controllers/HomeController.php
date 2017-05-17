@@ -3,7 +3,7 @@
 use Alert;
 use DB;
 use App\City;
-use App\Review;
+//use App\Review;
 use App\Package;
 
 class HomeController extends Controller{
@@ -24,11 +24,12 @@ class HomeController extends Controller{
      */
     public function index()
     {
-        $reviews = Review::all();
+//        $reviews = Review::all();
         $packages= Package::all();
         $cities= City::all();
 
-        return view('welcome', ['reviews' => $reviews,'packages'=>$packages,'cities'=>$cities]);
+        return view('welcome', ['packages'=>$packages,'cities'=>$cities]);
+//        return view('welcome', ['reviews' => $reviews,'packages'=>$packages,'cities'=>$cities]);
 
     }
 }
