@@ -3,7 +3,7 @@
 use Alert;
 use DB;
 use App\City;
-use Review;
+use App\Review;
 use App\Package;
 
 class HomeController extends Controller{
