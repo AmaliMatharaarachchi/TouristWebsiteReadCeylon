@@ -6,6 +6,10 @@ use App\User;
 use Alert;
 use Illuminate\Http\Request;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
     /**
@@ -13,9 +17,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    //this is the admin register form
     public function index()
     {
-        //
+        return view('register');
     }
 
     public function registerAdmin(Request $request)

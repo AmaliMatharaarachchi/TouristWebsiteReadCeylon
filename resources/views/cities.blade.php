@@ -140,8 +140,11 @@
         @foreach($cities as $key=>$city)
 
             @if($key%2==1)
-                <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
-
+                @foreach($city->has_image as $key1=>$i)
+                    @if($key1==0)
+                <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url('img/{{$i->image->url}}')"></div>
+@endif
+                        @endforeach
                 <div class="fh5co-2col fh5co-text">
                     <a href="#" class="btn "><h2 class="heading to-animate">{{$city->name}}</h2></a>
 
@@ -190,8 +193,11 @@
                         @endif
                     @endif
                 </div>
-                <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url(images/res_img_1.jpg)"></div>
-
+                @foreach($city->has_image as $key1=>$i)
+                    @if($key1==0)
+                        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url('img/{{$i->image->url}}')"></div>
+                    @endif
+                @endforeach
             @endif
 
         @endforeach

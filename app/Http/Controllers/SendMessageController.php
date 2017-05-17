@@ -13,6 +13,8 @@ class SendMessageController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -57,7 +59,7 @@ class SendMessageController extends Controller{
 
         \Mail::to('almas.den.sw@gmail.com')->send(new UserMessage($request['message'],Auth::user()));
 //        session()->flash('message','We will contact you soon');
-        Alert::success('We will contact you soon');
+        Alert::success('We will contact you soon. Check your email inbox for the reply')->persistent('okay');
         return redirect()->back();
     }
 

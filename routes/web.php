@@ -116,12 +116,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/packages/update/{package}', 'PackageController@showUpdate');
 
 
-    Route::get('/admin_register', function(){
-        return view('register');
-    });
+    Route::get('/admin-register', 'UserController@index');
 
     Route::post('/admin-registering', [
-        'uses' => 'USerController@registerAdmin',
+        'uses' => 'UserController@registerAdmin',
         'as' => 'admin-register'
     ]);
 
