@@ -127,7 +127,7 @@
                 <div class="col-md-11"><p><b>{{$comment->review}}</b>
 
                     </p></div>
-                <div class="col-md-12"> @if($comment->user==Auth::user())
+                <div class="col-md-12"> @if($comment->user==Auth::user() or Auth::user()->type=='A')
                         <form method="post" action="{{route('delete_comment')}}">
                             {{csrf_field()}}
 

@@ -79,9 +79,16 @@ class ReviewController extends Controller{
      * @param  \App\review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, review $review)
+    public function update(Request $request)
     {
-        //
+        $review = Review::find($request->id);
+        $review->state=$request['state'];
+
+        $review->save();
+
+
+        Alert::success('Updated successfully');
+        return redirect()->back();
     }
 
     /**

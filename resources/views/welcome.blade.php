@@ -311,12 +311,25 @@
     </div>
 
 
-    <div id="fh5co-events" data-section="events" style="background-image: url(images/slide_2.jpg);"
+    <div id="fh5co-events" data-section="events" style="background-image: url(images/wave.jpg);"
          data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row text-center fh5co-heading row-padded">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="heading to-animate">Contact us</h2>
+                    <h2 class="heading to-animate">
+                        @if(Auth::check())
+                            @if(Auth::user()->type=='A')
+
+                                Notifications
+                            @else
+                                Contact Us
+                            @endif
+
+                        @else
+                            Contact Us
+
+                        @endif
+                    </h2>
 
                 </div>
             </div>
@@ -326,10 +339,10 @@
                     <ul class="fh5co-contact-info">
                         <li class="fh5co-contact-address ">
                             <i class="icon-home"></i>
-                            5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
+                            University of Moratuwa <br>Sri Lanka
                         </li>
-                        <li><i class="icon-phone"></i> (123) 465-6789</li>
-                        <li><i class="icon-envelope"></i>info@google.com</li>
+                        <li><i class="icon-phone"></i> 071-9321861</li>
+                        <li><i class="icon-envelope"></i>almas.den.sw@gmail.com</li>
                         <li><i class="icon-globe"></i> <a href="http://www.google.com"
                                                           target="_blank">google.com</a></li>
                     </ul>
@@ -356,7 +369,8 @@
                                 <input class="base-text-color" type="submit" value="send message"/>
                             </form>
                         @else
-                            <h1><a href="{{route('reviews')}}" style="color: black"><b>Add / Remove reviews</b></a></h1>
+                            <h1><a href="{{route('reviews')}}" class="btn btn-danger btn-outline" style="color: black"><b>Add / Remove reviews</b></a></h1>
+                            <h1><a href="#"class="btn btn-primary btn-outline" style="color: black"><b>Messages</b></a></h1>
 
                         @endif
                     @else
@@ -407,8 +421,10 @@
             </div>
 
             @if(Auth::check())
-                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-primary btn-outline">View
+                @if(Auth::user()->type!='A')
+                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-outline">View
                         all Messages</a></p>
+                    @endif
             @endif
         </div>
     </div>

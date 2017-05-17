@@ -43,15 +43,15 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <input type="hidden"  name="id" value="{{$review->id}}"/>
+                            <input type="hidden" name="id" value="{{$review->id}}"/>
 
                         </div>
                         <div class="form-group">
-                            <input type="hidden"  name="state" value="R"/>
+                            <input type="hidden" name="state" value="R"/>
 
                         </div>
 
-                        <input class="btn-primary base-text-color " type="submit" value="Remove"/>
+                        <input class="btn-primary base-text-color " type="submit" value="Reject"/>
                     </form>
                 @endif
             @endforeach
@@ -59,11 +59,54 @@
         </div>
         <div class="col-md-6">
             <h1>Other reviews :</h1>
-            @foreach($reviews as $review)
+            @foreach($reviews as $key=> $review)
                 @if($review->state!='A')
 
-                    <h3>Added by {{$review->user->name}}</h3>
+                    <h3>{{$key+1}}. Added by {{$review->user->name}}</h3>
                     <p>{{$review->review}}</p>
+                    <p>current state: @if($review->state=='R')rejected @else pending @endif
+                    </p>
+                    <div class="col-md-6">
+                        <form action="{{route('change_review')}}" method="post">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <input type="hidden" name="id" value="{{$review->id}}"/>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="hidden" name="state" value="A"/>
+
+                            </div>
+
+                            <input class="btn-primary base-text-color " type="submit" value="Accept"/>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6">@if($review->state=='P')
+
+                            <form action="{{route('change_review')}}" method="post">
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="{{$review->id}}"/>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <input type="hidden" name="state" value="R"/>
+
+                                </div>
+
+                                <input class="btn-primary base-text-color " type="submit" value="Reject"/>
+                            </form>
+                        @endif
+                    </div>
+
+
 
                 @endif
             @endforeach
