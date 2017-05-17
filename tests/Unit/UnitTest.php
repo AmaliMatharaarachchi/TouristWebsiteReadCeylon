@@ -10,9 +10,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+
 class UnitTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testPageWelcome(){
+        $this->visit('/')->see('ReadCeylon');
+    }
 
     public function test_create_package()
     {
