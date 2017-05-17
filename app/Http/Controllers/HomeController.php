@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Alert;
 use DB;
 use App\City;
-use App\Review;
+use Review;
 use App\Package;
 
 class HomeController extends Controller{
