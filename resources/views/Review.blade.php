@@ -114,6 +114,22 @@
         </div>
 
     </div>
+    <div id="fh5co-footer">
+        <div class="row">
+            <div class="container">
+                <div class="row row-padded">
+                    <div class="col-md-12 text-center">
+                        <p class="to-animate">&copy; 2017 ReadCeylon travels . <br>
+                        <p>Website Design, Development & Hosting by Almas-Den<br>
+                            contact us: almas.den.sw@gmail.com
+                        </p>
+                        <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 @endsection
 

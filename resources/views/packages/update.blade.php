@@ -79,14 +79,14 @@
                             <input type="hidden" id="id" name="id" value="{{$package->id}}"/>
                             <label for="name" class="control-label">Package Name*</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="{{$package->name}}"
-                                   required/>
+                                   value="{{$package->name}}" required/>
                             <label for="description" class="control-label">Description*</label>
                                 <textarea type="text" id="description" name="description" class="form-control"
                                           required>{{$package->description}}</textarea>
                             <label for="price" class=" control-label" >Price</label>
-                            <input type="text" id="price" name="price" placeholder="{{$package->price}}" class="form-control"/>
+                            <input type="text" id="price" name="price" value="{{$package->price}}" placeholder="{{$package->price}}" class="form-control"/>
                             <label for="days" class=" control-label">Days</label>
-                            <input type="text" id="days" name="days" placeholder="{{$package->days}}" class="form-control"/>
+                            <input type="text" id="days" name="days" value="{{$package->days}}" placeholder="{{$package->days}}" class="form-control"/>
                             <label for="cities" class=" control-label">Select cities</label>
                             <select name="cities[]" class="selectpicker" data-live-search="true" data-width="100%" multiple
                                     title="Select cities...">
@@ -101,6 +101,22 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="fh5co-footer">
+        <div class="row">
+            <div class="container">
+                <div class="row row-padded">
+                    <div class="col-md-12 text-center">
+                        <p class="to-animate">&copy; 2017 ReadCeylon travels . <br>
+                        <p>Website Design, Development & Hosting by Almas-Den<br>
+                            contact us: almas.den.sw@gmail.com
+                        </p>
+                        <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

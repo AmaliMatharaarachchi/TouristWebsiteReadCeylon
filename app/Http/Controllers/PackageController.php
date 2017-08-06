@@ -111,7 +111,7 @@ class PackageController extends Controller{
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255|unique:packages,name'.$request->id,
+            'name' => 'required|max:255|unique:packages,name,'.$request->id,
             'description' => 'required',
             'price' => 'integer',
             'days' => 'integer'
@@ -130,7 +130,7 @@ class PackageController extends Controller{
         Has_city::where('package_id', $request->id)->delete();
         (new HasCityController())->store($request->cities,$package->id);
         Alert::success('Successfully updated the tour package', 'SUCCESS')->persistent("OK");
-        return redirect()->back();
+        return redirect('/packages');
     }
 
     public function showUpdate(Package $package)

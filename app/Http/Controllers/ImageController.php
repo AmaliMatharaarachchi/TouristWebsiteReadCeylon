@@ -16,7 +16,7 @@ class ImageController extends Controller{
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index()
@@ -51,6 +51,7 @@ class ImageController extends Controller{
             'image' => 'image|required|max:12288',
             'name' => 'required|max:255|unique:images'
         ]);
+        echo "Test 1";
         $image->name = $request->name;
         $image->description = $request->description;
 
@@ -64,6 +65,7 @@ class ImageController extends Controller{
         $file->move(public_path() . '/img/', $name);
 
         $image->save();
+
 
         Alert::success('Successfully saved the image', 'SUCCESS')->persistent("OK");
         return redirect()->back();

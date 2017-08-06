@@ -129,74 +129,28 @@
     <br>
     <br>
     <br>
-    <div id="fh5co-about" data-section="packages">
-
+    <div class="div">
         @if(Auth::check())
             @if(Auth::user()->type=='U')
 
                 <h1>My Tours</h1>
 
-                <div class="col-md-6"><p class="text-center to-animate"><a href="{{route('cities')}}"
-                                                                           class="btn btn-primary btn-outline">Create
+                <div class="col-md-12"><p><a href="{{route('cities')}}"
+                                             class="btn btn-primary btn-outline">Create
                             a new Tour</a></p></div>
-                @foreach((Auth::user()->tour) as $key=>$package)
-                    @if($key%2==1)
-
-                        @foreach($package->has_city as $key1=>$c)
-                            @if($key1==0)
-                                @foreach($c->city->has_image as $key2=>$i)
-                                    @if($key2==0)
-                                        <div class="fh5co-2col fh5co-bg to-animate-2"
-                                             style="background-image: url('img/{{$i->image->url}}')"></div>
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
-
-                        <div class="fh5co-2col fh5co-text">
-                            <div class="col-md-6">
-                                <div class="col-md-6"><a href="#" class="btn "><h2
-                                                class="heading to-animate">{{$package->name}}</h2></a></div>
-                            </div>
+                @foreach((Auth::user()->tour) as $key=>$tour)
+                    <h1>{{$tour->name}}</h1>
 
 
-                            <p class="to-animate">{{$package->description}}<br>
+                    <div class="col-md-12"><p>
+                            @foreach($tour->customizeTour() as $city)
+                                {{$city->name}}
+                            @endforeach</p>
 
-                                @if(($package->price)!=null or ($package->price)!='')
-                                    <span>Price = ${{$package->price}}</span>
-                                @endif
-                            </p>
-                            {{--<a href="/packages/{{$package->name}}">more</a>--}}
-                        </div>
-                    @else
+                    </div>
 
-                        <div class="fh5co-2col fh5co-text">
-                            <a href="#" class="btn "><h2
-                                        class="heading to-animate">{{$package->name}}</h2></a>
 
-                            <p class="to-animate">{{$package->description}}<br>
 
-                                @if(($package->price)!=null or ($package->price)!='')
-                                    <span>${{$package->price}}</span>
-                                @endif
-                            </p>
-                            {{--<a href="/packages/{{$package->name}}">more</a>--}}
-                            {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
-                            {{--<input id="add" type="submit" name="button" value="enter"/>--}}
-                            {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
-
-                        </div>
-                        @foreach($package->has_city as $key1=>$c)
-                            @if($key1==0)
-                                @foreach($c->city->has_image as $key2=>$i)
-                                    @if($key2==0)
-                                        <div class="fh5co-2col fh5co-bg to-animate-2"
-                                             style="background-image: url('img/{{$i->image->url}}')"></div>
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
-                    @endif
                 @endforeach
 
 
@@ -204,20 +158,25 @@
             @endif
         @endif
 
+    </div>
+
+
+    <div id="fh5co-about" data-section="packages">
+
 
         @foreach($packages as $key=>$package)
             @if($key%2==1)
 
-                    @foreach($package->has_city as $key1=>$c)
-                        @if($key1==0)
-                            @foreach($c->city->has_image as $key2=>$i)
-                                @if($key2==0)
-                                    <div class="fh5co-2col fh5co-bg to-animate-2"
-                                         style="background-image: url('img/{{$i->image->url}}')"></div>
-                                @endif
-                            @endforeach
-                        @endif
-                    @endforeach
+                @foreach($package->has_city as $key1=>$c)
+                    @if($key1==0)
+                        @foreach($c->city->has_image as $key2=>$i)
+                            @if($key2==0)
+                                <div class="fh5co-2col fh5co-bg to-animate-2"
+                                     style="background-image: url('img/{{$i->image->url}}')"></div>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
 
                 <div class="fh5co-2col fh5co-text">
                     {{--<div class="col-md-6">--}}
@@ -233,6 +192,9 @@
                         @endif
                     </p>
                     <a href="/packages/{{$package->name}}">more...</a>
+                    <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                         class="btn btn-primary btn-outline">Book now!</a>
+                    </p>
                 </div>
             @else
 
@@ -259,6 +221,9 @@
                     {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
                     {{--<input id="add" type="submit" name="button" value="enter"/>--}}
                     {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
+                    <p class="text-center to-animate"><a href="#"
+                                                         class="btn btn-primary btn-outline">Book now!</a>
+                    </p>
 
                 </div>
                 @foreach($package->has_city as $key1=>$c)
@@ -316,7 +281,6 @@
         @endif
     @endif
 
-
     <div id="fh5co-footer">
         <div class="row">
             <div class="container">
@@ -329,15 +293,7 @@
                         <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <ul class="fh5co-social">
-                            <li class="to-animate-2"><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

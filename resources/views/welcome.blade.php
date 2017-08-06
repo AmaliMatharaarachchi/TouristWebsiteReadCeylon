@@ -210,41 +210,7 @@
         </div>
     </div>
 
-    {{--<div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">--}}
-    {{--<div class="fh5co-overlay"></div>--}}
-    {{--<div class="container">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-md-3 to-animate">--}}
-    {{--<div class="fh5co-type">--}}
-    {{--<h3 class="with-icon icon-1">Fruits</h3>--}}
-    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-    {{--there live the blind texts.</p>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-3 to-animate">--}}
-    {{--<div class="fh5co-type">--}}
-    {{--<h3 class="with-icon icon-2">Sea food</h3>--}}
-    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-    {{--there live the blind texts.</p>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-3 to-animate">--}}
-    {{--<div class="fh5co-type">--}}
-    {{--<h3 class="with-icon icon-3">Vegetables</h3>--}}
-    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-    {{--there live the blind texts.</p>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-3 to-animate">--}}
-    {{--<div class="fh5co-type">--}}
-    {{--<h3 class="with-icon icon-4">Meat</h3>--}}
-    {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-    {{--there live the blind texts.</p>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
+
 
     <div id="fh5co-menus" data-section="sri_lanka">
         <div class="container">
@@ -369,8 +335,25 @@
                                 <input class="base-text-color" type="submit" value="send message"/>
                             </form>
                         @else
-                            <h1><a href="{{route('reviews')}}" class="btn btn-danger btn-outline" style="color: black"><b>Add / Remove reviews</b></a></h1>
-                            <h1><a href="#"class="btn btn-primary btn-outline" style="color: black"><b>Messages</b></a></h1>
+                            <form METHOD="post" action="{{route('admin_message')}}">
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+                                    <label for="message" class="control-label">your message*</label>
+
+
+                                <textarea id="message" type="message" class="form-control" name="message"
+                                          required></textarea>
+
+
+                                </div>
+
+
+                                <input class="base-text-color" type="submit" value="send message to All users"/>
+                            </form>
+                            <h1><a href="{{route('reviews')}}" class="btn btn-danger btn-outline"
+                                   style="color: black"><b>Add / Remove reviews</b></a></h1>
+
 
                         @endif
                     @else
@@ -420,12 +403,12 @@
                 </div>
             </div>
 
-            @if(Auth::check())
-                @if(Auth::user()->type!='A')
-                <p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-outline">View
-                        all Messages</a></p>
-                    @endif
-            @endif
+            {{--@if(Auth::check())--}}
+            {{--@if(Auth::user()->type!='A')--}}
+            {{--<p class="text-center to-animate"><a href="{{route('messages')}}" class="btn btn-outline">View--}}
+            {{--all Messages</a></p>--}}
+            {{--@endif--}}
+            {{--@endif--}}
         </div>
     </div>
 
@@ -435,7 +418,7 @@
             @if((Auth::check()))
                 @if(Auth::user()->type=='A')
                     <label>Register new admin</label>
-                    <p class="text-center to-animate"><a href="/admin_register" class="btn btn-primary btn-outline">
+                    <p class="text-center to-animate"><a href="/admin-register" class="btn btn-primary btn-outline">
                             REGISTER</a></p>
                 @endif
                 <label>Are you sure to logout?</label>
@@ -463,6 +446,85 @@
         </div>
     </div>
 
+    <div id="fh5co-type" style="background-image: url(images/slide_3.jpg);" data-stellar-background-ratio="0.5">
+        <div class="fh5co-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 to-animate">
+                    <div class="fh5co-type">
+                        <h3 class="with-icon icon-1">Useful links</h3>
+                        <div class="col-md-4">
+                            <p>
+                            <ul >
+                                <li class=""><a class="view-all" href="http://www.immigration.gov.lk/"
+                                                title="Department of Immigration" target="_blank">Department of
+                                        Immigration</a></li>
+                                <li class=""><a class="view-all"
+                                                href="http://srilanka.travel/index.php?route=common/home"
+                                                title="Sri Lanka Tourism" target="_blank">Sri Lanka Tourism</a></li>
+                                <li class=""><a class="view-all"
+                                                href="http://www.eta.gov.lk/slvisa/visainfo/weta.jsp?locale=en_US&ch1=current"
+                                                title="Electronic Travel Authorization" target="_blank">Electronic
+                                        Travel Authorization</a></li>
+                                <li class=""><a class="view-all" href="http://www.sltda.lk/embassies_in_sri_lanka"
+                                                title="Sri Lankan Embassies" target="_blank">Sri Lankan Embassies</a>
+                                </li>
+                                <li class=""><a class="view-all" href="http://www.dwc.gov.lk/index.php/en/"
+                                                title="Department of Wildlife" target="_blank">Department of
+                                        Wildlife</a></li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                            <ul>
+                            <li class=""><a class="view-all" href="http://www.sltb.lk/home.php "
+                                            title="Sri Lanka Transport Board" target="_blank">Sri Lanka Transport
+                                    Board</a></li>
+                            <li class=""><a class="view-all" href="http://www.police.lk/" title="Sri lanka Police"
+                                            target="_blank">Sri Lanka Police</a></li>
+                            <li class=""><a class="view-all" href="http://www.motortraffic.gov.lk/"
+                                            title="Department of Motor Traffic" target="_blank">Department of Motor
+                                    Traffic</a></li>
+                            <li class=""><a class="view-all" href="http://www.airport.lk/"
+                                            title="Airport & Aviation Services" target="_blank">Airport & Aviation
+                                    Services</a></li>
+</ul>
+
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FHelanka-Vacations-Pvt-Limited%2F140407856031952&amp;width&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true" style="border:none; overflow:hidden;" allowtransparency="true" class="fb-like-wrapper" frameborder="0" scrolling="no"></iframe>
+
+                        </div>
+
+                    </div>
+                </div>
+                {{--<div class="col-md-3 to-animate">--}}
+                {{--<div class="fh5co-type">--}}
+                {{--<h3 class="with-icon icon-2">Sea food</h3>--}}
+                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+                {{--there live the blind texts.</p>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-3 to-animate">--}}
+                {{--<div class="fh5co-type">--}}
+                {{--<h3 class="with-icon icon-3">Vegetables</h3>--}}
+                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+                {{--there live the blind texts.</p>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-3 to-animate">--}}
+                {{--<div class="fh5co-type">--}}
+                {{--<h3 class="with-icon icon-4">Meat</h3>--}}
+                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
+                {{--there live the blind texts.</p>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+            </div>
+        </div>
+    </div>
+
     <div id="fh5co-footer">
         <div class="row">
             <div class="container">
@@ -475,15 +537,7 @@
                         <p class="text-center to-animate"><a href="#" class="js-gotop">Go To Top</a></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <ul class="fh5co-social">
-                            <li class="to-animate-2"><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

@@ -54,6 +54,11 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'CityController@store',
         'as' => 'add_city'
     ]);
+
+    Route::post('/message-to-all', [
+        'uses' => 'UserController@message',
+        'as' => 'admin_message'
+    ]);
     Route::post('/cities/update', [
         'uses' => 'CityController@update',
         'as' => 'city_update'
@@ -83,6 +88,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/view-message', [
         'uses' => 'SendMessageController@index',
         'as' => 'messages'
+    ]);
+    Route::get('/book-tour', [
+        'uses' => 'BookingController@index',
+        'as' => 'book'
     ]);
 
 //    Route::get('/test',function(){
@@ -120,9 +129,13 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('/admin-registering', [
         'uses' => 'UserController@registerAdmin',
-        'as' => 'admin-register'
+        'as' => 'admin_register'
     ]);
 
+});
+
+Route::get('refresh-csrf', function(){
+    return csrf_token();
 });
 
 Auth::routes();

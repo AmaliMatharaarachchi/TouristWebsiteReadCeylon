@@ -18,13 +18,13 @@ class UnitTest extends TestCase
 
 
 
-    public function test_create_package()
-    {
-        $first = factory(Package::class)->create();
-        $second = factory(Package::class)->create();
-        $this->get();
-
-    }
+//    public function test_create_package()
+//    {
+//        $first = factory(Package::class)->create();
+//        $second = factory(Package::class)->create();
+//        $this->get();
+//
+//    }
 
     public function test_create_user()
     {

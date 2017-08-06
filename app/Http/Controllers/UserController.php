@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserMessage;
+use App\Message;
+use App\SendMessage;
 use App\User;
 use Alert;
 use Illuminate\Http\Request;
@@ -45,6 +48,30 @@ class UserController extends Controller
         $user->save();
 
         Alert::success('Successfully created a new admin', 'SUCCESS')->persistent("OK");
+        return redirect('/');
+
+    }
+    public function message(Request $request)
+    {
+        $this->validate($request, [
+            'message' => 'required']);
+
+        $sendMessage= new SendMessage();
+        $message= new Message();
+        $message->message=$request['message'];
+        $message->save();
+
+        $users=User::all();
+        foreach($users as $user) {
+            $sendMessage->user_id = $user->id;
+            $sendMessage->message_id = $message->id;
+            $sendMessage->save();
+
+            \Mail::to($user->email)->send(new UserMessage($request['message'], $user));
+        }
+//        session()->flash('message','We will contact you soon');
+        Alert::success('Email sent!')->persistent('okay');
+        return redirect()->back();
 
     }
 

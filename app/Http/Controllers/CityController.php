@@ -143,7 +143,7 @@ class CityController extends Controller{
         Has_image::where('city_id', $request->id)->delete();
         (new HasImageController())->store($request->images,$city->id);
         Alert::success('Successfully updated the city', 'SUCCESS')->persistent("OK");
-        return redirect()->back();
+        return redirect('/cities');
 
     }
 

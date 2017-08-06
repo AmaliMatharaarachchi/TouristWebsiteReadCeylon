@@ -1,5 +1,5 @@
 {{--this is the form for create cities--}}
-<form method="post" action="{{route('create_city')}}">
+<form method="post" action="{{route('add_city')}}">
     {{ csrf_field() }}
     <label for="name" class="control-label">City Name*</label>
     <input type="text" id="name" name="name"  class="form-control"

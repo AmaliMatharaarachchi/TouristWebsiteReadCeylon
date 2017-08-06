@@ -30,9 +30,7 @@ class MultipleUserTest extends DuskTestCase
             $second->loginAs($user2)
                 ->visit('/');
 
-//
-//            $first->waitForText('Hey Taylor')
-//                ->assertSee('Jeffrey Way');
+
         });
     }
 }
