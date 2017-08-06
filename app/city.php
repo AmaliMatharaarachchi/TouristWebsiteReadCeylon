@@ -1,10 +1,10 @@
 <?php
 
 namespace App;
-
+//hello
 use Illuminate\Database\Eloquent\Model;
 
-class city extends Model
+class City extends Model
 {
     public function has_city(){
         return $this->hasMany(Has_city::class);
