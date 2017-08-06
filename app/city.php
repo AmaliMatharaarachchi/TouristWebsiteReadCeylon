@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-//hello
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
