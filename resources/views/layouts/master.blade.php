@@ -38,6 +38,38 @@
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
     <link rel="stylesheet" href="image-picker/image-picker.css">
 
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Stellar Parallax -->
+    <script src="js/jquery.stellar.min.js"></script>
+
+
+    <!-- Flexslider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+
+
+    <script src="image-picker/image-picker.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+    <!-- Bootstrap DateTimePicker -->
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -74,14 +106,14 @@
 </head>
 <body>
 {{--@if (count($errors) > 0)--}}
-    {{--<div class="alert alert-danger">--}}
-        {{--<ul>--}}
-            {{--@foreach ($errors->all() as $error)--}}
-                {{--<li>{{ $error }}</li>--}}
+{{--<div class="alert alert-danger">--}}
+{{--<ul>--}}
+{{--@foreach ($errors->all() as $error)--}}
+{{--<li>{{ $error }}</li>--}}
 
-            {{--@endforeach--}}
-        {{--</ul>--}}
-    {{--</div>--}}
+{{--@endforeach--}}
+{{--</ul>--}}
+{{--</div>--}}
 {{--@endif--}}
 
 @yield('style')
@@ -89,7 +121,7 @@
 @yield('body')
 
 
-<script src="{{URL::asset('dist/sweetalert.min.js')}}"></script>
+<script src="dist/sweetalert.min.js"></script>
 {{--<script type="text/javascript">--}}
 {{--var csrfToken = $('[name="csrf_token"]').attr('content');--}}
 
@@ -111,42 +143,7 @@
 <br>
 
 
-                <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- jQuery Easing -->
-        <script src="js/jquery.easing.1.3.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Bootstrap DateTimePicker -->
-        <script src="js/moment.js')}}"></script>
-        <script src="js/bootstrap-datetimepicker.min.js"></script>
-        <!-- Waypoints -->
-        <script src="js/jquery.waypoints.min.js"></script>
-        <!-- Stellar Parallax -->
-        <script src="js/jquery.stellar.min.js"></script>
-
-
-        <!-- Flexslider -->
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script>
-            $(function () {
-                $('#date').datetimepicker();
-            });
-        </script>
-        <!-- Main JS -->
-        <script src="js/main.js"></script>
-
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-
-
-        <script src="image-picker/image-picker.js" type="text/javascript"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
-
-        @yield('body_js')
+@yield('body_js')
 
 </body>
 </html>
