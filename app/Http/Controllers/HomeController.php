@@ -29,7 +29,7 @@ class HomeController extends Controller{
         $cities= City::all();
 
 //        return view('welcome', ['packages'=>$packages,'cities'=>$cities]);
-        return view('welcome', ['reviews' => $reviews,'packages'=>$packages,'cities'=>$cities]);
+        return view('index', ['reviews' => $reviews,'packages'=>$packages,'cities'=>$cities]);
 
     }
 }

@@ -16,12 +16,12 @@
 Route::group(['middleware' => ['web']], function () {
 
 
-
+//////////////////////
     Route::get('/', [
         'uses' => 'HomeController@index',
         'as' => 'welcome'
     ]);
-
+/////////////////////////////
 
     Route::get('/packages', [
         'uses' => 'PackageController@index',

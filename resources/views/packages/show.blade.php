@@ -55,7 +55,7 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
+                        <div class="carousel-inner"role="listbox" style=" width:100%; height: 500px !important;">
                             @foreach($p->city->has_image as $key=>$i)
                                 @if($key==0)
                                     <div class="item active">
