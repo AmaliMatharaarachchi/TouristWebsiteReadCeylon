@@ -35,66 +35,66 @@
           rel='stylesheet' type='text/css'>
     {{--added--}}
 
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-    <link rel="stylesheet" href="image-picker/image-picker.css">
+    <link rel="stylesheet" type="text/css" href="/dist/sweetalert.css">
+    <link rel="stylesheet" href="/image-picker/image-picker.css">
 
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <!-- jQuery Easing -->
-    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
     <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Waypoints -->
-    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
     <!-- Stellar Parallax -->
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
 
 
     <!-- Flexslider -->
-    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="/js/jquery.flexslider-min.js"></script>
 
     <!-- Main JS -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 
-    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
 
 
-    <script src="image-picker/image-picker.js" type="text/javascript"></script>
+    <script src="/image-picker/image-picker.js" type="text/javascript"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
 
     <!-- Bootstrap DateTimePicker -->
-    <script src="js/moment.js"></script>
-    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="/css/icomoon.css">
     <!-- Simple Line Icons -->
-    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <link rel="stylesheet" href="/css/simple-line-icons.css">
     <!-- Datetimepicker -->
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <!-- Flexslider -->
-    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="/css/flexslider.css">
 
 
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
 
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
 
     <link rel="stylesheet"
@@ -121,7 +121,7 @@
 @yield('body')
 
 
-<script src="dist/sweetalert.min.js"></script>
+<script src="/dist/sweetalert.min.js"></script>
 {{--<script type="text/javascript">--}}
 {{--var csrfToken = $('[name="csrf_token"]').attr('content');--}}
 
