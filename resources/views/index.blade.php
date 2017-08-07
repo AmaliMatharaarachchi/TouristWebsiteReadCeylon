@@ -91,26 +91,28 @@
         </div>
     </div>
 
+
     <div id="fh5co-sayings">
         <div class="container">
             <div class="row to-animate">
 
-                <div class="flexslider" >
+                <div class="flexslider">
 
-                        <ul class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-1928px, 0px, 0px);">
+                    <ul class="slides"
+                        style="width: 800%; transition-duration: 0s; transform: translate3d(-1928px, 0px, 0px);">
 
-                            @foreach($reviews as $review)
-                                @if($review->state=='A')
-                                    <li>
+                        @foreach($reviews as $review)
+                            @if($review->state=='A')
+                                <li>
 
-                                        <blockquote>
-                                            <p style="font-size: 30px">&ldquo;{{$review->review}}&rdquo;</p>
-                                            <p class="quote-author">&mdash; {{$review->user->name}}</p>
-                                        </blockquote>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
+                                    <blockquote>
+                                        <p style="font-size: 30px">&ldquo;{{$review->review}}&rdquo;</p>
+                                        <p class="quote-author">&mdash; {{$review->user->name}}</p>
+                                    </blockquote>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
 
                 </div>
 
@@ -118,6 +120,7 @@
             </div>
         </div>
     </div>
+
     @if(Auth::check())
         @if(Auth::user()->type=='U')
             <div class="container">
@@ -127,7 +130,6 @@
 
                         <div class="form-group">
                             <label for="review" class="control-label">Tell us about your experience</label>
-
 
                                 <textarea id="review" type="review" class="form-control" name="review"
                                           required></textarea>
@@ -161,7 +163,8 @@
                     @foreach($packages as $package)
 
                         <div class="fh5co-v-half to-animate-2">
-                            @foreach($package->has_city as $k=> $c)
+
+                            @foreach(($package->has_city) as $k=> $c)
                                 @if($k==0)
                                     @foreach($c->city->has_image as $key=>$i)
                                         @if($key==0)
@@ -171,8 +174,11 @@
                                     @endforeach
                                 @endif
                             @endforeach
+
                             <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
-                                <h1 style="color: #1b6d85"><b>{{$package->name}}</b></h1>
+                                <h1 style="color: #1b6d85"><b><a style="color: #1b6d85"
+                                                                 href="/packages/{{$package->name}}">{{$package->name}}</a></b>
+                                </h1>
                                 <span class="pricing">Price : ${{$package->price}} For {{$package->days}}days</span>
                                 <p>
                                     @foreach($package->has_city as $c)
@@ -193,13 +199,14 @@
             <br>
 
             @if(Auth::check())
-                @if(Auth::user()->type=='U')
+                @if(Auth::user()->type=='A')
                     <p class="text-center to-animate"><a href="{{route('packages')}}"
-                                                         class="btn btn-primary btn-outline">View/Customize Tour</a></p>
+                                                         class="btn btn-primary btn-outline">Update/Create
+                            Tour</a></p>
                 @else
                     <p class="text-center to-animate"><a href="{{route('packages')}}"
-                                                         class="btn btn-primary btn-outline">View/Create
-                            Tour</a></p>
+                                                         class="btn btn-primary btn-outline">View/Customize Tour</a></p>
+
                 @endif
             @else
                 <p class="text-center to-animate"><a href="{{route('packages')}}" class="btn btn-primary btn-outline">View
@@ -232,7 +239,7 @@
                                                 @foreach($city->has_image as $key=> $i)
                                                     @if($key==0)
                                                         <img src="img\{{$i->image->url}}" class="img-responsive"
-                                                             alt="not available">
+                                                        >
                                                     @endif
                                                 @endforeach
                                             </figure>
@@ -500,27 +507,7 @@
 
                     </div>
                 </div>
-                {{--<div class="col-md-3 to-animate">--}}
-                {{--<div class="fh5co-type">--}}
-                {{--<h3 class="with-icon icon-2">Sea food</h3>--}}
-                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-                {{--there live the blind texts.</p>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-3 to-animate">--}}
-                {{--<div class="fh5co-type">--}}
-                {{--<h3 class="with-icon icon-3">Vegetables</h3>--}}
-                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-                {{--there live the blind texts.</p>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-3 to-animate">--}}
-                {{--<div class="fh5co-type">--}}
-                {{--<h3 class="with-icon icon-4">Meat</h3>--}}
-                {{--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,--}}
-                {{--there live the blind texts.</p>--}}
-                {{--</div>--}}
-                {{--</div>--}}
+
             </div>
         </div>
     </div>

@@ -139,26 +139,81 @@
 {{--</script>--}}
 
 @include('sweet::alert')
-@if (count($errors) > 0)
+{{--@if (count($errors) > 0)--}}
 
-        <script>
+        {{--<script>--}}
+                 {{--swal("Oops...", "try again", "error");--}}
+        {{--</script>--}}
 
-                 swal("Oops...", "try again", "error");
-        </script>
+{{--@endif--}}
 
 
 
+<div id="myModal" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" >
+
+                <h1 class="modal-title" style="color: #d73d32"><i class="glyphicon glyphicon-fire"></i> ERROR!</h1>
+            </div>
+
+
+            <div class="modal-body">
+
+                @foreach ($errors->all() as $error)
+                {{ $error }}
+
+                @endforeach
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div> <!-- / .modal-content -->
+    </div> <!-- / .modal-dialog -->
+</div>
+
+@if(Session::has('message'))
+    <div><h1>hey </h1></div>
+<div class="modal fade" tabindex="-1" role="dialog" id="message">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{Session::get('message')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 @endif
+@if(Session::has('errors'))
+    <script>
+        $(document).ready(function(){
+            $('#myModal').modal({show: true})
+        });
+    </script>
+@endif
+
+@if(Session::has('message'))
+    <script>
+        $(document).ready(function(){
+            $('#message').modal({show: true})
+        });
+    </script>
+    @endif
 
 <br>
 
 
 @yield('body_js')
-<script>
-    document.querySelector('.showcase.sweet button').onclick = function(){
-        swal("Oops...", "", "error");
-    };
-</script>
+
 </body>
 </html>
 

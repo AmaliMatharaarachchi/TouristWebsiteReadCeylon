@@ -21,12 +21,14 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'HomeController@index',
         'as' => 'welcome'
     ]);
-/////////////////////////////
 
     Route::get('/packages', [
         'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
+/////////////////////////////
+
+
 
     Route::get('/packages/create', [
         'uses' => 'PackageController@create',

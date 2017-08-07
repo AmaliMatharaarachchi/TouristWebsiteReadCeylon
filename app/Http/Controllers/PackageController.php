@@ -6,10 +6,10 @@ use App\City;
 use App\Package;
 use Illuminate\Http\Request;
 use DB;
-use Alert;
 
 
-class PackageController extends Controller{
+class PackageController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -30,7 +30,6 @@ class PackageController extends Controller{
         $packages = $package->all()->sortByDesc('created_at');
         $images = Image::all();
         $cities = City::all();
-//        $packages=DB::table('packages')->get();
         return view('packages', ['packages' => $packages, 'images' => $images, 'cities' => $cities]);
     }
 
@@ -58,9 +57,8 @@ class PackageController extends Controller{
             'name' => 'required|max:255|unique:packages',
             'description' => 'required',
             'cities' => 'required',
-            'price' => 'integer',
-            'days' => 'integer'
-
+            'price' => 'required|integer',
+            'days' => 'required|integer'
 
         ]);
         $package = new Package();
@@ -71,8 +69,8 @@ class PackageController extends Controller{
         $package->save();
 
         (new HasCityController())->store($request->cities, $package->id);
-        Alert::success('Successfully saved the tour package', 'SUCCESS')->persistent("OK");
-        return redirect()->back();
+        $message ='Successfully saved the tour package';
+        return redirect()->back()->with('message',$message);
     }
 
     /**
@@ -111,10 +109,11 @@ class PackageController extends Controller{
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255|unique:packages,name,'.$request->id,
+            'name' => 'required|max:255|unique:packages,name,' . $request->id,
             'description' => 'required',
             'price' => 'integer',
-            'days' => 'integer'
+            'days' => 'integer',
+            'cities' => 'required'
         ]);
 
         $package = Package::find($request->id);
@@ -128,16 +127,16 @@ class PackageController extends Controller{
 
 
         Has_city::where('package_id', $request->id)->delete();
-        (new HasCityController())->store($request->cities,$package->id);
-        Alert::success('Successfully updated the tour package', 'SUCCESS')->persistent("OK");
-        return redirect('/packages');
+        (new HasCityController())->store($request->cities, $package->id);
+        $message= 'Successfully updated the tour package';
+        return redirect('/packages')->with('message',$message);
     }
 
     public function showUpdate(Package $package)
     {
 //
         $cities = City::all();
-        return view('packages.update', compact('package','cities'));
+        return view('packages.update', compact('package', 'cities'));
     }
 
     /**

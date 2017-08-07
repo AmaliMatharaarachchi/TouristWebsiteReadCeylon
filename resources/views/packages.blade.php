@@ -58,33 +58,11 @@
             <a href="{{route('welcome')}}">Back to Home</a></li>
         @if(Auth::check())
             <li style="float:right">
-                <a href="{{route('logout')}}">Logout</a>
+                <a href="{{route('logout')}}"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
             </li>
         @endif
 
     </ul>
-
-
-    {{--<nav class="collapse navbar-collapse" id=bs-navbar>--}}
-    {{--<div class="col-md-6"></div>--}}
-    {{--<div class="col-md-6">--}}
-    {{--<ul class="nav navbar-nav">--}}
-    {{--<li class=active>--}}
-    {{--<a href="{{route('welcome')}}">Home</a></li>--}}
-    {{--@if(Auth::check())--}}
-    {{--<li>--}}
-    {{--<a href="{{route('logout')}}">Logout</a>--}}
-    {{--</li>--}}
-    {{--@endif--}}
-    {{--<li><a href=../components/ >Components</a></li>--}}
-    {{--<li>--}}
-    {{--<a href=../javascript/ >JavaScript</a></li>--}}
-    {{--<li><a href=../customize/ >Customize</a></li>--}}
-    {{--</ul>--}}
-    {{--</div>--}}
-
-    {{--</nav>--}}
-
 
     <div id="fh5co-container">
 
@@ -96,8 +74,6 @@
                     <div class="fh5co-menu-1">
 
                         <a href="#" data-nav-section="packages">Packages</a>
-                        {{--<a href="#" data-nav-section="about">About Sri Lanka</a>--}}
-                        {{--<a href="#" data-nav-section="features">Features</a>--}}
 
 
                     </div>
@@ -105,14 +81,12 @@
                         <a href="#">Tours</a>
                     </div>
                     <div class="fh5co-menu-2">
-                        {{--<a href="#" data-nav-section="sri_lanka">Sri Lanka</a>--}}
                         @if(Auth::check())
                             @if(Auth::user()->type=='U')
                             @else
                                 <a href="#" data-nav-section="create">Create Tour</a>
                             @endif
                         @endif
-                        {{--<a href="#" data-nav-section="login">Login/Register</a>--}}
 
                     </div>
 
@@ -130,6 +104,7 @@
     <br>
     <br>
     <div class="div">
+
         @if(Auth::check())
             @if(Auth::user()->type=='U')
 
@@ -165,7 +140,7 @@
 
 
         @foreach($packages as $key=>$package)
-            @if($key%2==1)
+            @if($key%2==0)
 
                 @foreach($package->has_city as $key1=>$c)
                     @if($key1==0)
@@ -179,22 +154,32 @@
                 @endforeach
 
                 <div class="fh5co-2col fh5co-text">
-                    {{--<div class="col-md-6">--}}
                     <a href="#" class="btn "><h2
                                 class="heading to-animate">{{$package->name}}</h2></a>
-                    {{--</div>--}}
-
 
                     <p class="to-animate">{{$package->description}}<br>
-
-                        @if(($package->price)!=null or ($package->price)!='')
-                            <span>Price = ${{$package->price}}</span>
-                        @endif
+                        {{--@if(($package->price)!=null or ($package->price)!='')--}}
+                        <span>Price = ${{$package->price}}</span>
+                        {{--@endif--}}
                     </p>
                     <a href="/packages/{{$package->name}}">more...</a>
-                    <p class="text-center to-animate"><a href="{{route('book')}}"
-                                                         class="btn btn-primary btn-outline">Book now!</a>
+
                     </p>
+                    @if(Auth::check())
+                        @if(Auth::user()->type=='A')
+                            <p class="text-center to-animate"><a href="/packages/update/{{$package->name}}"
+                                                                 class="btn btn-primary btn-outline">update</a>
+                            </p>
+                        @else
+                            <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                                 class="btn btn-primary btn-outline">Book now!</a>
+
+                        @endif
+                    @else
+                        <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                             class="btn btn-primary btn-outline">Book now!</a>
+
+                    @endif
                 </div>
             @else
 
@@ -215,15 +200,17 @@
                             <p class="text-center to-animate"><a href="/packages/update/{{$package->name}}"
                                                                  class="btn btn-primary btn-outline">update</a>
                             </p>
-
+                        @else
+                            <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                                 class="btn btn-primary btn-outline">Book now!</a>
+                            </p>
                         @endif
+                    @else
+                        <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                             class="btn btn-primary btn-outline">Book now!</a>
+                        </p>
                     @endif
-                    {{--<a href="#"  class="btn btn-primary btn-outline">Add to my tour</a>--}}
-                    {{--<input id="add" type="submit" name="button" value="enter"/>--}}
-                    {{--<button id="button" type="submit" name="add" value="{{$package->id}}"/>--}}
-                    <p class="text-center to-animate"><a href="#"
-                                                         class="btn btn-primary btn-outline">Book now!</a>
-                    </p>
+
 
                 </div>
                 @foreach($package->has_city as $key1=>$c)
@@ -244,7 +231,7 @@
 
 
     @if(Auth::check())
-        @if(Auth::user()->type!='U')
+        @if(Auth::user()->type=='A')
             <div id="fh5co-contact" data-section="create">
                 <div class="container">
                     <div class="row text-center fh5co-heading row-padded">
