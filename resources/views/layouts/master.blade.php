@@ -140,15 +140,15 @@
 
 @include('sweet::alert')
 @if (count($errors) > 0)
-    @foreach ($errors->all() as $error)
+
         <script>
 
              document.querySelector('.showcase.sweet button').onclick = function() {
-                 swal("Oops...", "{{$error}}", "error");
+                 swal("Oops...", "try again", "error");
              }
         </script>
 
-    @endforeach
+
 
 @endif
 
