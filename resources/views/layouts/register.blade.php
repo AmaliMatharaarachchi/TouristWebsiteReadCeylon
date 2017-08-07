@@ -17,11 +17,11 @@
                                     <input id="name" type="text" name="name" class="form-control"
                                            value="{{ old('name') }}" required/>
 
-                                    {{--@if ($errors->has('name'))--}}
-                                        {{--<span class="help-block">--}}
-                                    {{--<strong>{{ $errors->first('name') }}</strong>--}}
-                                    {{--</span>--}}
-                                    {{--@endif--}}
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
 
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -31,11 +31,11 @@
                                     <input id="email" type="email" name="email" class="form-control"
                                            value="{{ old('email') }}" required/>
 
-                                    {{--@if ($errors->has('email'))--}}
-                                        {{--<span class="help-block">--}}
-                                    {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                    {{--</span>--}}
-                                    {{--@endif--}}
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
 
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -45,11 +45,11 @@
                                     <input id="password" type="password" class="form-control" name="password"
                                            class="form-control" required>
 
-                                    {{--@if ($errors->has('password'))--}}
-                                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                                    {{--</span>--}}
-                                    {{--@endif--}}
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
 
                                 </div>
 
