@@ -6,20 +6,16 @@
 @endsection
 
 @section('body')
-
-
     <div id="fh5co-container">
         <div id="fh5co-home" class="js-fullheight" data-section="home">
-
             <div class="flexslider">
-
                 <div class="fh5co-overlay"></div>
                 <div class="fh5co-text">
                     <div class="container">
                         <div class="row">
-                            <h2 class="to-animate">Read Ceylon</h2>
+                            <h2 style="font-size: 90px" class="to-animate">ReadCeylon</h2>
                             <br>
-                            <h2 class="to-animate"><span>Travel with us</span></h2>
+                            <h2 style="font-size: 70px" class="to-animate"><span>Travel with us</span></h2>
                         </div>
                     </div>
                 </div>
@@ -36,7 +32,7 @@
         </div>
 
 
-        <div class="js-sticky">
+        <div>
             <div class="fh5co-main-nav">
                 <div class="container-fluid">
                     <div class="fh5co-menu-1">
@@ -99,21 +95,23 @@
         <div class="container">
             <div class="row to-animate">
 
-                <div class="flexslider">
-                    <ul class="slides">
-                        @foreach($reviews as $review)
-                            @if($review->state=='A')
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;{{$review->review}}&rdquo;</p>
-                                        <p class="quote-author">&mdash; {{$review->user->name}}</p>
-                                    </blockquote>
-                                </li>
-                            @endif
-                        @endforeach
+                <div class="flexslider" >
 
+                        <ul class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-1928px, 0px, 0px);">
 
-                    </ul>
+                            @foreach($reviews as $review)
+                                @if($review->state=='A')
+                                    <li>
+
+                                        <blockquote>
+                                            <p style="font-size: 30px">&ldquo;{{$review->review}}&rdquo;</p>
+                                            <p class="quote-author">&mdash; {{$review->user->name}}</p>
+                                        </blockquote>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+
                 </div>
 
 
@@ -455,7 +453,7 @@
                         <h3 class="with-icon icon-1">Useful links</h3>
                         <div class="col-md-4">
                             <p>
-                            <ul >
+                            <ul>
                                 <li class=""><a class="view-all" href="http://www.immigration.gov.lk/"
                                                 title="Department of Immigration" target="_blank">Department of
                                         Immigration</a></li>
@@ -472,29 +470,31 @@
                                 <li class=""><a class="view-all" href="http://www.dwc.gov.lk/index.php/en/"
                                                 title="Department of Wildlife" target="_blank">Department of
                                         Wildlife</a></li>
-                                </ul>
+                            </ul>
                             </p>
                         </div>
                         <div class="col-md-4">
                             <p>
                             <ul>
-                            <li class=""><a class="view-all" href="http://www.sltb.lk/home.php "
-                                            title="Sri Lanka Transport Board" target="_blank">Sri Lanka Transport
-                                    Board</a></li>
-                            <li class=""><a class="view-all" href="http://www.police.lk/" title="Sri lanka Police"
-                                            target="_blank">Sri Lanka Police</a></li>
-                            <li class=""><a class="view-all" href="http://www.motortraffic.gov.lk/"
-                                            title="Department of Motor Traffic" target="_blank">Department of Motor
-                                    Traffic</a></li>
-                            <li class=""><a class="view-all" href="http://www.airport.lk/"
-                                            title="Airport & Aviation Services" target="_blank">Airport & Aviation
-                                    Services</a></li>
-</ul>
+                                <li class=""><a class="view-all" href="http://www.sltb.lk/home.php "
+                                                title="Sri Lanka Transport Board" target="_blank">Sri Lanka Transport
+                                        Board</a></li>
+                                <li class=""><a class="view-all" href="http://www.police.lk/" title="Sri lanka Police"
+                                                target="_blank">Sri Lanka Police</a></li>
+                                <li class=""><a class="view-all" href="http://www.motortraffic.gov.lk/"
+                                                title="Department of Motor Traffic" target="_blank">Department of Motor
+                                        Traffic</a></li>
+                                <li class=""><a class="view-all" href="http://www.airport.lk/"
+                                                title="Airport & Aviation Services" target="_blank">Airport & Aviation
+                                        Services</a></li>
+                            </ul>
 
                             </p>
                         </div>
                         <div class="col-md-4">
-                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FHelanka-Vacations-Pvt-Limited%2F140407856031952&amp;width&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true" style="border:none; overflow:hidden;" allowtransparency="true" class="fb-like-wrapper" frameborder="0" scrolling="no"></iframe>
+                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FHelanka-Vacations-Pvt-Limited%2F140407856031952&amp;width&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true"
+                                    style="border:none; overflow:hidden;" allowtransparency="true"
+                                    class="fb-like-wrapper" frameborder="0" scrolling="no"></iframe>
 
                         </div>
 
@@ -546,7 +546,7 @@
 
 @section('body_js')
 
-    <script type="text/javascript">// <![CDATA[
+    <script type="text/javascript">
         $(function () {
             $(".your-div").each(function (i) {
                 len = $(this).text().length;
@@ -555,6 +555,7 @@
                 }
             });
         });
-        // ]]></script>
+
+    </script>
 
 @endsection

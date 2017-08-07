@@ -116,6 +116,7 @@
 {{--</div>--}}
 {{--@endif--}}
 
+
 @yield('style')
 
 @yield('body')
@@ -138,13 +139,28 @@
 {{--</script>--}}
 
 @include('sweet::alert')
+@if (count($errors) > 0)
+    @foreach ($errors->all() as $error)
+        <script>
 
+             document.querySelector('.showcase.sweet button').onclick = function() {
+                 swal("Oops...", "{{$error}}", "error");
+             }
+        </script>
+
+    @endforeach
+
+@endif
 
 <br>
 
 
 @yield('body_js')
-
+<script>
+    document.querySelector('.showcase.sweet button').onclick = function(){
+        swal("Oops...", "", "error");
+    };
+</script>
 </body>
 </html>
 

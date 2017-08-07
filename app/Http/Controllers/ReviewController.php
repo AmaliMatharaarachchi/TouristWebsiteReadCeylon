@@ -42,7 +42,7 @@ class ReviewController extends Controller{
     public function store(Request $request)
     {
         $this->validate($request, [
-            'review' => 'required']);
+            'review' => 'required|max:70']);
 
 
         $review= new Review();

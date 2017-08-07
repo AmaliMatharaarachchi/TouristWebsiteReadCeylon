@@ -90,11 +90,11 @@ html[xmlns] .flexslider .slides {
   zoom: 1;
 }
 .flexslider .slides img {
-  height: auto;
+  height: 200px;
   -moz-user-select: none;
 }
 .flex-viewport {
-  max-height: 2000px;
+  max-height: 150px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;
@@ -102,7 +102,7 @@ html[xmlns] .flexslider .slides {
   transition: all 1s ease;
 }
 .loading .flex-viewport {
-  max-height: 300px;
+  max-height: 200px;
 }
 .carousel li {
   margin-right: 5px;

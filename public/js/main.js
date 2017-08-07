@@ -34,9 +34,9 @@
 			slideshowSpeed: 5000
 	  	});
 
-	  	$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());	
+	  	$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
 	  	$(window).resize(function(){
-	  		$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());	
+	  		$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
 	  	});
 
 	};

@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use Alert;
-use DB;
 use App\City;
+use DB;
 use App\review;
 use App\Package;
 
