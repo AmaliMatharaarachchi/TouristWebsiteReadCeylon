@@ -12,67 +12,72 @@
 */
 
 
-
 Route::group(['middleware' => ['web']], function () {
 
 
-//////////////////////
+/////////home/////////////
     Route::get('/', [
         'uses' => 'HomeController@index',
         'as' => 'welcome'
     ]);
 
+    Route::get('/home', 'HomeController@index');
+
+    /////////packages///////////////////////
+
     Route::get('/packages', [
         'uses' => 'PackageController@index',
         'as' => 'packages'
     ]);
-/////////////////////////////
 
-
-
-    Route::get('/packages/create', [
-        'uses' => 'PackageController@create',
-        'as' => 'create_packages'
-    ]);
     Route::post('/packages/create', [
         'uses' => 'PackageController@store',
         'as' => 'add_package'
     ]);
 
-    Route::get('/cities/create', [
-        'uses' => 'CityController@create',
-        'as' => 'create_city'
-    ]);
+///////////cities//////////////////
     Route::get('/cities', [
         'uses' => 'cityController@index',
         'as' => 'cities'
-    ]);
-    Route::get('/reviews', [
-        'uses' => 'ReviewController@index',
-        'as' => 'reviews'
     ]);
 
     Route::post('/cities/create', [
         'uses' => 'CityController@store',
         'as' => 'add_city'
     ]);
-
-    Route::post('/message-to-all', [
-        'uses' => 'UserController@message',
-        'as' => 'admin_message'
-    ]);
     Route::post('/cities/update', [
         'uses' => 'CityController@update',
         'as' => 'city_update'
     ]);
-    Route::post('/packages/update', [
-        'uses' => 'PackageController@update',
-        'as' => 'package_update'
+
+    /////////review//////////////////
+
+    Route::get('/reviews', [
+        'uses' => 'ReviewController@index',
+        'as' => 'reviews'
     ]);
     Route::post('/reviews/update', [
         'uses' => 'ReviewController@update',
         'as' => 'change_review'
     ]);
+    Route::post('/review', [
+        'uses' => 'ReviewController@store',
+        'as' => 'user_review'
+    ]);
+
+///////////message/////////////////////////////
+
+    Route::post('/message-to-all', [
+        'uses' => 'UserController@message',
+        'as' => 'admin_message'
+    ]);
+
+///////////////////////////////////////////////
+    Route::post('/packages/update', [
+        'uses' => 'PackageController@update',
+        'as' => 'package_update'
+    ]);
+
 
     Route::post('/comment/create', [
         'uses' => 'CommentController@store',
@@ -104,21 +109,15 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'ImageController@store',
         'as' => 'upload'
     ]);
-    Route::post('/review', [
-        'uses' => 'ReviewController@store',
-        'as' => 'user_review'
-    ]);
+
     Route::post('/customize', [
         'uses' => 'TourController@store',
         'as' => 'customize'
     ]);
- Route::post('/delete-comment', [
+    Route::post('/delete-comment', [
         'uses' => 'CommentController@destroy',
         'as' => 'delete_comment'
     ]);
-
-
-
 
 
     Route::get('/packages/{package}', 'PackageController@show');
@@ -136,13 +135,12 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
-Route::get('refresh-csrf', function(){
+Route::get('refresh-csrf', function () {
     return csrf_token();
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
 Route::get('/logout', [
     'uses' => 'Auth\LoginController@logout',

@@ -175,13 +175,12 @@
 </div>
 
 @if(Session::has('message'))
-    <div><h1>hey </h1></div>
-<div class="modal fade" tabindex="-1" role="dialog" id="message">
-    <div class="modal-dialog" role="document">
+<div class="modal fade"aria-hidden="true" id="message">
+    <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"></h4>
+                {{--<h4 class="modal-title"></h4>--}}
             </div>
             <div class="modal-body">
                 <p>{{Session::get('message')}}</p>

@@ -3,7 +3,7 @@
 use App\review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Alert;
+
 
 class ReviewController extends Controller{
     /**
@@ -51,8 +51,8 @@ class ReviewController extends Controller{
         $review->save();
 
 
-        Alert::success('Thank you for your feedback!');
-        return redirect()->back();
+        $message='Thank you for your feedback!';
+        return redirect()->back()->with('message',$message);
     }
 
     /**
@@ -92,8 +92,8 @@ class ReviewController extends Controller{
         $review->save();
 
 
-        Alert::success('Updated successfully');
-        return redirect()->back();
+        $message='Updated successfully';
+        return redirect()->back()->with('message',$message);
     }
 
     /**

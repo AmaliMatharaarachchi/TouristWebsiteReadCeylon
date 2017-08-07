@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\Welcome;
+
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -67,5 +70,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+
+
+    }
+
+    protected function registered(Request $request, $user)
+    {
+
+//        $request->session()->put('message','Welcome to ReadCeylon');
+        \Mail::to($user)->send(new Welcome($user));
+
     }
 }

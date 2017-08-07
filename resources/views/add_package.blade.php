@@ -8,11 +8,11 @@
     <label for="description" class="control-label">Description*</label>
                                 <textarea type="text" id="description" name="description" class="form-control"
                                           required></textarea>
-    <label for="price" class=" control-label">Price</label>
-    <input type="text" id="price" name="price" class="form-control"/>
-    <label for="days" class=" control-label">Days</label>
-    <input type="text" id="days" name="days" class="form-control"/>
-    <label for="cities" class=" control-label">Select cities</label>
+    <label for="price" class=" control-label">Price($)*</label>
+    <input type="text" id="price" name="price" class="form-control" required/>
+    <label for="days" class=" control-label">Number of Days*</label>
+    <input type="text" id="days" name="days" class="form-control" required/>
+    <label for="cities" class=" control-label">Select cities*</label>
     <select name="cities[]" class="selectpicker" data-live-search="true" data-width="100%" multiple
             title="Select cities...">
         @foreach($cities as $city)

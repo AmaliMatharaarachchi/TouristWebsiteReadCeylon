@@ -6,73 +6,35 @@
 
 @section('body')
 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
 
+            <ul class="nav navbar-nav">
+                <li><a href="{{route('packages')}}">Back</a></li>
+                <li><a href="{{route('welcome')}}">Home</a></li>
+
+                </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if(Auth::check())
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                @else
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @endif
+            </ul>
+        </div>
+    </nav>
     <div id="fh5co-container">
 
 
-        <div class="js-sticky">
 
-            <div class="fh5co-main-nav">
-                <div class="container-fluid">
-
-                    <div class="fh5co-logo">
-                        <a href="#">{{$package->name}} </a>
-                    </div>
-
-
-                </div>
-            </div>
-
-
-        </div>
         <br>
         <br>
         <div id="fh5co-contact">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        {{--this is the form for create cities--}}
-                        {{--<form method="post" action="{{ route('city-update')}}">--}}
-                            {{--{{ csrf_field() }}--}}
-                            {{--<input type="hidden" id="id" name="id" value="{{$city->id}}"--}}
-                            {{--/>--}}
-                            {{--<label for="name" class="control-label">City Name*</label>--}}
-                            {{--<input type="text" id="name" name="name" class="form-control" value="{{$city->name}}"--}}
-                                   {{--required/>--}}
-                            {{--<label for="description" class="control-label">Description*</label>--}}
-    {{--<textarea type="text" id="description" name="description" class="form-control"--}}
-              {{--required>{{$city->description}}</textarea>--}}
-                            {{--<label for="star3price" class="control-label">Price of 3 star hotels($)</label>--}}
-                            {{--<input type="star3price" id="star3price" name="star3price" value="{{$city->star3price}}"--}}
-                                   {{--class="form-control"/>--}}
-                            {{--<label for="star4price" class="control-label">Price of 4 star hotels($)</label>--}}
-                            {{--<input type="text" id="star4price" value="{{$city->star4price}}" name="star4price"--}}
-                                   {{--class="form-control"/>--}}
-                            {{--<label for="star5price" class="control-label">Price of 5 star hotels($)</label>--}}
-                            {{--<input type="text" id="star5price" name="star5price" value="{{$city->star5price}}"--}}
-                                   {{--class="form-control"/>--}}
-                            {{--<label for="images" class=" control-label">Select Images*</label>--}}
-
-                            {{--<div class="picker">--}}
-                                {{--<select data-max-options="3" name="images[]"--}}
-                                        {{--class="image-picker show-labels masonry show-html selectpicker"--}}
-                                        {{--data-live-search="true" title="Select cities..." data-width="100%"--}}
-                                        {{--data-limit="3"--}}
-                                        {{--name="images[]" multiple="multiple">--}}
-
-                                    {{--@foreach($images as $image)--}}
-
-
-                                        {{--<option data-img-label='{{$image->name}}' data-img-src='{{URL::asset('images\beach.jpg')}}'--}}
-                                                {{--value='{{$image->id}}'>{{$image->name}}</option>--}}
-
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                            {{--<input type="hidden" class="control-label" name="images" value=("select").imagepicker() />--}}
-
-                            {{--<input class="base-text-color" type="submit" value="Send"/>--}}
-                        {{--</form>--}}
 
                         <form method="post" action="{{route('package_update')}}">
                             {{ csrf_field() }}
@@ -83,11 +45,11 @@
                             <label for="description" class="control-label">Description*</label>
                                 <textarea type="text" id="description" name="description" class="form-control"
                                           required>{{$package->description}}</textarea>
-                            <label for="price" class=" control-label" >Price</label>
-                            <input type="text" id="price" name="price" value="{{$package->price}}" placeholder="{{$package->price}}" class="form-control"/>
-                            <label for="days" class=" control-label">Days</label>
-                            <input type="text" id="days" name="days" value="{{$package->days}}" placeholder="{{$package->days}}" class="form-control"/>
-                            <label for="cities" class=" control-label">Select cities</label>
+                            <label for="price" class=" control-label" >Price($)*</label>
+                            <input type="text" id="price" name="price" value="{{$package->price}}" placeholder="{{$package->price}}" class="form-control" required/>
+                            <label for="days" class=" control-label">Number of Days*</label>
+                            <input type="text" id="days" name="days" value="{{$package->days}}" placeholder="{{$package->days}}" class="form-control" required/>
+                            <label for="cities" class=" control-label">Select cities*</label>
                             <select name="cities[]" class="selectpicker" data-live-search="true" data-width="100%" multiple
                                     title="Select cities...">
                                 @foreach($cities as $city)

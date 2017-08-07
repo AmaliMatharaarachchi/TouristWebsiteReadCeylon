@@ -16,10 +16,10 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->text('description')->nullable();
-            $table->integer('star3price');
-            $table->integer('star4price');
-            $table->integer('star5price');
+            $table->text('description');
+            $table->integer('star3price')->nullable();
+            $table->integer('star4price')->nullable();
+            $table->integer('star5price')->nullable();
             $table->timestamps();
         });
     }

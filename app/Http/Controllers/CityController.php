@@ -4,10 +4,10 @@ use App\City;
 use App\Has_image;
 use App\Image;
 use Illuminate\Http\Request;
-use Alert;
 use Illuminate\Support\Facades\Redirect;
 
-class CityController extends Controller{
+class CityController extends Controller
+{
 
 
     /**
@@ -17,16 +17,15 @@ class CityController extends Controller{
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     //city
     public function index()
     {
-//        $packages = $city->all()->sortByDesc('created_at');
+
         $images = Image::all();
         $cities = City::all()->sortByDesc('created_at');
-//        $packages=DB::table('packages')->get();
 
         return view('cities', ['images' => $images, 'cities' => $cities]);
 
@@ -55,12 +54,10 @@ class CityController extends Controller{
         $this->validate($request, [
             'name' => 'required|max:255|unique:cities',
             'description' => 'required',
-            'star3price' => 'required|integer',
-            'star4price' => 'required|integer',
-            'star5price' => 'required|integer',
+            'star3price' => 'nullable|integer',
+            'star4price' => 'nullable|integer',
+            'star5price' => 'nullable|integer',
             'images' => 'required',
-
-
         ]);
         $city = new City();
         $city->name = $request['name'];
@@ -72,12 +69,12 @@ class CityController extends Controller{
         $city->save(); //create city
 
 //        create images relations to the packages in has_image table
-        (new HasImageController())->store($request->images,$city->id);
+        (new HasImageController())->store($request->images, $city->id);
 
-        Alert::success('Successfully saved the city', 'SUCCESS')->persistent("OK");
+        $message = 'Successfully saved the city';
 
 
-        return redirect()->back();
+        return redirect()->back()->with('message', $message);
     }
 
     /**
@@ -93,9 +90,8 @@ class CityController extends Controller{
 
     public function showUpdate(City $city)
     {
-//        return view('cities.update');
         $images = Image::all();
-        return view('cities.update', compact('city','images'));
+        return view('cities.update', compact('city', 'images'));
     }
 
     /**
@@ -119,11 +115,11 @@ class CityController extends Controller{
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255|unique:cities,name,'.$request->id,
+            'name' => 'required|max:255|unique:cities,name,' . $request->id,
             'description' => 'required',
-            'star3price' => 'required|integer',
-            'star4price' => 'required|integer',
-            'star5price' => 'required|integer',
+            'star3price' => 'nullable|integer',
+            'star4price' => 'nullable|integer',
+            'star5price' => 'nullable|integer',
             'images' => 'required',
 
 
@@ -141,9 +137,9 @@ class CityController extends Controller{
 
         $city->save();
         Has_image::where('city_id', $request->id)->delete();
-        (new HasImageController())->store($request->images,$city->id);
-        Alert::success('Successfully updated the city', 'SUCCESS')->persistent("OK");
-        return redirect('/cities');
+        (new HasImageController())->store($request->images, $city->id);
+        $message = 'Successfully updated the city';
+        return redirect('/cities')->with('message', $message);
 
     }
 
