@@ -143,9 +143,7 @@
 
         <script>
 
-             document.querySelector('.showcase.sweet button').onclick = function() {
                  swal("Oops...", "try again", "error");
-             }
         </script>
 
 
