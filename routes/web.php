@@ -87,17 +87,49 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'public_message'
     ]);
 
-///////////////////////////////////////////////
-
-
+/////////////comment//////////////////////////////////
 
     Route::post('/comment/create', [
         'uses' => 'CommentController@store',
         'as' => 'add_comment'
     ]);
 
+    Route::post('/delete-comment', [
+        'uses' => 'CommentController@destroy',
+        'as' => 'delete_comment'
+    ]);
 
+////////////image////////////////////////////////
 
+    Route::post('/image', [
+        'uses' => 'ImageController@store',
+        'as' => 'upload'
+    ]);
+//////////////customize tours///////////////////////////////////
+    Route::post('/customize', [
+        'uses' => 'TourController@store',
+        'as' => 'customize'
+    ]);
+
+    /////////////show update, city package//////////////////////////////////////////////
+
+    Route::get('/packages/{package}', 'PackageController@show');
+    Route::get('/cities/{city}', 'CityController@show');
+    Route::get('/cities/update/{city}', 'CityController@showUpdate');
+    Route::get('/packages/update/{package}', 'PackageController@showUpdate');
+
+///////////////////////////////////////////////////////////////////////////////////////
+    Route::get('/admin-register', 'UserController@index');
+
+    Route::post('/admin-registering', [
+        'uses' => 'UserController@registerAdmin',
+        'as' => 'admin_register'
+    ]);
+    Route::get('/logout', [
+        'uses' => 'Auth\LoginController@logout',
+        'as' => 'logout'
+    ]);
+//////////////not implemented///////////////////////////////
     Route::get('/view-message', [
         'uses' => 'SendMessageController@index',
         'as' => 'messages'
@@ -107,48 +139,15 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'book'
     ]);
 
-//    Route::get('/test',function(){
-//        return view('test');
-//    });
-
-    Route::post('/image', [
-        'uses' => 'ImageController@store',
-        'as' => 'upload'
-    ]);
-
-    Route::post('/customize', [
-        'uses' => 'TourController@store',
-        'as' => 'customize'
-    ]);
-    Route::post('/delete-comment', [
-        'uses' => 'CommentController@destroy',
-        'as' => 'delete_comment'
-    ]);
-
-
-    Route::get('/packages/{package}', 'PackageController@show');
-    Route::get('/cities/{city}', 'CityController@show');
-    Route::get('/cities/update/{city}', 'CityController@showUpdate');
-    Route::get('/packages/update/{package}', 'PackageController@showUpdate');
-
-
-    Route::get('/admin-register', 'UserController@index');
-
-    Route::post('/admin-registering', [
-        'uses' => 'UserController@registerAdmin',
-        'as' => 'admin_register'
-    ]);
-
 });
 
-Route::get('refresh-csrf', function () {
-    return csrf_token();
-});
+//Route::get('refresh-csrf', function () {
+//    return csrf_token();
+//});
 
 Auth::routes();
 
 
-Route::get('/logout', [
-    'uses' => 'Auth\LoginController@logout',
-    'as' => 'logout'
-]);
+
+
+

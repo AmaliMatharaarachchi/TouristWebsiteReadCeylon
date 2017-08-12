@@ -16,7 +16,7 @@
     <label for="images" class=" control-label">Select Images*</label>
 
     <div class="picker">
-        <select data-max-options="3" name="images[]" class="image-picker show-labels masonry show-html selectpicker" data-live-search="true" title="Select cities..." data-width="100%" data-limit="3" name="images[]" multiple="multiple">
+        <select data-max-options="3" name="images[]" class="image-picker show-labels masonry show-html selectpicker" data-live-search="true" title="Select images..." data-width="100%" data-limit="3" name="images[]" multiple="multiple">
 
             @foreach($images as $image)
                 {{--@foreach($images as $key => $image)--}}

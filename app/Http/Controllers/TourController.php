@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Tour;
 use Illuminate\Http\Request;
-use Alert;
 use Illuminate\Support\Facades\Auth;
 
 class TourController extends Controller
@@ -44,7 +43,7 @@ class TourController extends Controller
     {
         $this->validate($request, [
             'cities' => 'required',
-            'name'=>'required'
+            'name'=>'required|unique:tours'
         ]);
 
 //       if(count($request->cities)>1){
@@ -55,14 +54,9 @@ class TourController extends Controller
         $tour->save();
 
         (new CustomizeTourController())->store($tour->id,$cities);
-//       }
-//        else{
-//            Alert::error('please select cities using "add to my tour" buttons', 'No cities added!')->persistent("OK");
-//            return redirect()->back();
-//        }
 
-        Alert::success('Successfully created tour');
-            return redirect()->back();
+        $message='Successfully created tour';
+        return (new PackageController())->index()->with('message',$message);
     }
 
     /**

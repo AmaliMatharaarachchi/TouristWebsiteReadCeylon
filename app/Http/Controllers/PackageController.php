@@ -23,11 +23,11 @@ class PackageController extends Controller
     }
 
 
-    public function index(Package $package)
+    public function index()
     {
         //returns the tour page with packages images and cities
 
-        $packages = $package->all()->sortByDesc('created_at');
+        $packages = Package::all()->sortByDesc('created_at');
         $images = Image::all();
         $cities = City::all();
         return view('packages', ['packages' => $packages, 'images' => $images, 'cities' => $cities]);

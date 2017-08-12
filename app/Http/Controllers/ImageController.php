@@ -5,10 +5,10 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
-use Alert;
 
 
-class ImageController extends Controller{
+class ImageController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +16,7 @@ class ImageController extends Controller{
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -58,17 +58,12 @@ class ImageController extends Controller{
         $file = Input::file('image');
         $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
         $name = $timestamp . '-' . $file->getClientOriginalName();
-        //create file name for the image
-
         $image->url = $name;
-
         $file->move(public_path() . '/img/', $name);
-
         $image->save();
 
-
-        Alert::success('Successfully saved the image', 'SUCCESS')->persistent("OK");
-        return redirect()->back();
+        $message = 'Successfully saved the image';
+        return redirect()->back()->with('message', $message);
     }
 
     /**

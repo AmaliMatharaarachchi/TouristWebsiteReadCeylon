@@ -35,8 +35,8 @@
           rel='stylesheet' type='text/css'>
     {{--added--}}
 
-    <link rel="stylesheet" type="text/css" href="/dist/sweetalert.css">
-    <link rel="stylesheet" href="/image-picker/image-picker.css">
+    {{--<link rel="stylesheet" type="text/css" href="/dist/sweetalert.css">--}}
+    <link rel="stylesheet" type="text/css" href="/image-picker/image-picker.css">
 
     <!-- jQuery -->
     <script src="/js/jquery.min.js"></script>
@@ -122,7 +122,7 @@
 @yield('body')
 
 
-<script src="/dist/sweetalert.min.js"></script>
+{{--<script src="/dist/sweetalert.min.js"></script>--}}
 {{--<script type="text/javascript">--}}
 {{--var csrfToken = $('[name="csrf_token"]').attr('content');--}}
 
@@ -138,7 +138,7 @@
 
 {{--</script>--}}
 
-@include('sweet::alert')
+{{--@include('sweet::alert')--}}
 {{--@if (count($errors) > 0)--}}
 
 {{--<script>--}}

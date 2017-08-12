@@ -141,7 +141,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+//        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,

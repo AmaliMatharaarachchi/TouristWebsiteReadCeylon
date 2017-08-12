@@ -3,45 +3,47 @@
     {{$city->name}}
 @endsection
 
-{{--@section('style')--}}
-{{--<style>--}}
-{{--.thumbnails li img {--}}
-{{--width: 150px;--}}
-{{--}--}}
+@section('style')
+    <style>
+        .thumbnails li img {
+            width: 150px;
+        }
 
-{{--ul {--}}
-{{--list-style-type: none;--}}
-{{--margin: 0;--}}
-{{--padding: 0;--}}
-{{--overflow: hidden;--}}
-{{--background-color: #333;--}}
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
 
-{{--}--}}
+        }
 
-{{--li {--}}
-{{--float: left;--}}
-{{--border-right: 1px solid #bbb;--}}
-{{--}--}}
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
 
-{{--li:last-child {--}}
-{{--border-right: none;--}}
-{{--}--}}
+        li:last-child {
+            border-right: none;
+        }
 
-{{--li a {--}}
-{{--display: block;--}}
-{{--color: white;--}}
-{{--text-align: center;--}}
-{{--padding: 14px 16px;--}}
-{{--text-decoration: none;--}}
-{{--}--}}
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-{{--li a:hover:not(.active) {--}}
-{{--background-color: #111;--}}
-{{--}--}}
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
 
 
-{{--</style>--}}
-{{--@endsection--}}
+    </style>
+
+
+@endsection
 @section('body')
 
 
@@ -94,15 +96,13 @@
                             <div class="picker">
                                 <select data-max-options="3" name="images[]"
                                         class="image-picker show-labels masonry show-html selectpicker"
-                                        data-live-search="true" title="Select cities..." data-width="100%"
+                                        data-live-search="true" title="Select images..." data-width="100%"
                                         data-limit="3"
-                                        name="images[]" multiple="multiple">
+                                        name="images[]" multiple="multiple" style="display: inline-block;">
 
                                     @foreach($images as $image)
 
-
-                                        <option data-img-label='{{$image->name}}' data-img-src='{{URL::asset('images\beach.jpg')}}'
-                                                value='{{$image->id}}'>{{$image->name}}</option>
+                                        <option data-img-label='{{$image->name}}' data-img-src='\img\{{$image->url}}' value='{{$image->id}}'>{{$image->name}}</option>
 
                                     @endforeach
                                 </select>

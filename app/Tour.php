@@ -10,6 +10,6 @@ class Tour extends Model
         return $this->belongsTo(User::class);
     }
     public function customizeTour(){
-        return $this->hasMany(City::class);
+        return $this->hasMany(CustomizeTour::class);
     }
 }

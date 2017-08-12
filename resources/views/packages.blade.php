@@ -75,7 +75,6 @@
 
                         <a href="#" data-nav-section="packages">Packages</a>
 
-
                     </div>
                     <div class="fh5co-logo">
                         <a href="#">Tours</a>
@@ -83,6 +82,9 @@
                     <div class="fh5co-menu-2">
                         @if(Auth::check())
                             @if(Auth::user()->type=='U')
+                                @if(Auth::user()->tour)
+                                <a href="#" data-nav-section="tours">My Packages</a>
+                                    @endif
                             @else
                                 <a href="#" data-nav-section="create">Create Tour</a>
                             @endif
@@ -100,47 +102,76 @@
 
     </div>
 
-    <br>
-    <br>
-    <br>
-    <div class="div">
-
-        @if(Auth::check())
-            @if(Auth::user()->type=='U')
-
-                <h1>My Tours</h1>
-
-                <div class="col-md-12"><p><a href="{{route('cities')}}"
-                                             class="btn btn-primary btn-outline">Create
-                            a new Tour</a></p></div>
-                @foreach((Auth::user()->tour) as $key=>$tour)
-                    <h1>{{$tour->name}}</h1>
+@if(Auth::user()->tour)
+    <div id="fh5co-featured" data-section="tours">
+        <div class="container">
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">My Packages</h2>
+                    <p class="sub-heading to-animate">These are your customized packages </p>
+                </div>
+            </div>
 
 
-                    <div class="col-md-12"><p>
-                            @foreach($tour->customizeTour() as $city)
-                                {{$city->name}}
-                            @endforeach</p>
+            <div class="row">
 
-                    </div>
+                <div class="fh5co-grid">
+                    @foreach((Auth::user()->tour) as $tour)
+
+                        <div class="fh5co-v-half to-animate-2">
+
+                            @foreach($tour->customizeTour as $k=> $c)
+                                @if($k==0)
+                                    @foreach($c->city->has_image as $key=>$i)
+                                        @if($key==0)
+                                            <div class="fh5co-v-col-2 fh5co-bg-img"
+                                                 style="background-image: url('img/{{$i->image->url}}')"></div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
+
+                            <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+                                <h1 style="color: #1b6d85"><b>{{$tour->name}}</b>
+                                </h1>
+                                 <p>
+                                    @foreach($tour->customizeTour as $c)
+                                        <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                                @endforeach
+                                     <br>
+                                <span> <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                                            class="btn btn-primary btn-outline">Book now!</a>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                    @endforeach
 
 
+                </div>
+            </div>
 
-                @endforeach
+            <br>
+            <div class="row text-center fh5co-heading row-padded">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="heading to-animate">Other Packages</h2>
+                    <p class="sub-heading to-animate">These are most popular tour packages</p>
+                </div>
+            </div>
 
-
-
-            @endif
-        @endif
-
+        </div>
     </div>
+
+@endif
+
 
 
     <div id="fh5co-about" data-section="packages">
 
 
-        @foreach($packages as $key=>$package)
-            @if($key%2==0)
+    @foreach($packages as $key=>$package)
+            @if($key%2==1)
 
                 @foreach($package->has_city as $key1=>$c)
                     @if($key1==0)
@@ -157,10 +188,16 @@
                     <a href="#" class="btn "><h2
                                 class="heading to-animate">{{$package->name}}</h2></a>
 
-                    <p class="to-animate">{{$package->description}}<br>
-                        {{--@if(($package->price)!=null or ($package->price)!='')--}}
-                        <span>Price = ${{$package->price}}</span>
-                        {{--@endif--}}
+                    <p class="to-animate">
+                        @foreach($package->has_city as $c)
+                            <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                        @endforeach
+                        <br>
+                        {{$package->description}}<br>
+
+                        @if(($package->price)!=null or ($package->price)!='')
+                            <span>${{$package->price}}</span>
+                        @endif
                     </p>
                     <a href="/packages/{{$package->name}}">more...</a>
 
@@ -187,7 +224,12 @@
                     <a href="#" class="btn "><h2
                                 class="heading to-animate">{{$package->name}}</h2></a>
 
-                    <p class="to-animate">{{$package->description}}<br>
+                    <p class="to-animate">
+                        @foreach($package->has_city as $c)
+                            <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                        @endforeach
+                        <br>
+                        {{$package->description}}<br>
 
                         @if(($package->price)!=null or ($package->price)!='')
                             <span>${{$package->price}}</span>
@@ -309,6 +351,7 @@
             });
         });
     </script>
+
 
 @endsection
 
