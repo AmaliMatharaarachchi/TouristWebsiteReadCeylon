@@ -9,8 +9,8 @@ ul.thumbnails.image_picker_selector
   list-style-image:     none;
   list-style-position:  outside;
   list-style-type:      none;
-  padding:              0px;
-  margin:               0px;
+  padding:              0;
+  margin:               0;
 
   ul
   {
@@ -18,8 +18,8 @@ ul.thumbnails.image_picker_selector
     list-style-image:     none;
     list-style-position:  outside;
     list-style-type:      none;
-    padding:              0px;
-    margin:               0px;
+    padding:              0;
+    margin:               0;
   }
 
   li.group_title
@@ -29,7 +29,7 @@ ul.thumbnails.image_picker_selector
 
   li
   {
-    margin:   0px $thumbnail_margin $thumbnail_margin 0px;
+    margin:   0 $thumbnail_margin $thumbnail_margin 0;
     float:    left;
 
     .thumbnail

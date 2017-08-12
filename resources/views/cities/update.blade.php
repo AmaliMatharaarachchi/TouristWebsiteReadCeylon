@@ -80,7 +80,7 @@
                             <input type="text" id="name" name="name" class="form-control" value="{{$city->name}}"
                                    required/>
                             <label for="description" class="control-label">Description*</label>
-    <textarea type="text" id="description" name="description" class="form-control"
+    <textarea  id="description" name="description" class="form-control"
               required>{{$city->description}}</textarea>
                             <label for="star3price" class="control-label">Price of 3 star hotels($)</label>
                             <input type="star3price" id="star3price" name="star3price" value="{{$city->star3price}}"
@@ -138,12 +138,12 @@
 
 @section('body-js')
     <script> jQuery("select.image-picker").imagepicker({
-            hide_select: false,
+            hide_select: false
         });
 
         jQuery("select.image-picker.show-labels").imagepicker({
             hide_select: false,
-            show_label: true,
+            show_label: true
         });
 
         jQuery("select.image-picker.limit_callback").imagepicker({
@@ -156,7 +156,7 @@
         var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
         container.imagesLoaded(function () {
             container.masonry({
-                itemSelector: "li",
+                itemSelector: "li"
             });
         });
     </script>

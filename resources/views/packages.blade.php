@@ -83,8 +83,8 @@
                         @if(Auth::check())
                             @if(Auth::user()->type=='U')
                                 @if(Auth::user()->tour)
-                                <a href="#" data-nav-section="tours">My Packages</a>
-                                    @endif
+                                    <a href="#" data-nav-section="tours">My Packages</a>
+                                @endif
                             @else
                                 <a href="#" data-nav-section="create">Create Tour</a>
                             @endif
@@ -102,75 +102,76 @@
 
     </div>
 
-@if(Auth::user()->tour)
-    <div id="fh5co-featured" data-section="tours">
-        <div class="container">
-            <div class="row text-center fh5co-heading row-padded">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="heading to-animate">My Packages</h2>
-                    <p class="sub-heading to-animate">These are your customized packages </p>
+    @if(Auth::user()->tour)
+        <div id="fh5co-featured" data-section="tours">
+            <div class="container">
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="heading to-animate">My Packages</h2>
+                        <p class="sub-heading to-animate">These are your customized packages </p>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="row">
+                <div class="row">
 
-                <div class="fh5co-grid">
-                    @foreach((Auth::user()->tour) as $tour)
+                    <div class="fh5co-grid">
+                        @foreach((Auth::user()->tour) as $tour)
 
-                        <div class="fh5co-v-half to-animate-2">
+                            <div class="fh5co-v-half to-animate-2">
 
-                            @foreach($tour->customizeTour as $k=> $c)
-                                @if($k==0)
-                                    @foreach($c->city->has_image as $key=>$i)
-                                        @if($key==0)
-                                            <div class="fh5co-v-col-2 fh5co-bg-img"
-                                                 style="background-image: url('img/{{$i->image->url}}')"></div>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
-
-                            <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
-                                <h1 style="color: #1b6d85"><b>{{$tour->name}}</b>
-                                </h1>
-                                 <p>
-                                    @foreach($tour->customizeTour as $c)
-                                        <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                                @foreach($tour->customizeTour as $k=> $c)
+                                    @if($k==0)
+                                        @foreach($c->city->has_image as $key=>$i)
+                                            @if($key==0)
+                                                <div class="fh5co-v-col-2 fh5co-bg-img"
+                                                     style="background-image: url('img/{{$i->image->url}}')"></div>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 @endforeach
-                                     <br>
-                                <span> <p class="text-center to-animate"><a href="{{route('book')}}"
-                                                                            class="btn btn-primary btn-outline">Book now!</a>
-                                    </span>
-                                </p>
+
+                                <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+                                    <h1 style="color: #1b6d85"><b>{{$tour->name}}</b>
+                                    </h1>
+                                    <p>
+                                        @foreach($tour->customizeTour as $c)
+                                            <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
+                                        @endforeach
+                                        <br>
+                                    <p class="text-center to-animate"><a href="{{route('book')}}"
+                                                                         class="btn btn-primary btn-outline">Book
+                                            now!</a>
+
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    @endforeach
+                        @endforeach
 
 
+                    </div>
                 </div>
-            </div>
 
-            <br>
-            <div class="row text-center fh5co-heading row-padded">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="heading to-animate">Other Packages</h2>
-                    <p class="sub-heading to-animate">These are most popular tour packages</p>
+                <br>
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="heading to-animate">Other Packages</h2>
+                        <p class="sub-heading to-animate">These are most popular tour packages</p>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 
-@endif
+    @endif
 
 
 
     <div id="fh5co-about" data-section="packages">
 
 
-    @foreach($packages as $key=>$package)
+        @foreach($packages as $key=>$package)
             @if($key%2==1)
 
                 @foreach($package->has_city as $key1=>$c)
@@ -198,10 +199,9 @@
                         @if(($package->price)!=null or ($package->price)!='')
                             <span>${{$package->price}}</span>
                         @endif
-                    </p>
-                    <a href="/packages/{{$package->name}}">more...</a>
+                        <br>
+                        <a href="/packages/{{$package->name}}">more...</a>
 
-                    </p>
                     @if(Auth::check())
                         @if(Auth::user()->type=='A')
                             <p class="text-center to-animate"><a href="/packages/update/{{$package->name}}"
@@ -329,12 +329,12 @@
 @endsection
 @section('body_js')
     <script> jQuery("select.image-picker").imagepicker({
-            hide_select: false,
+            hide_select: false
         });
 
         jQuery("select.image-picker.show-labels").imagepicker({
             hide_select: false,
-            show_label: true,
+            show_label: true
         });
 
         jQuery("select.image-picker.limit_callback").imagepicker({
@@ -347,7 +347,7 @@
         var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
         container.imagesLoaded(function () {
             container.masonry({
-                itemSelector: "li",
+                itemSelector: "li"
             });
         });
     </script>

@@ -670,7 +670,7 @@ p {
 					top: 0!important;
 					margin-top: -15px!important;
 
-					margin-left: 0px!important;
+					margin-left: 0!important;
 					border-top: none!important;	
 
 					border-left:15px solid transparent!important; 
@@ -709,7 +709,7 @@ p {
 					top: 0!important;
 					margin-top: -15px!important;
 
-					margin-left: 0px!important;
+					margin-left: 0!important;
 					border-top: none!important;	
 
 					border-left:15px solid transparent!important; 
@@ -1279,7 +1279,7 @@ p {
   display: none;
   border-bottom: none!important;
   background: rgba(0,0,0,.7);
-  padding: 0px 10px 10px 10px;
+  padding: 0 10px 10px 10px;
   cursor: pointer;
   @include border-radius(4px);
   @media screen and (max-width: $screen-sm) {

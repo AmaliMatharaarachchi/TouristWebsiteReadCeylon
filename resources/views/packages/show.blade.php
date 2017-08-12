@@ -42,7 +42,7 @@
                     @if(Auth::user()->type=='A')
                         <a href="/packages/update/{{$package->name}}"
                            class="btn btn-lg btn-primary ">update</a>
-                        </p>
+
                     @endif
                 @endif
             </div>
@@ -160,7 +160,7 @@
                         {{csrf_field()}}
 
                         <h3><i class="icon-comments"></i> Add your comment: </h3>
-                    <textarea type="text" id="review" name="review"
+                    <textarea  id="review" name="review"
                     ></textarea>
 
                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id"

@@ -50,7 +50,7 @@
 			smoothHeight: true,
 			reverse: true
 	  	});
-	}
+	};
 
 	var offcanvasMenu = function() {
 		$('body').prepend('<div id="fh5co-offcanvas" />');

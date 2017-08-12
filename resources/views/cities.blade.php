@@ -176,9 +176,6 @@
 
                     </p>
                     <a href="/cities/{{$city->name}}">more</a>
-                    {{--<p class="text-center to-animate"><input type="button" class="sal" value="0"> <a--}}
-                                {{--href="javascript:addNum({{$city->id}})"--}}
-                                {{--class="btn btn-primary btn-outline">Add to my city</a></p>--}}
                     @if(Auth::check())
                         @if(Auth::user()->type=='U')
                             <p class="text-center to-animate" id="{{$city->id}}"><a href="#"  onclick="addToArray('{{$city->id}}','{{$city->name}}','A')" class="btn btn-primary btn-outline">Add to my
@@ -260,12 +257,12 @@
 @endsection
 @section('body_js')
     <script> jQuery("select.image-picker").imagepicker({
-            hide_select: false,
+            hide_select: false
         });
 
         jQuery("select.image-picker.show-labels").imagepicker({
             hide_select: false,
-            show_label: true,
+            show_label: true
         });
 
         jQuery("select.image-picker.limit_callback").imagepicker({
@@ -278,7 +275,7 @@
         var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
         container.imagesLoaded(function () {
             container.masonry({
-                itemSelector: "li",
+                itemSelector: "li"
             });
         });
     </script>
@@ -288,7 +285,7 @@
         function addToArray(id,name,type){
             if (type=='A'){
             numArray.push(id);
-            names.push(name)
+            names.push(name);
             console.log(numArray);
 
             document.getElementById(id).style.display = 'none';
@@ -315,7 +312,7 @@
 
         $(document).ready(function () {
             $('.sal').each(function () {
-                $(this).click(function (e) {
+                $(this).click(function () {
                     numArray.push($(this).val());
 
                     console.log(numArray);

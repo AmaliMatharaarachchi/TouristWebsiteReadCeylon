@@ -43,7 +43,7 @@
                             <input type="text" id="name" name="name" class="form-control" placeholder="{{$package->name}}"
                                    value="{{$package->name}}" required/>
                             <label for="description" class="control-label">Description*</label>
-                                <textarea type="text" id="description" name="description" class="form-control"
+                                <textarea  id="description" name="description" class="form-control"
                                           required>{{$package->description}}</textarea>
                             <label for="price" class=" control-label" >Price($)*</label>
                             <input type="text" id="price" name="price" value="{{$package->price}}" placeholder="{{$package->price}}" class="form-control" required/>
@@ -87,12 +87,12 @@
 
 @section('body-js')
     <script> jQuery("select.image-picker").imagepicker({
-            hide_select: false,
+            hide_select: false
         });
 
         jQuery("select.image-picker.show-labels").imagepicker({
             hide_select: false,
-            show_label: true,
+            show_label: true
         });
 
         jQuery("select.image-picker.limit_callback").imagepicker({
@@ -105,7 +105,7 @@
         var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
         container.imagesLoaded(function () {
             container.masonry({
-                itemSelector: "li",
+                itemSelector: "li"
             });
         });
     </script>

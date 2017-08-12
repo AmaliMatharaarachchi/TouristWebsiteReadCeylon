@@ -131,7 +131,7 @@
                         <div class="form-group">
                             <label for="review" class="control-label">Tell us about your experience</label>
 
-                                <textarea id="review" type="review" class="form-control" name="review"
+                                <textarea id="review"  class="form-control" name="review"
                                           required></textarea>
 
 
@@ -180,12 +180,12 @@
                                                                  href="/packages/{{$package->name}}">{{$package->name}}</a></b>
                                 </h1>
                                 <span class="pricing">Price : ${{$package->price}} For {{$package->days}}days</span>
-                                <p>
+
                                     @foreach($package->has_city as $c)
                                         <a href="/cities/{{$c->city->name}}">{{$c->city->name}}</a>
                                 @endforeach
                                 <div class="your-div"><span>{{$package->description}}</span></div>
-                                </p>
+
                                 <p><a href="/packages/{{$package->name}}">more...</a></p>
                             </div>
                         </div>
@@ -330,7 +330,7 @@
                                     <label for="message" class="control-label">your message*</label>
 
 
-                                <textarea id="message" type="message" class="form-control" name="message"
+                                <textarea id="message"  class="form-control" name="message"
                                           required></textarea>
 
 
@@ -347,7 +347,7 @@
                                     <label for="message" class="control-label">your message*</label>
 
 
-                                <textarea id="message" type="message" class="form-control" name="message"
+                                <textarea id="message"  class="form-control" name="message"
                                           required></textarea>
 
 
@@ -395,7 +395,7 @@
                                 <label for="message" class="control-label">your message*</label>
 
 
-                                <textarea id="message" type="message" class="form-control" name="message"
+                                <textarea id="message"  class="form-control" name="message"
                                           required></textarea>
 
 
@@ -535,8 +535,8 @@
 
     <script type="text/javascript">
         $(function () {
-            $(".your-div").each(function (i) {
-                len = $(this).text().length;
+            $(".your-div").each(function () {
+                var len = $(this).text().length;
                 if (len > 80) {
                     $(this).text($(this).text().substr(0, 200) + '...');
                 }

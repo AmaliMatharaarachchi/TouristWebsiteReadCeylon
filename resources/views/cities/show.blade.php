@@ -39,7 +39,7 @@
                     @if(Auth::user()->type=='A')
                         <a href="/cities/update/{{$city->name}}"
                            class="btn btn-lg btn-primary ">update</a>
-                        </p>
+
                     @endif
                 @endif
             </div>

@@ -5,7 +5,7 @@
     <input type="text" id="name" name="name"  class="form-control"
            required/>
     <label for="description" class="control-label">Description*</label>
-    <textarea type="text" id="description" name="description"  class="form-control"
+    <textarea  id="description" name="description"  class="form-control"
            required></textarea>
     <label for="star3price" class="control-label">Price of 3 star hotels($)</label>
     <input type="star3price" id="star3price" name="star3price"  class="form-control"/>
