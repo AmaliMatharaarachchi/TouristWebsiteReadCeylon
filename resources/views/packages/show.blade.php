@@ -18,7 +18,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{{route('welcome')}}">Home</a></li>
-                <li><a href="{{route('packages')}}">Tour Packages</a></li>
+                <li><a href="{{route('packages')}}">All Packages</a></li>
                 <li class="active"><a href="/packages/{{$package->name}}">{{$package->name}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -34,8 +34,20 @@
     </nav>
 
     <div class="container">
-        <h1 style="color: #1b6d85"><b>{{$package->name}}</b></h1>
-        <br>
+
+        <div class="row">
+            <div class="col-md-6"><p style="color: #1b6d85; font-size: xx-large" ><b>{{$package->name}}</b></p></div>
+            <div class="col-md-6 col-md-push-4">
+                @if(Auth::check())
+                    @if(Auth::user()->type=='A')
+                        <a href="/packages/update/{{$package->name}}"
+                           class="btn btn-lg btn-primary ">update</a>
+                        </p>
+                    @endif
+                @endif
+            </div>
+        </div>
+
         <div class="row">
 
             <!-- Indicators -->
@@ -55,7 +67,7 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
-                        <div class="carousel-inner"role="listbox" style=" width:100%; height: 500px !important;">
+                        <div class="carousel-inner" role="listbox" style=" width:100%; height: 500px !important;">
                             @foreach($p->city->has_image as $key=>$i)
                                 @if($key==0)
                                     <div class="item active">

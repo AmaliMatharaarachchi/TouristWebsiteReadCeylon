@@ -110,8 +110,8 @@ class PackageController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255|unique:packages,name,' . $request->id,
             'description' => 'required',
-            'price' => 'integer',
-            'days' => 'integer',
+            'price' => 'required|integer',
+            'days' => 'required|integer',
             'cities' => 'required'
         ]);
 

@@ -6,7 +6,8 @@
 @endsection
 
 @section('body')
-
+    <br xmlns="http://www.w3.org/1999/html">
+    <br>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -30,8 +31,19 @@
     </nav>
 
     <div class="container">
-        <h1 style="color: #1b6d85"><b>{{$city->name}}</b></h1>
-        <br>
+
+        <div class="row">
+            <div class="col-md-6"><p style="color: #1b6d85; font-size: xx-large"><b>{{$city->name}}</b></p></div>
+            <div class="col-md-6 col-md-push-4">
+                @if(Auth::check())
+                    @if(Auth::user()->type=='A')
+                        <a href="/cities/update/{{$city->name}}"
+                           class="btn btn-lg btn-primary ">update</a>
+                        </p>
+                    @endif
+                @endif
+            </div>
+        </div>
         <div class="row">
 
             <!-- Indicators -->
@@ -51,9 +63,9 @@
                     </ol>
 
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner"role="listbox" style=" width:100%; height: 500px !important;">
+                    <div class="carousel-inner" role="listbox" style=" width:100%; height: 500px !important;">
 
-                    @foreach($city->has_image as $key=>$i)
+                        @foreach($city->has_image as $key=>$i)
                             @if($key==0)
                                 <div class="item active">
                                     <img src="\img\{{$i->image->url}}" alt="{{$i->image->name}}"
@@ -95,12 +107,15 @@
             <p align="justify">{{$city->description}}</p>
             @if(Auth::check())
                 @if(Auth::user()->type=='A')
-                    <div class="col-md-4"><h2>3 star package price : {{$city->star3price}}$</h2></div>
-                    <div class="col-md-4"><h2>4 star package price : {{$city->star4price}}$</h2></div>
-                    <div class="col-md-4"><h2>5 star package price : {{$city->star5price}}$</h2></div>
-                <br>
-                    <div class="col-md-6 pull-right"><a href="/cities/update/{{$city->name}}"
-                                                        class="btn btn-primary">update city</a></div>
+                    @if($city->star3price!=null)
+                        <div class="col-md-4"><h2>3 star package price : {{$city->star3price}}$</h2></div>
+                    @endif
+                    @if($city->star4price!=null)
+                        <div class="col-md-4"><h2>4 star package price : {{$city->star4price}}$</h2></div>
+                    @endif
+                    @if($city->star5price!=null)
+                        <div class="col-md-4"><h2>5 star package price : {{$city->star5price}}$</h2></div>
+                    @endif
 
 
                 @endif

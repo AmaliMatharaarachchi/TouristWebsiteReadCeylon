@@ -2,7 +2,6 @@
 
 use App\Mail\UserMessage;
 use App\SendMessage;
-use Alert;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,8 +58,8 @@ class SendMessageController extends Controller{
 
         \Mail::to('almas.den.sw@gmail.com')->send(new UserMessage($request['message'],Auth::user()));
 //        session()->flash('message','We will contact you soon');
-        Alert::success('We will contact you soon. Check your email inbox for the reply')->persistent('okay');
-        return redirect()->back();
+        $message='We will contact you soon. Check your email inbox for the reply';
+        return redirect()->back()->with('message',$message);
     }
 
     /**

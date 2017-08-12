@@ -4,7 +4,7 @@ use App\Message;
 use App\PublicUser;
 use Illuminate\Http\Request;
 use App\Mail\MessagePublic;
-use Alert;
+
 
 class PublicUserController extends Controller{
     /**
