@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\UserMessage;
+use App\Mail\AdminMessage;
 use App\Message;
 use App\SendMessage;
 use App\User;
-use Alert;
 use Illuminate\Http\Request;
 
 /**
@@ -47,8 +46,8 @@ class UserController extends Controller
         $user->type = 'A';
         $user->save();
 
-        Alert::success('Successfully created a new admin', 'SUCCESS')->persistent("OK");
-        return redirect('/');
+        $message='Successfully created a new admin';
+        return redirect('/')->with("message",$message);
 
     }
     public function message(Request $request)
@@ -67,11 +66,11 @@ class UserController extends Controller
             $sendMessage->message_id = $message->id;
             $sendMessage->save();
 
-            \Mail::to($user->email)->send(new UserMessage($request['message'], $user));
+            \Mail::to($user->email)->send(new AdminMessage($request['message'], $user));
         }
-//        session()->flash('message','We will contact you soon');
-        Alert::success('Email sent!')->persistent('okay');
-        return redirect()->back();
+
+        $message='Email sent!';
+        return redirect()->back()->with('message',$message);
 
     }
 

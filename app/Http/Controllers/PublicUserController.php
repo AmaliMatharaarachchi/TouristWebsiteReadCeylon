@@ -52,8 +52,8 @@ class PublicUserController extends Controller{
 
         \Mail::to('almas.den.sw@gmail.com')->send(new MessagePublic($request['message'],$publicUser));
 //        session()->flash('message','We will contact you soon');
-        Alert::success('We will contact you soon. Check your email inbox for the reply')->persistent('OK');
-        return redirect()->back();
+        $message='We will contact you soon. Check your email inbox for the reply';
+        return redirect()->back()->with("message",$message );
     }
 
     /**

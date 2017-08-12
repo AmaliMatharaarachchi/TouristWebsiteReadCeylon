@@ -35,6 +35,11 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'add_package'
     ]);
 
+    Route::post('/packages/update', [
+        'uses' => 'PackageController@update',
+        'as' => 'package_update'
+    ]);
+
 ///////////cities//////////////////
     Route::get('/cities', [
         'uses' => 'cityController@index',
@@ -72,25 +77,26 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'admin_message'
     ]);
 
-///////////////////////////////////////////////
-    Route::post('/packages/update', [
-        'uses' => 'PackageController@update',
-        'as' => 'package_update'
+    Route::post('/message', [
+        'uses' => 'SendMessageController@store',
+        'as' => 'user_message'
     ]);
+
+    Route::post('/contact-us', [
+        'uses' => 'PublicUserController@store',
+        'as' => 'public_message'
+    ]);
+
+///////////////////////////////////////////////
+
 
 
     Route::post('/comment/create', [
         'uses' => 'CommentController@store',
         'as' => 'add_comment'
     ]);
-    Route::post('/contact-us', [
-        'uses' => 'PublicUserController@store',
-        'as' => 'public_message'
-    ]);
-    Route::post('/message', [
-        'uses' => 'SendMessageController@store',
-        'as' => 'user_message'
-    ]);
+
+
 
     Route::get('/view-message', [
         'uses' => 'SendMessageController@index',

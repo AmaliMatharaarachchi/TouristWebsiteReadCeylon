@@ -78,7 +78,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
-//        $request->session()->put('message','Welcome to ReadCeylon');
+        $request->session()->put('message','Welcome to ReadCeylon!!!');
         \Mail::to($user)->send(new Welcome($user));
 
     }
